@@ -1,0 +1,814 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Northern Data Studio | Data Analytics Services</title>
+  <style>
+    :root {
+      --navy: #0b1f3a;
+      --navy-soft: #132f55;
+      --blue: #2563eb;
+      --light-blue: #eaf2ff;
+      --white: #ffffff;
+      --off-white: #f7f9fc;
+      --text: #1f2937;
+      --muted: #6b7280;
+      --border: #e5e7eb;
+      --shadow: 0 18px 45px rgba(11, 31, 58, 0.09);
+      --radius: 22px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: var(--white);
+      color: var(--text);
+      line-height: 1.6;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .container {
+      width: min(1120px, calc(100% - 40px));
+      margin: 0 auto;
+    }
+
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      background: rgba(255, 255, 255, 0.86);
+      backdrop-filter: blur(16px);
+      border-bottom: 1px solid rgba(229, 231, 235, 0.75);
+    }
+
+    nav {
+      height: 76px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-weight: 800;
+      color: var(--navy);
+      letter-spacing: -0.03em;
+    }
+
+    .logo-mark {
+      width: 36px;
+      height: 36px;
+      border-radius: 12px;
+      background: linear-gradient(135deg, var(--navy), var(--blue));
+      display: grid;
+      place-items: center;
+      color: white;
+      font-size: 15px;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 28px;
+      font-size: 14px;
+      color: var(--muted);
+      font-weight: 600;
+    }
+
+    .nav-links a:hover {
+      color: var(--navy);
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      padding: 13px 20px;
+      border-radius: 999px;
+      border: 1px solid transparent;
+      background: var(--navy);
+      color: var(--white);
+      font-weight: 700;
+      cursor: pointer;
+      transition: 0.2s ease;
+    }
+
+    .btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 12px 24px rgba(11, 31, 58, 0.18);
+    }
+
+    .btn.secondary {
+      background: var(--white);
+      color: var(--navy);
+      border-color: var(--border);
+    }
+
+    section {
+      padding: 92px 0;
+    }
+
+    .hero {
+      position: relative;
+      overflow: hidden;
+      padding: 112px 0 96px;
+      background:
+        radial-gradient(circle at top right, rgba(37, 99, 235, 0.16), transparent 34%),
+        linear-gradient(180deg, #ffffff 0%, #f8fbff 100%);
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.05fr 0.95fr;
+      gap: 56px;
+      align-items: center;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 8px 12px;
+      background: var(--light-blue);
+      color: var(--navy);
+      border-radius: 999px;
+      font-size: 13px;
+      font-weight: 800;
+      margin-bottom: 22px;
+    }
+
+    h1 {
+      font-size: clamp(44px, 6vw, 76px);
+      line-height: 0.96;
+      letter-spacing: -0.07em;
+      color: var(--navy);
+      margin-bottom: 24px;
+    }
+
+    .hero p {
+      font-size: 19px;
+      color: var(--muted);
+      max-width: 620px;
+      margin-bottom: 32px;
+    }
+
+    .hero-actions {
+      display: flex;
+      gap: 14px;
+      flex-wrap: wrap;
+    }
+
+    .hero-card {
+      background: var(--navy);
+      color: var(--white);
+      border-radius: 30px;
+      padding: 26px;
+      box-shadow: var(--shadow);
+    }
+
+    .mock-dashboard {
+      background: var(--white);
+      border-radius: 22px;
+      padding: 18px;
+      color: var(--navy);
+    }
+
+    .mock-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 18px;
+    }
+
+    .dots {
+      display: flex;
+      gap: 6px;
+    }
+
+    .dot {
+      width: 9px;
+      height: 9px;
+      border-radius: 50%;
+      background: var(--border);
+    }
+
+    .metric-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 10px;
+      margin-bottom: 18px;
+    }
+
+    .metric {
+      background: var(--off-white);
+      border-radius: 16px;
+      padding: 14px;
+    }
+
+    .metric span {
+      display: block;
+      color: var(--muted);
+      font-size: 12px;
+      margin-bottom: 4px;
+    }
+
+    .metric strong {
+      font-size: 22px;
+    }
+
+    .bars {
+      display: grid;
+      gap: 10px;
+      margin-top: 20px;
+    }
+
+    .bar {
+      height: 12px;
+      border-radius: 999px;
+      background: var(--light-blue);
+      overflow: hidden;
+    }
+
+    .bar span {
+      display: block;
+      height: 100%;
+      border-radius: inherit;
+      background: linear-gradient(90deg, var(--navy), var(--blue));
+    }
+
+    .section-header {
+      max-width: 720px;
+      margin-bottom: 38px;
+    }
+
+    .section-header.center {
+      text-align: center;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .section-label {
+      color: var(--blue);
+      font-size: 13px;
+      font-weight: 900;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      margin-bottom: 10px;
+    }
+
+    h2 {
+      font-size: clamp(32px, 4vw, 48px);
+      line-height: 1.08;
+      letter-spacing: -0.05em;
+      color: var(--navy);
+      margin-bottom: 14px;
+    }
+
+    .section-header p {
+      color: var(--muted);
+      font-size: 17px;
+    }
+
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 22px;
+    }
+
+    .card {
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 28px;
+      box-shadow: 0 10px 25px rgba(11, 31, 58, 0.04);
+      transition: 0.2s ease;
+    }
+
+    .card:hover {
+      transform: translateY(-4px);
+      box-shadow: var(--shadow);
+    }
+
+    .card.featured {
+      background: var(--navy);
+      color: var(--white);
+      border-color: var(--navy);
+    }
+
+    .card.featured h3,
+    .card.featured .price {
+      color: var(--white);
+    }
+
+    .card.featured p,
+    .card.featured li {
+      color: rgba(255, 255, 255, 0.76);
+    }
+
+    h3 {
+      font-size: 22px;
+      color: var(--navy);
+      margin-bottom: 8px;
+      letter-spacing: -0.03em;
+    }
+
+    .price {
+      color: var(--navy);
+      font-size: 30px;
+      font-weight: 900;
+      margin: 18px 0;
+      letter-spacing: -0.04em;
+    }
+
+    .card p,
+    .card li {
+      color: var(--muted);
+    }
+
+    ul {
+      list-style: none;
+      display: grid;
+      gap: 10px;
+      margin-top: 18px;
+    }
+
+    li::before {
+      content: "✓";
+      color: var(--blue);
+      font-weight: 900;
+      margin-right: 8px;
+    }
+
+    .sample-work {
+      background: var(--off-white);
+    }
+
+    .work-grid {
+      display: grid;
+      grid-template-columns: 1.1fr 0.9fr;
+      gap: 24px;
+    }
+
+    .work-preview {
+      min-height: 380px;
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: 30px;
+      padding: 26px;
+      box-shadow: var(--shadow);
+    }
+
+    .work-preview h3 {
+      margin-bottom: 20px;
+    }
+
+    .chart-row {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      align-items: end;
+      gap: 14px;
+      height: 220px;
+      padding: 18px;
+      background: var(--off-white);
+      border-radius: 22px;
+    }
+
+    .chart-col {
+      border-radius: 12px 12px 4px 4px;
+      background: linear-gradient(180deg, var(--blue), var(--navy));
+      min-height: 44px;
+    }
+
+    .work-list {
+      display: grid;
+      gap: 16px;
+    }
+
+    .work-item {
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: 22px;
+      padding: 22px;
+    }
+
+    .addons-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 16px;
+    }
+
+    .addon {
+      padding: 22px;
+      border-radius: 20px;
+      background: var(--off-white);
+      border: 1px solid var(--border);
+    }
+
+    .addon strong {
+      color: var(--navy);
+      display: block;
+      margin-bottom: 6px;
+    }
+
+    .process {
+      background: var(--navy);
+      color: var(--white);
+    }
+
+    .process .section-label,
+    .process h2 {
+      color: var(--white);
+    }
+
+    .process .section-header p {
+      color: rgba(255, 255, 255, 0.72);
+    }
+
+    .steps {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 18px;
+    }
+
+    .step {
+      background: rgba(255, 255, 255, 0.08);
+      border: 1px solid rgba(255, 255, 255, 0.13);
+      border-radius: 22px;
+      padding: 24px;
+    }
+
+    .step-number {
+      width: 38px;
+      height: 38px;
+      border-radius: 50%;
+      display: grid;
+      place-items: center;
+      background: var(--white);
+      color: var(--navy);
+      font-weight: 900;
+      margin-bottom: 18px;
+    }
+
+    .contact-card {
+      display: grid;
+      grid-template-columns: 0.9fr 1.1fr;
+      gap: 30px;
+      background: var(--off-white);
+      border: 1px solid var(--border);
+      border-radius: 32px;
+      padding: 32px;
+    }
+
+    form {
+      display: grid;
+      gap: 14px;
+    }
+
+    input,
+    textarea,
+    select {
+      width: 100%;
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 14px 16px;
+      font: inherit;
+      background: var(--white);
+      color: var(--text);
+    }
+
+    textarea {
+      min-height: 130px;
+      resize: vertical;
+    }
+
+    footer {
+      padding: 28px 0;
+      border-top: 1px solid var(--border);
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .footer-row {
+      display: flex;
+      justify-content: space-between;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+
+    .fade-in {
+      opacity: 0;
+      transform: translateY(18px);
+      transition: 0.55s ease;
+    }
+
+    .fade-in.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    @media (max-width: 900px) {
+      .hero-grid,
+      .work-grid,
+      .contact-card {
+        grid-template-columns: 1fr;
+      }
+
+      .cards,
+      .steps,
+      .addons-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .nav-links {
+        display: none;
+      }
+    }
+
+    @media (max-width: 620px) {
+      section,
+      .hero {
+        padding: 70px 0;
+      }
+
+      .cards,
+      .steps,
+      .addons-grid,
+      .metric-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .hero-actions {
+        flex-direction: column;
+      }
+
+      .btn {
+        width: 100%;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="container">
+      <nav>
+        <a href="#top" class="logo" aria-label="Northern Data Studio home">
+          <span class="logo-mark">N</span>
+          <span>Northern Data Studio</span>
+        </a>
+        <div class="nav-links">
+          <a href="#services">Services</a>
+          <a href="#work">Sample Work</a>
+          <a href="#addons">Add-ons</a>
+          <a href="#contact">Contact</a>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <main id="top">
+    <section class="hero">
+      <div class="container hero-grid">
+        <div class="fade-in">
+          <div class="eyebrow">Power BI • Data Cleaning • Business Insights</div>
+          <h1>Turn messy data into clear business decisions.</h1>
+          <p>Northern Data Studio helps small teams clean, organize, visualize, and explain their data through dashboards, insight reports, and presentation-ready deliverables.</p>
+          <div class="hero-actions">
+            <a href="#contact" class="btn">Book a project consult</a>
+            <a href="#services" class="btn secondary">View packages</a>
+          </div>
+        </div>
+
+        <div class="hero-card fade-in">
+          <div class="mock-dashboard">
+            <div class="mock-top">
+              <strong>Sales Performance</strong>
+              <div class="dots"><span class="dot"></span><span class="dot"></span><span class="dot"></span></div>
+            </div>
+            <div class="metric-grid">
+              <div class="metric"><span>Revenue</span><strong>$84K</strong></div>
+              <div class="metric"><span>Growth</span><strong>18%</strong></div>
+              <div class="metric"><span>Orders</span><strong>1.2K</strong></div>
+            </div>
+            <div class="bars">
+              <div class="bar"><span style="width: 86%"></span></div>
+              <div class="bar"><span style="width: 64%"></span></div>
+              <div class="bar"><span style="width: 72%"></span></div>
+              <div class="bar"><span style="width: 48%"></span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="services">
+      <div class="container">
+        <div class="section-header center fade-in">
+          <div class="section-label">Services</div>
+          <h2>Simple packages for clear outcomes.</h2>
+          <p>Choose a focused service, then add extras only when your project needs more depth.</p>
+        </div>
+
+        <div class="cards">
+          <article class="card fade-in">
+            <h3>Dashboard Starter</h3>
+            <p>For one clean, focused dashboard built from a prepared dataset.</p>
+            <div class="price">From $250</div>
+            <ul>
+              <li>1 Power BI dashboard page</li>
+              <li>Basic data cleanup</li>
+              <li>3–5 key visuals</li>
+              <li>1 revision round</li>
+            </ul>
+          </article>
+
+          <article class="card featured fade-in">
+            <h3>Insight Dashboard</h3>
+            <p>For businesses that need a dashboard plus written business interpretation.</p>
+            <div class="price">From $450</div>
+            <ul>
+              <li>Multi-page Power BI dashboard</li>
+              <li>Data cleaning and modeling</li>
+              <li>Bullet-point insight summary</li>
+              <li>2 revision rounds</li>
+            </ul>
+          </article>
+
+          <article class="card fade-in">
+            <h3>Decision Brief</h3>
+            <p>For polished deliverables ready for owners, managers, or stakeholders.</p>
+            <div class="price">From $700</div>
+            <ul>
+              <li>Dashboard and written report</li>
+              <li>Presentation-ready findings</li>
+              <li>Recommendations section</li>
+              <li>Walkthrough call</li>
+            </ul>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="work" class="sample-work">
+      <div class="container">
+        <div class="section-header fade-in">
+          <div class="section-label">Sample Work</div>
+          <h2>Dashboards that make the story easy to see.</h2>
+          <p>Use this section to showcase portfolio screenshots, sample Power BI projects, or mock case studies.</p>
+        </div>
+
+        <div class="work-grid">
+          <div class="work-preview fade-in">
+            <h3>Retail Sales Dashboard</h3>
+            <div class="chart-row" aria-label="Mock bar chart">
+              <div class="chart-col" style="height: 45%"></div>
+              <div class="chart-col" style="height: 72%"></div>
+              <div class="chart-col" style="height: 58%"></div>
+              <div class="chart-col" style="height: 88%"></div>
+            </div>
+          </div>
+          <div class="work-list">
+            <div class="work-item fade-in">
+              <h3>Executive Summary</h3>
+              <p>Clear findings, risks, and next steps written in plain language.</p>
+            </div>
+            <div class="work-item fade-in">
+              <h3>Data Cleaning</h3>
+              <p>Duplicate removal, column cleanup, formatting, and structured tables.</p>
+            </div>
+            <div class="work-item fade-in">
+              <h3>Presentation Slides</h3>
+              <p>Professional visuals and talking points for client-ready delivery.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="addons">
+      <div class="container">
+        <div class="section-header center fade-in">
+          <div class="section-label">Add-ons</div>
+          <h2>Need more support? Add only what matters.</h2>
+          <p>Flexible extras help you keep the base package affordable while still covering complex work.</p>
+        </div>
+
+        <div class="addons-grid">
+          <div class="addon fade-in"><strong>Extra Revision</strong><span>Additional polish after the included revision rounds.</span></div>
+          <div class="addon fade-in"><strong>Complex Cleaning</strong><span>Messy files, multiple sources, missing values, or advanced reshaping.</span></div>
+          <div class="addon fade-in"><strong>Cloud Publishing</strong><span>Help publishing or organizing files for access and sharing.</span></div>
+          <div class="addon fade-in"><strong>Slide Deck</strong><span>A concise presentation summarizing the dashboard story.</span></div>
+          <div class="addon fade-in"><strong>Word Report</strong><span>Bullet-point insights and recommendations in a polished document.</span></div>
+          <div class="addon fade-in"><strong>Data Storage Setup</strong><span>Simple structure for keeping project files organized.</span></div>
+          <div class="addon fade-in"><strong>Dashboard Walkthrough</strong><span>A recorded or live explanation of how to use the dashboard.</span></div>
+          <div class="addon fade-in"><strong>Rush Delivery</strong><span>Priority timeline when your project needs to move quickly.</span></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="process" id="process">
+      <div class="container">
+        <div class="section-header center fade-in">
+          <div class="section-label">How it Works</div>
+          <h2>A clean process from raw data to final deliverable.</h2>
+          <p>You bring the business question. Northern Data Studio turns the data into something useful.</p>
+        </div>
+
+        <div class="steps">
+          <div class="step fade-in">
+            <div class="step-number">1</div>
+            <h3>Share your goal</h3>
+            <p>Tell us what you want to understand, measure, or present.</p>
+          </div>
+          <div class="step fade-in">
+            <div class="step-number">2</div>
+            <h3>Send the data</h3>
+            <p>Provide Excel, CSV, exported reports, or sample files.</p>
+          </div>
+          <div class="step fade-in">
+            <div class="step-number">3</div>
+            <h3>Build & review</h3>
+            <p>We clean the data, build visuals, and revise with your feedback.</p>
+          </div>
+          <div class="step fade-in">
+            <div class="step-number">4</div>
+            <h3>Deliver insights</h3>
+            <p>You receive the dashboard, summary, and next-step recommendations.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact">
+      <div class="container">
+        <div class="contact-card fade-in">
+          <div>
+            <div class="section-label">Contact</div>
+            <h2>Ready to make your data useful?</h2>
+            <p>Send a quick message with your project idea, file type, and deadline. Replace this form action with your preferred form tool when you publish.</p>
+          </div>
+          <form id="contactForm">
+            <input type="text" name="name" placeholder="Your name" required />
+            <input type="email" name="email" placeholder="Email address" required />
+            <select name="service" required>
+              <option value="">Choose a service</option>
+              <option>Dashboard Starter</option>
+              <option>Insight Dashboard</option>
+              <option>Decision Brief</option>
+              <option>Not sure yet</option>
+            </select>
+            <textarea name="message" placeholder="Tell me about your data project" required></textarea>
+            <button class="btn" type="submit">Send inquiry</button>
+            <p id="formMessage" aria-live="polite"></p>
+          </form>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container footer-row">
+      <span>© <span id="year"></span> Northern Data Studio. All rights reserved.</span>
+      <span>Data dashboards • Business insights • Reporting</span>
+    </div>
+  </footer>
+
+  <script>
+    document.getElementById("year").textContent = new Date().getFullYear();
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("visible");
+        }
+      });
+    }, { threshold: 0.15 });
+
+    document.querySelectorAll(".fade-in").forEach((element) => observer.observe(element));
+
+    document.getElementById("contactForm").addEventListener("submit", function(event) {
+      event.preventDefault();
+      const message = document.getElementById("formMessage");
+      message.textContent = "Thanks! Your inquiry is ready. Connect this form to Formspree, Netlify Forms, or your email tool before publishing.";
+      message.style.color = "#0b1f3a";
+      this.reset();
+    });
+  </script>
+</body>
+</html>
