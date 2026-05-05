@@ -222,32 +222,49 @@
     li::before { content: "✓"; color: var(--blue); font-weight: 950; margin-right: 8px; }
 
     .sample-work { background: var(--soft); }
-    .work-grid { display: grid; grid-template-columns: 1.05fr 0.95fr; gap: 24px; }
+    .work-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; }
 
-    .work-preview {
-      min-height: 380px;
+    .work-card {
       background: white;
       border: 1px solid var(--border);
-      border-radius: 32px;
-      padding: 30px;
+      border-radius: 28px;
+      overflow: hidden;
+      box-shadow: 0 14px 40px rgba(7, 26, 51, 0.07);
+      transition: 0.2s ease;
+    }
+
+    .work-card:hover {
+      transform: translateY(-5px);
       box-shadow: var(--shadow);
     }
 
-    .chart-row {
-      margin-top: 24px;
-      height: 230px;
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      align-items: end;
-      gap: 16px;
-      padding: 22px;
-      border-radius: 24px;
-      background: var(--soft);
+    .work-image {
+      background: var(--ice);
+      padding: 12px;
+      border-bottom: 1px solid var(--border);
     }
 
-    .chart-col { border-radius: 14px 14px 5px 5px; background: linear-gradient(180deg, var(--blue), var(--navy)); }
-    .work-list { display: grid; gap: 16px; }
-    .work-item { background: white; border: 1px solid var(--border); border-radius: 24px; padding: 24px; }
+    .work-image img {
+      width: 100%;
+      height: 230px;
+      object-fit: cover;
+      object-position: top left;
+      display: block;
+      border-radius: 18px;
+    }
+
+    .work-content { padding: 24px; }
+
+    .work-tag {
+      display: inline-flex;
+      margin-bottom: 12px;
+      padding: 6px 10px;
+      border-radius: 999px;
+      background: var(--ice);
+      color: var(--blue);
+      font-size: 12px;
+      font-weight: 900;
+    }
 
     .addons-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 18px; }
 
@@ -451,39 +468,47 @@
       </div>
     </section>
 
-<section id="work" class="sample-work">
-    <div class="container">
+    <section id="work" class="sample-work">
+      <div class="container">
         <div class="section-header fade-in">
           <div class="section-label">Sample Work</div>
           <h2>Clean dashboards with a business story.</h2>
-          <p>Use this section for mock screenshots now, then replace them with real client or portfolio projects later.</p>
+          <p>Example dashboard concepts showing how Northern Data Studio turns raw data into clear visuals, insights, and business recommendations.</p>
         </div>
 
         <div class="work-grid">
-          <div class="work-preview fade-in">
-            <h3>Sales Dashboard</h3>
-            <p>Revenue trends, top products, monthly performance, and quick business insights.</p>
-            <div class="chart-row">
-              <div class="chart-col" style="height: 45%"></div>
-              <div class="chart-col" style="height: 72%"></div>
-              <div class="chart-col" style="height: 58%"></div>
-              <div class="chart-col" style="height: 88%"></div>
+          <article class="work-card fade-in">
+            <div class="work-image">
+              <img src="sales-dashboard.png" alt="Sales Performance Dashboard sample" />
             </div>
-          </div>
-          <div class="work-list">
-            <div class="work-item fade-in">
+            <div class="work-content">
+              <span class="work-tag">Sales Analytics</span>
+              <h3>Sales Performance Dashboard</h3>
+              <p>Tracks revenue, orders, customers, top products, regional performance, and sales trends.</p>
+            </div>
+          </article>
+
+          <article class="work-card fade-in">
+            <div class="work-image">
+              <img src="expense-dashboard.png" alt="Expense Tracking Dashboard sample" />
+            </div>
+            <div class="work-content">
+              <span class="work-tag">Expense Tracking</span>
               <h3>Expense Tracking Dashboard</h3>
-              <p>Organized spending categories, monthly trends, and areas to control costs.</p>
+              <p>Monitors spending categories, monthly trends, budget usage, and cost-control opportunities.</p>
             </div>
-            <div class="work-item fade-in">
+          </article>
+
+          <article class="work-card fade-in">
+            <div class="work-image">
+              <img src="marketing-dashboard.png" alt="Marketing Performance Dashboard sample" />
+            </div>
+            <div class="work-content">
+              <span class="work-tag">Marketing Insights</span>
               <h3>Marketing Performance Dashboard</h3>
-              <p>Campaign results, leads, conversions, and practical recommendations.</p>
+              <p>Tracks campaigns, clicks, conversions, cost efficiency, and channel performance.</p>
             </div>
-            <div class="work-item fade-in">
-              <h3>Insight Report</h3>
-              <p>Plain-language findings written for non-technical owners and managers.</p>
-            </div>
-          </div>
+          </article>
         </div>
       </div>
     </section>
@@ -585,7 +610,7 @@
             <p>Send a quick message with your project idea, file type, and deadline. I’ll review the scope and help you choose the right dashboard package.</p>
             <div class="contact-actions">
               <a href="https://calendly.com/yourlink" target="_blank" class="btn">Book Free Consultation</a>
-              <a href="mailto:northerndatastudio@gmail.com" class="btn secondary">Email Directly</a>
+              <a href="mailto:youremail@example.com" class="btn secondary">Email Directly</a>
             </div>
           </div>
 
