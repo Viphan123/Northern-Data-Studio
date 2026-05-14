@@ -221,16 +221,35 @@
     li { color: var(--muted); }
     li::before { content: "✓"; color: var(--blue); font-weight: 950; margin-right: 8px; }
 
-    .sample-work { background: var(--soft); }
-    .work-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; }
+    .sample-work { background: var(--soft); overflow: hidden; }
+
+    .work-slider {
+      position: relative;
+    }
+
+    .work-track {
+      display: flex;
+      gap: 24px;
+      overflow-x: auto;
+      scroll-snap-type: x mandatory;
+      scroll-behavior: smooth;
+      padding: 8px 4px 28px;
+      scrollbar-width: none;
+    }
+
+    .work-track::-webkit-scrollbar {
+      display: none;
+    }
 
     .work-card {
+      min-width: 74%;
       background: white;
       border: 1px solid var(--border);
-      border-radius: 28px;
+      border-radius: 32px;
       overflow: hidden;
       box-shadow: 0 14px 40px rgba(7, 26, 51, 0.07);
       transition: 0.2s ease;
+      scroll-snap-align: center;
     }
 
     .work-card:hover {
@@ -240,20 +259,20 @@
 
     .work-image {
       background: var(--ice);
-      padding: 12px;
+      padding: 14px;
       border-bottom: 1px solid var(--border);
     }
 
     .work-image img {
       width: 100%;
-      height: 230px;
+      height: 420px;
       object-fit: cover;
       object-position: top left;
       display: block;
-      border-radius: 18px;
+      border-radius: 22px;
     }
 
-    .work-content { padding: 24px; }
+    .work-content { padding: 26px; }
 
     .work-tag {
       display: inline-flex;
@@ -264,6 +283,55 @@
       color: var(--blue);
       font-size: 12px;
       font-weight: 900;
+    }
+
+    .slider-btn {
+      position: absolute;
+      top: 42%;
+      transform: translateY(-50%);
+      z-index: 5;
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      border: 1px solid var(--border);
+      background: white;
+      color: var(--navy);
+      font-size: 34px;
+      line-height: 1;
+      cursor: pointer;
+      box-shadow: var(--shadow);
+      transition: 0.2s ease;
+    }
+
+    .slider-btn:hover {
+      transform: translateY(-50%) scale(1.06);
+      background: var(--navy);
+      color: white;
+    }
+
+    .slider-btn.prev { left: -18px; }
+    .slider-btn.next { right: -18px; }
+
+    .slider-dots {
+      display: flex;
+      justify-content: center;
+      gap: 8px;
+      margin-top: 8px;
+    }
+
+    .slider-dot {
+      width: 9px;
+      height: 9px;
+      border-radius: 999px;
+      border: none;
+      background: #c8d3e3;
+      cursor: pointer;
+      transition: 0.2s ease;
+    }
+
+    .slider-dot.active {
+      width: 28px;
+      background: var(--blue);
     }
 
     .addons-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 18px; }
@@ -345,10 +413,12 @@
     .fade-in.visible { opacity: 1; transform: translateY(0); }
 
     @media (max-width: 920px) {
-      .hero-grid, .work-grid, .addons-grid { grid-template-columns: 1fr; }
+      .hero-grid, .addons-grid { grid-template-columns: 1fr; }
       .cards, .steps { grid-template-columns: 1fr; }
       .nav-links { display: none; }
       .contact-card { flex-direction: column; align-items: start; }
+      .work-card { min-width: 86%; }
+      .work-image img { height: 320px; }
     }
 
     @media (max-width: 620px) {
@@ -359,6 +429,11 @@
       .contact-card { padding: 30px; }
       .addon-top { flex-direction: column; }
       .addon-price { white-space: normal; }
+      .work-card { min-width: 92%; }
+      .work-image img { height: 240px; }
+      .slider-btn { width: 42px; height: 42px; font-size: 30px; }
+      .slider-btn.prev { left: 4px; }
+      .slider-btn.next { right: 4px; }
     }
   </style>
 </head>
@@ -429,7 +504,6 @@
             <h3>Quick Insight Dashboard</h3>
             <p>For individuals, freelancers, or simple data projects.</p>
             <div class="price">$200 – $300</div>
-            
             <ul>
               <li>1 dataset: Excel, CSV, or Google Sheets</li>
               <li>1 clean dashboard</li>
@@ -442,7 +516,6 @@
             <h3>Business Dashboard Setup</h3>
             <p>For small businesses that need KPI tracking and decision support.</p>
             <div class="price">$800 – $1,200</div>
-            
             <ul>
               <li>Data processing and structuring</li>
               <li>1–2 dashboards</li>
@@ -472,42 +545,54 @@
         <div class="section-header fade-in">
           <div class="section-label">Sample Work</div>
           <h2>Clean dashboards with a business story.</h2>
-          <p>Example dashboard concepts showing how Northern Data Studio turns raw data into clear visuals, insights, and business recommendations.</p>
+          <p>Swipe through example dashboard concepts showing how Northern Data Studio turns raw data into clear visuals, insights, and business recommendations.</p>
         </div>
 
-        <div class="work-grid">
-          <article class="work-card fade-in">
-            <div class="work-image">
-              <img src="sales-dashboard.png" alt="Sales Performance Dashboard sample" />
-            </div>
-            <div class="work-content">
-              <span class="work-tag">Sales Analytics</span>
-              <h3>Sales Performance Dashboard</h3>
-              <p>Tracks revenue, orders, customers, top products, regional performance, and sales trends.</p>
-            </div>
-          </article>
+        <div class="work-slider fade-in" aria-label="Sample work dashboard slider">
+          <button class="slider-btn prev" type="button" aria-label="Previous dashboard">‹</button>
 
-          <article class="work-card fade-in">
-            <div class="work-image">
-              <img src="expense-dashboard.png" alt="Expense Tracking Dashboard sample" />
-            </div>
-            <div class="work-content">
-              <span class="work-tag">Expense Tracking</span>
-              <h3>Expense Tracking Dashboard</h3>
-              <p>Monitors spending categories, monthly trends, budget usage, and cost-control opportunities.</p>
-            </div>
-          </article>
+          <div class="work-track">
+            <article class="work-card">
+              <div class="work-image">
+                <img src="sales-dashboard.png" alt="Sales Performance Dashboard sample" />
+              </div>
+              <div class="work-content">
+                <span class="work-tag">Sales Analytics</span>
+                <h3>Sales Performance Dashboard</h3>
+                <p>Tracks revenue, orders, customers, top products, regional performance, and sales trends.</p>
+              </div>
+            </article>
 
-          <article class="work-card fade-in">
-            <div class="work-image">
-              <img src="marketing-dashboard.png" alt="Marketing Performance Dashboard sample" />
-            </div>
-            <div class="work-content">
-              <span class="work-tag">Marketing Insights</span>
-              <h3>Marketing Performance Dashboard</h3>
-              <p>Tracks campaigns, clicks, conversions, cost efficiency, and channel performance.</p>
-            </div>
-          </article>
+            <article class="work-card">
+              <div class="work-image">
+                <img src="expense-dashboard.png" alt="Expense Tracking Dashboard sample" />
+              </div>
+              <div class="work-content">
+                <span class="work-tag">Expense Tracking</span>
+                <h3>Expense Tracking Dashboard</h3>
+                <p>Monitors spending categories, monthly trends, budget usage, and cost-control opportunities.</p>
+              </div>
+            </article>
+
+            <article class="work-card">
+              <div class="work-image">
+                <img src="marketing-dashboard.png" alt="Marketing Performance Dashboard sample" />
+              </div>
+              <div class="work-content">
+                <span class="work-tag">Marketing Insights</span>
+                <h3>Marketing Performance Dashboard</h3>
+                <p>Tracks campaigns, clicks, conversions, cost efficiency, and channel performance.</p>
+              </div>
+            </article>
+          </div>
+
+          <button class="slider-btn next" type="button" aria-label="Next dashboard">›</button>
+
+          <div class="slider-dots" aria-label="Slider navigation">
+            <button class="slider-dot active" type="button" aria-label="Go to sales dashboard"></button>
+            <button class="slider-dot" type="button" aria-label="Go to expense dashboard"></button>
+            <button class="slider-dot" type="button" aria-label="Go to marketing dashboard"></button>
+          </div>
         </div>
       </div>
     </section>
@@ -649,6 +734,57 @@
     }, { threshold: 0.12 });
 
     document.querySelectorAll(".fade-in").forEach((el) => observer.observe(el));
+
+    const track = document.querySelector(".work-track");
+    const prevBtn = document.querySelector(".slider-btn.prev");
+    const nextBtn = document.querySelector(".slider-btn.next");
+    const dots = document.querySelectorAll(".slider-dot");
+    const cards = document.querySelectorAll(".work-card");
+
+    function goToSlide(index) {
+      if (!track || !cards[index]) return;
+      track.scrollTo({
+        left: cards[index].offsetLeft - track.offsetLeft,
+        behavior: "smooth"
+      });
+    }
+
+    function updateActiveDot() {
+      if (!track || !cards.length) return;
+
+      let activeIndex = 0;
+      let closestDistance = Infinity;
+
+      cards.forEach((card, index) => {
+        const distance = Math.abs(card.offsetLeft - track.offsetLeft - track.scrollLeft);
+        if (distance < closestDistance) {
+          closestDistance = distance;
+          activeIndex = index;
+        }
+      });
+
+      dots.forEach((dot, index) => {
+        dot.classList.toggle("active", index === activeIndex);
+      });
+    }
+
+    if (track && prevBtn && nextBtn) {
+      nextBtn.addEventListener("click", () => {
+        track.scrollBy({ left: track.clientWidth * 0.85, behavior: "smooth" });
+      });
+
+      prevBtn.addEventListener("click", () => {
+        track.scrollBy({ left: -track.clientWidth * 0.85, behavior: "smooth" });
+      });
+
+      track.addEventListener("scroll", () => {
+        window.requestAnimationFrame(updateActiveDot);
+      });
+    }
+
+    dots.forEach((dot, index) => {
+      dot.addEventListener("click", () => goToSlide(index));
+    });
 
     document.getElementById("contactForm").addEventListener("submit", function(event) {
       event.preventDefault();
