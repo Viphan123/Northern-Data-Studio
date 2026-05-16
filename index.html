@@ -783,6 +783,7 @@
         window.requestAnimationFrame(updateActiveDot);
       });
     }
+    document.getElementById("year").textContent = new Date().getFullYear();
 
     dots.forEach((dot, index) => {
       dot.addEventListener("click", () => goToSlide(index));
