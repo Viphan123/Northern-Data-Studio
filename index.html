@@ -692,14 +692,13 @@
             <div class="section-label">Contact</div>
             <h2>Ready to make your data useful?</h2>
             <p>Send a quick message with your project idea, file type, and deadline. I’ll review the scope and help you choose the right dashboard package.</p>
-            <p>  We’re currently in soft launch. If the form does not work, email directly at  <a href="mailto:northerndatastudio@gmail.com">northerndatastudio@gmail.com</a>.</p>
             <div class="contact-actions">
               <a href="https://calendly.com/yourlink" target="_blank" class="btn">Book Free Consultation</a>
               <a href="mailto:youremail@example.com" class="btn secondary">Email Directly</a>
             </div>
           </div>
 
-          <form id="contactForm" class="contact-form">
+          <form  id="contactForm" class="contact-form" action="https://formspree.io/f/mzdonkev" method="POST">
             <input type="text" name="name" placeholder="Your name" required />
             <input type="email" name="email" placeholder="Email address" required />
             <select name="service" required>
@@ -787,12 +786,7 @@
       dot.addEventListener("click", () => goToSlide(index));
     });
 
-    document.getElementById("contactForm").addEventListener("submit", function(event) {
-      event.preventDefault();
-      const message = document.getElementById("formMessage");
-      message.textContent = "Thanks! Your inquiry is ready. Connect this form to Formspree, Netlify Forms, or your email tool before publishing.";
-      this.reset();
-    });
+   
   </script>
 </body>
 </html>
