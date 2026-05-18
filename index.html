@@ -435,6 +435,42 @@
       .slider-btn.prev { left: 4px; }
       .slider-btn.next { right: 4px; }
     }
+    .success-popup {
+  position: fixed;
+  inset: 0;
+  background: rgba(7, 26, 51, 0.55);
+  display: none;
+  align-items: center;
+  justify-content: center;
+  z-index: 999;
+  padding: 20px;
+}
+
+.success-popup.show {
+  display: flex;
+}
+
+.success-card {
+  background: white;
+  padding: 42px;
+  border-radius: 28px;
+  max-width: 520px;
+  width: 100%;
+  text-align: center;
+  box-shadow: 0 20px 60px rgba(7,26,51,0.12);
+}
+
+.success-card h2 {
+  font-size: 38px;
+  margin-bottom: 14px;
+  color: #071a33;
+}
+
+.success-card p {
+  color: #667085;
+  line-height: 1.7;
+  margin-bottom: 24px;
+}
   </style>
 </head>
 <body>
@@ -699,7 +735,6 @@
           </div>
 
           <form  id="contactForm" class="contact-form" action="https://formspree.io/f/mzdonkev" method="POST">
-            <input type="hidden" name="_next" value="https://viphan123.github.io/Northern-Data-Studio/thankyou.html"/>
             <input type="text" name="name" placeholder="Your name" required />
             <input type="email" name="email" placeholder="Email address" required />
             <select name="service" required>
@@ -712,6 +747,21 @@
             </select>
             <textarea name="message" placeholder="Tell me about your data project" required></textarea>
             <button class="btn" type="submit">Send Inquiry</button>
+            <p id="formMessage" aria-live="polite"></p>
+</form>
+
+<div id="successPopup" class="success-popup">
+  <div class="success-card">
+    <h2>Thank You!</h2>
+
+    <p>
+      Your inquiry has been submitted successfully.
+      Northern Data Studio will review your project details and respond shortly.
+    </p>
+
+    <button id="closePopup" class="btn" type="button">
+      Close
+    </button>
             <p id="formMessage" aria-live="polite"></p>
           </form>
         </div>
@@ -788,6 +838,41 @@
     dots.forEach((dot, index) => {
       dot.addEventListener("click", () => goToSlide(index));
     });
+    const form = document.getElementById("contactForm");
+const popup = document.getElementById("successPopup");
+const closePopup = document.getElementById("closePopup");
+const formMessage = document.getElementById("formMessage");
+
+form.addEventListener("submit", async function(event) {
+  event.preventDefault();
+
+  const formData = new FormData(form);
+
+  try {
+    const response = await fetch(form.action, {
+      method: "POST",
+      body: formData,
+      headers: {
+        Accept: "application/json"
+      }
+    });
+
+    if (response.ok) {
+      form.reset();
+      popup.classList.add("show");
+    } else {
+      formMessage.textContent =
+        "Something went wrong. Please try again.";
+    }
+  } catch (error) {
+    formMessage.textContent =
+      "Network error. Please try again.";
+  }
+});
+
+closePopup.addEventListener("click", function() {
+  popup.classList.remove("show");
+});
 
    
   </script>
