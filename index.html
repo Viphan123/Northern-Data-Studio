@@ -452,7 +452,7 @@
 
 .success-card {
   background: white;
-  padding: 42px;
+  padding: 48px;
   border-radius: 28px;
   max-width: 520px;
   width: 100%;
@@ -460,16 +460,29 @@
   box-shadow: 0 20px 60px rgba(7,26,51,0.12);
 }
 
-.success-card h2 {
-  font-size: 38px;
-  margin-bottom: 14px;
+.success-card h1 {
+  font-size: 42px;
+  margin-bottom: 16px;
+  letter-spacing: -0.04em;
   color: #071a33;
 }
 
 .success-card p {
   color: #667085;
   line-height: 1.7;
-  margin-bottom: 24px;
+  margin-bottom: 28px;
+}
+
+.success-card button {
+  display: inline-flex;
+  padding: 14px 22px;
+  border-radius: 999px;
+  background: #071a33;
+  color: white;
+  border: none;
+  text-decoration: none;
+  font-weight: 700;
+  cursor: pointer;
 }
   </style>
 </head>
@@ -734,38 +747,37 @@
             </div>
           </div>
 
-          <form  id="contactForm" class="contact-form" action="https://formspree.io/f/mzdonkev" method="POST">
-            <input type="text" name="name" placeholder="Your name" required />
-            <input type="email" name="email" placeholder="Email address" required />
-            <select name="service" required>
-              <option value="">Choose a service</option>
-              <option>Quick Insight Dashboard</option>
-              <option>Business Dashboard Setup</option>
-              <option>Ongoing Analytics Support</option>
-              <option>Add-ons Only</option>
-              <option>Not sure yet</option>
-            </select>
-            <textarea name="message" placeholder="Tell me about your data project" required></textarea>
-            <button class="btn" type="submit">Send Inquiry</button>
-            <p id="formMessage" aria-live="polite"></p>
+          <form id="contactForm" class="contact-form" action="https://formspree.io/f/mzdonkev" method="POST">
+  <input type="text" name="name" placeholder="Your name" required />
+  <input type="email" name="email" placeholder="Email address" required />
+
+  <select name="service" required>
+    <option value="">Choose a service</option>
+    <option>Quick Insight Dashboard</option>
+    <option>Business Dashboard Setup</option>
+    <option>Ongoing Analytics Support</option>
+    <option>Add-ons Only</option>
+    <option>Not sure yet</option>
+  </select>
+
+  <textarea name="message" placeholder="Tell me about your data project" required></textarea>
+
+  <button class="btn" type="submit">Send Inquiry</button>
+  <p id="formMessage" aria-live="polite"></p>
 </form>
 
 <div id="successPopup" class="success-popup">
   <div class="success-card">
-    <h2>Thank You!</h2>
+    <h1>Thank You!</h1>
 
     <p>
       Your inquiry has been submitted successfully.
       Northern Data Studio will review your project details and respond shortly.
     </p>
 
-    <button id="closePopup" class="btn" type="button">
-      Close
-    </button>
-            <p id="formMessage" aria-live="polite"></p>
-          </form>
-        </div>
-      </div>
+    <button id="closePopup" type="button">Return Home</button>
+  </div>
+</div> </div>
     </section>
   </main>
 
