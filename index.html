@@ -484,6 +484,52 @@
   font-weight: 700;
   cursor: pointer;
 }
+.site-footer {
+  background: var(--navy);
+  color: white;
+  padding: 56px 0 26px;
+}
+
+.footer-grid {
+  display: grid;
+  grid-template-columns: 1.4fr 1fr 1fr;
+  gap: 32px;
+  padding-bottom: 34px;
+}
+
+.site-footer h3,
+.site-footer h4 {
+  color: white;
+  margin-bottom: 12px;
+}
+
+.site-footer p,
+.site-footer a,
+.footer-bottom {
+  color: rgba(255,255,255,0.72);
+  font-size: 14px;
+}
+
+.footer-links,
+.footer-contact {
+  display: grid;
+  gap: 8px;
+}
+
+.footer-links a:hover {
+  color: white;
+}
+
+.footer-bottom {
+  border-top: 1px solid rgba(255,255,255,0.14);
+  padding-top: 22px;
+}
+
+@media (max-width: 760px) {
+  .footer-grid {
+    grid-template-columns: 1fr;
+  }
+}
   </style>
 </head>
 <body>
@@ -744,7 +790,7 @@
             <p>Send a quick message with your project idea, file type, and deadline. I’ll review the scope and help you choose the right dashboard package.</p>
             <div class="contact-actions">
               <a href="https://calendly.com/northerndatastudio/30min" target="_blank" class="btn">Book Free Consultation</a>
-              <a href="mailto:northerndatastudio@gmail.com" class="btn secondary">Email Directly</a>
+              <a href="mailto:info@northerndatastudio.com" class="btn secondary">Email Directly</a>
             </div>
           </div>
 
@@ -783,11 +829,25 @@
   </main>
 
   <footer>
-    <div class="container footer-row">
-      <span>© <span id="year"></span> Northern Data Studio. All rights reserved.</span>
-      <span>Dashboards • Insights • Reporting</span>
+    <div class="footer-links">
+      <h4>Connect</h4>
+      <a href="YOUR_LINKEDIN_LINK" target="_blank">LinkedIn</a>
+      <a href="YOUR_INSTAGRAM_LINK" target="_blank">Instagram</a>
     </div>
-  </footer>
+
+    <div class="footer-contact">
+      <h4>Contact</h4>
+      <p>info@northerndatastudio.com</p>
+      <p>(613) 922-3062</p>
+      <p>Ottawa, Ontario, Canada</p>
+    </div>
+
+  </div>
+
+  <div class="container footer-bottom">
+    <span>© <span id="year"></span> Northern Data Studio. All rights reserved.</span>
+  </div>
+</footer>
 
   <script>
     document.getElementById("year").textContent = new Date().getFullYear();
