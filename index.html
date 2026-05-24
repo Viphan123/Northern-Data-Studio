@@ -484,147 +484,142 @@
   font-weight: 700;
   cursor: pointer;
 }
-.footer-minimal {
-  padding: 80px 0 34px;
-  background: #ffffff;
-  border-top: 1px solid var(--border);
+.footer-editorial {
+  position: relative;
+  padding: 90px 0 30px;
+  background: #071a33;
+  overflow: hidden;
 }
 
-.footer-inner {
-  display: flex;
-  flex-direction: column;
-  gap: 42px;
-}
-
-.footer-top {
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-start;
-  gap: 24px;
-  flex-wrap: wrap;
-}
-
-.footer-top h2 {
-  font-size: 32px;
-  letter-spacing: -0.06em;
-  margin: 0;
-  color: var(--navy);
-}
-
-.footer-links {
-  display: flex;
-  gap: 22px;
-}
-
-.footer-links a {
-  color: var(--muted);
-  font-weight: 600;
-  transition: 0.2s ease;
-}
-
-.footer-links a:hover {
-  color: var(--navy);
-}
-
-.footer-bottom {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  gap: 24px;
-  flex-wrap: wrap;
-  padding-top: 24px;
-  border-top: 1px solid var(--border);
-}
-
-.footer-contact {
-  display: flex;
-  gap: 18px;
-  flex-wrap: wrap;
-  color: var(--muted);
-  font-size: 14px;
-}
-
-.footer-copy {
-  color: var(--muted);
-  font-size: 14px;
-}
-
-@media (max-width: 720px) {
-  .footer-bottom {
-    flex-direction: column;
-    align-items: flex-start;
-  }
-
-  .footer-contact {
-    flex-direction: column;
-    gap: 8px;
-  }
-  .footer-editorial {
-  padding: 84px 0 30px;
-  background: #ffffff;
-  border-top: 1px solid var(--border);
+/* subtle dotted pattern */
+.footer-editorial::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  opacity: 0.08;
+  background-image:
+    radial-gradient(circle, #ffffff 1px, transparent 1px);
+  background-size: 22px 22px;
+  pointer-events: none;
 }
 
 .footer-grid {
+  position: relative;
+  z-index: 2;
+
   display: grid;
-  grid-template-columns: 1.4fr 0.8fr 1fr;
-  gap: 60px;
+  grid-template-columns: 1.4fr 1fr 0.7fr;
+  gap: 80px;
+
   align-items: start;
 }
 
 .footer-brand h2 {
-  font-size: 34px;
+  color: white;
+  font-size: 36px;
+  line-height: 1;
   letter-spacing: -0.06em;
-  margin-bottom: 10px;
-  color: var(--navy);
+  margin-bottom: 14px;
 }
 
 .footer-brand p {
-  color: var(--muted);
+  color: rgba(255,255,255,0.68);
   max-width: 320px;
-  line-height: 1.7;
+  line-height: 1.8;
+  font-size: 15px;
 }
 
-.footer-column {
+.footer-label {
+  display: inline-block;
+
+  margin-bottom: 18px;
+
+  color: rgba(255,255,255,0.45);
+
+  font-size: 12px;
+  font-weight: 700;
+
+  text-transform: uppercase;
+  letter-spacing: 0.16em;
+}
+
+.footer-contact,
+.footer-connect {
+  position: relative;
+  z-index: 2;
+
   display: flex;
   flex-direction: column;
   gap: 12px;
 }
 
-.footer-label {
-  font-size: 12px;
-  text-transform: uppercase;
-  letter-spacing: 0.14em;
-  font-weight: 800;
-  color: var(--blue);
-  margin-bottom: 8px;
-}
-
-.footer-column a,
-.footer-column span {
-  color: var(--muted);
+.footer-contact a,
+.footer-contact span {
+  color: rgba(255,255,255,0.78);
   font-size: 15px;
   transition: 0.2s ease;
 }
 
-.footer-column a:hover {
-  color: var(--navy);
+.footer-contact a:hover {
+  color: white;
+}
+
+.social-icons {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.social-icons a {
+  width: 42px;
+  height: 42px;
+
+  display: grid;
+  place-items: center;
+
+  border-radius: 999px;
+
+  background: rgba(255,255,255,0.06);
+
+  color: rgba(255,255,255,0.72);
+
+  transition: 0.2s ease;
+}
+
+.social-icons a:hover {
+  background: rgba(255,255,255,0.12);
+  color: white;
+  transform: translateY(-2px);
 }
 
 .footer-bottom {
-  margin-top: 52px;
-  padding-top: 22px;
-  border-top: 1px solid var(--border);
-  color: var(--muted);
+  position: relative;
+  z-index: 2;
+
+  margin-top: 70px;
+  padding-top: 24px;
+
+  border-top: 1px solid rgba(255,255,255,0.10);
+
+  color: rgba(255,255,255,0.48);
+
   font-size: 13px;
 }
 
 @media (max-width: 900px) {
+
   .footer-grid {
     grid-template-columns: 1fr;
-    gap: 42px;
+    gap: 50px;
   }
-}
+
+  .footer-brand h2 {
+    font-size: 30px;
+  }
+
+  .footer-bottom {
+    margin-top: 50px;
+  }
 }
   </style>
 </head>
@@ -924,25 +919,102 @@
     </section>
   </main>
 
-  <footer>
-    <div class="footer-links">
-      <h4>Connect</h4>
-      <a href="YOUR_LINKEDIN_LINK" target="_blank">LinkedIn</a>
-      <a href="YOUR_INSTAGRAM_LINK" target="_blank">Instagram</a>
+  <footer class="footer-editorial">
+
+  <div class="container footer-grid">
+
+    <div class="footer-brand">
+      <h2>Northern Data Studio</h2>
+      <p>Clear Data. Clear Decisions. Better Business.</p>
     </div>
 
     <div class="footer-contact">
-      <h4>Contact</h4>
-      <p>info@northerndatastudio.com</p>
-      <p>(613) 922-3062</p>
-      <p>Ottawa, Ontario, Canada</p>
+      <span class="footer-label">Contact</span>
+
+      <a href="mailto:info@northerndatastudio.com">
+        info@northerndatastudio.com
+      </a>
+
+      <a href="tel:16139223062">
+        (613) 922-3062
+      </a>
+
+      <span>Ottawa, Ontario, Canada</span>
+    </div>
+
+    <div class="footer-connect">
+      <span class="footer-label">Connect</span>
+
+      <div class="social-icons">
+
+        <a href="https://www.linkedin.com/company/northern-data-studio/"
+           target="_blank"
+           aria-label="LinkedIn">
+
+          <!-- LinkedIn Icon -->
+          <svg xmlns="http://www.w3.org/2000/svg"
+               width="20"
+               height="20"
+               viewBox="0 0 24 24"
+               fill="none"
+               stroke="currentColor"
+               stroke-width="1.8"
+               stroke-linecap="round"
+               stroke-linejoin="round">
+
+            <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2
+                     2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/>
+
+            <rect x="2" y="9" width="4" height="12"/>
+
+            <circle cx="4" cy="4" r="2"/>
+
+          </svg>
+        </a>
+
+        <a href="https://www.instagram.com/northerndatastudio/"
+           target="_blank"
+           aria-label="Instagram">
+
+          <!-- Instagram Icon -->
+          <svg xmlns="http://www.w3.org/2000/svg"
+               width="20"
+               height="20"
+               viewBox="0 0 24 24"
+               fill="none"
+               stroke="currentColor"
+               stroke-width="1.8"
+               stroke-linecap="round"
+               stroke-linejoin="round">
+
+            <rect x="2" y="2"
+                  width="20"
+                  height="20"
+                  rx="5"
+                  ry="5"/>
+
+            <path d="M16 11.37a4 4 0 1 1-2.63-2.63
+                     4 4 0 0 1 2.63 2.63z"/>
+
+            <line x1="17.5"
+                  y1="6.5"
+                  x2="17.51"
+                  y2="6.5"/>
+
+          </svg>
+        </a>
+
+      </div>
     </div>
 
   </div>
 
   <div class="container footer-bottom">
-    <span>© <span id="year"></span> Northern Data Studio. All rights reserved.</span>
+    <span>
+      © <span id="year"></span> Northern Data Studio
+    </span>
   </div>
+
 </footer>
 
   <script>
