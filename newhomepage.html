@@ -1,160 +1,781 @@
-ChatGPT
-
-
-
-
-Pasted text(4).txt
-Document
-OK, So the sample work section. I need it to become a slider not 3 generic boards
-
-
-Pasted text(5).txt
-Document
-I think there is an error. Why are my /section and /main white out
-
-Generated image: Northern Data Studio logo design
-
-Edit
-
-
-Generated image: Canada housing market data dashboard
-
-
-Edit
-
-
-Seasonally Adjusted (M)AGGREGATE
-
-
-
-
-
-Pasted text(7).txt
-Document
-This is my home page, now I need to add a new thing on the nav bar and the free resources go to another page
-
-
-Pasted text(8).txt
-Document
-ok so I want my pictures to appear in the housing dashboard section and it needs to be in a slider
-
-Generated image: Northern Data Studio promotional collage
-
-
-Edit
-
-
-Screenshot 2026-05-22 144521.png
-This is my logo
-
-Generated image: Modern data studio marketing collage
-
-
-Edit
-
-
-Generated image: Modern data studio marketing collage
-Generated image: Modern data studio marketing collage
-Generated image: Modern data studio marketing collage
-
-Generated image: Northern Data Studio branding collage
-Generated image: Northern Data Studio branding collage
-Generated image: Northern Data Studio branding collage
-
-Is this real?
-
-
-Generated image: Clear data, better business insights
-
-
-Edit
-
-
-
-Do you like my dashboard?
-
-
-What's this?
-
-Is this a scam?
-
-Generated image: SWOT analysis for Northern Data Studio
-
-
-Edit
-
-
-image(7).png
-This, my guy, not a random thing
-
-Generated image: SWOT analysis for Northern Data Studio
-
-
-Edit
-
-
-Do you want to improve my design? 
-
-Generated image: Toronto housing market overview dashboard
-
-
-Edit
-
-
-
-Pasted text(9).txt
-Document
-
-ok, we will do the CSS again. 
-Look at this footer, ok? and let's do a design first
-
-image(10).png
-We are here
-
-
-Instagram Post2.mp4
-File
-
-Generated image: Modern dark analytics website concept
-
-
-Edit
-
-
-Honey this is...too much work 
-
-I need a co founder, or no? Should I t try to build all of this myself
-Ok, wait, so how long do you think this will take? If I do this myself
-
-I feel like this could be simplified into what I currently have and what I want to build
-
-Generated image: Modern data dashboard UI design
-
-
-Edit
-
-
-Do you think my business can make 100k if I have this infrastructure? 
-
-Generated image: Modern data studio pricing page design
-
-
-Edit
-
-
-Generated image: Clean pricing page for data studio
-
-
-Edit
-
-
-V2 Northern Studio.png
-I like this. Maybe we should get rid of insights and analysis? Cuz I cannot be writing news every day
-
-This is our V2, stick with it
-
-Northern Data Studio V2 Homepage
-· html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Northern Data Studio | Analytics, Dashboards & Research</title>
+
+  <style>
+    :root {
+      --navy: #071a33;
+      --navy-2: #0d2a4d;
+      --blue: #2563eb;
+      --blue-soft: #dbeafe;
+      --ice: #eef5ff;
+      --white: #ffffff;
+      --soft: #f7f9fc;
+      --text: #172033;
+      --muted: #667085;
+      --border: #e5eaf2;
+      --shadow: 0 24px 70px rgba(7, 26, 51, 0.12);
+      --radius: 28px;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      color: var(--text);
+      background: var(--white);
+      line-height: 1.6;
+    }
+
+    a { color: inherit; text-decoration: none; }
+    img { max-width: 100%; display: block; }
+    .container { width: min(1160px, calc(100% - 40px)); margin: 0 auto; }
+
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 99;
+      background: rgba(255,255,255,0.84);
+      backdrop-filter: blur(18px);
+      border-bottom: 1px solid rgba(229,234,242,0.86);
+    }
+
+    nav {
+      height: 78px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-weight: 900;
+      color: var(--navy);
+      letter-spacing: -0.04em;
+    }
+
+    .logo-mark {
+      width: 42px;
+      height: 42px;
+      border-radius: 14px;
+      background: linear-gradient(135deg, var(--navy), var(--blue));
+      color: white;
+      display: grid;
+      place-items: center;
+      font-weight: 950;
+      box-shadow: 0 12px 28px rgba(37, 99, 235, 0.22);
+      overflow: hidden;
+    }
+
+    .logo-mark img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 26px;
+      align-items: center;
+      color: var(--muted);
+      font-size: 14px;
+      font-weight: 750;
+    }
+
+    .nav-links a:hover { color: var(--navy); }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 9px;
+      padding: 14px 22px;
+      border-radius: 999px;
+      background: var(--navy);
+      color: white;
+      font-weight: 850;
+      border: 1px solid var(--navy);
+      transition: 0.2s ease;
+      box-shadow: 0 14px 30px rgba(7,26,51,0.16);
+    }
+
+    .btn:hover { transform: translateY(-2px); box-shadow: var(--shadow); }
+    .btn.secondary { background: white; color: var(--navy); border-color: var(--border); box-shadow: none; }
+    .btn.light { background: white; color: var(--navy); border-color: white; box-shadow: none; }
+    .btn.ghost { background: transparent; color: white; border-color: rgba(255,255,255,0.22); box-shadow: none; }
+
+    section { padding: 96px 0; }
+
+    .section-header { max-width: 760px; margin-bottom: 42px; }
+    .section-header.center { text-align: center; margin-left: auto; margin-right: auto; }
+
+    .section-label {
+      color: var(--blue);
+      font-size: 13px;
+      font-weight: 950;
+      text-transform: uppercase;
+      letter-spacing: 0.14em;
+      margin-bottom: 10px;
+    }
+
+    h1, h2, h3 { color: var(--navy); }
+
+    h1 {
+      font-size: clamp(48px, 7vw, 86px);
+      line-height: 0.94;
+      letter-spacing: -0.078em;
+      margin-bottom: 24px;
+    }
+
+    h2 {
+      font-size: clamp(34px, 4vw, 54px);
+      line-height: 1.05;
+      letter-spacing: -0.062em;
+      margin-bottom: 14px;
+    }
+
+    h3 {
+      font-size: 22px;
+      letter-spacing: -0.035em;
+      margin-bottom: 8px;
+    }
+
+    p { color: var(--muted); }
+
+    .hero {
+      position: relative;
+      overflow: hidden;
+      padding: 120px 0 105px;
+      background:
+        radial-gradient(circle at 10% 14%, rgba(37,99,235,0.14), transparent 31%),
+        radial-gradient(circle at 84% 8%, rgba(7,26,51,0.10), transparent 28%),
+        linear-gradient(180deg, #ffffff 0%, #f6f9ff 100%);
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.03fr 0.97fr;
+      gap: 60px;
+      align-items: center;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 8px 13px;
+      border-radius: 999px;
+      background: var(--ice);
+      color: var(--navy);
+      font-size: 13px;
+      font-weight: 900;
+      margin-bottom: 22px;
+    }
+
+    .hero p {
+      font-size: 20px;
+      max-width: 680px;
+      margin-bottom: 32px;
+    }
+
+    .hero-actions { display: flex; gap: 14px; flex-wrap: wrap; }
+
+    .platform-card {
+      position: relative;
+      background: var(--navy);
+      border-radius: 36px;
+      padding: 18px;
+      box-shadow: var(--shadow);
+      overflow: hidden;
+    }
+
+    .platform-card::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      opacity: 0.14;
+      background-image: radial-gradient(circle, #fff 1px, transparent 1px);
+      background-size: 20px 20px;
+      pointer-events: none;
+    }
+
+    .platform-inner {
+      position: relative;
+      background: white;
+      border-radius: 27px;
+      padding: 22px;
+      min-height: 440px;
+    }
+
+    .platform-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 22px;
+    }
+
+    .mini-label {
+      padding: 6px 10px;
+      border-radius: 999px;
+      background: var(--ice);
+      color: var(--blue);
+      font-size: 12px;
+      font-weight: 900;
+    }
+
+    .kpi-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 12px;
+      margin-bottom: 22px;
+    }
+
+    .kpi {
+      background: var(--soft);
+      border: 1px solid var(--border);
+      border-radius: 18px;
+      padding: 16px;
+    }
+
+    .kpi span { display: block; color: var(--muted); font-size: 12px; font-weight: 800; margin-bottom: 6px; }
+    .kpi strong { color: var(--navy); font-size: 24px; letter-spacing: -0.045em; }
+
+    .chart-shell {
+      border: 1px solid var(--border);
+      border-radius: 22px;
+      padding: 16px;
+      background: #fff;
+    }
+
+    .chart-bars { display: grid; gap: 12px; }
+    .chart-row { display: grid; grid-template-columns: 70px 1fr; gap: 12px; align-items: center; }
+    .chart-row span { color: var(--muted); font-size: 12px; font-weight: 750; }
+    .bar { height: 13px; background: var(--ice); border-radius: 999px; overflow: hidden; }
+    .bar i { display: block; height: 100%; border-radius: inherit; background: linear-gradient(90deg, var(--navy), var(--blue)); }
+
+    .trust-strip {
+      padding: 22px 0;
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+      background: white;
+    }
+
+    .trust-items {
+      display: flex;
+      justify-content: center;
+      gap: 28px;
+      flex-wrap: wrap;
+      color: var(--muted);
+      font-size: 13px;
+      font-weight: 850;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+    }
+
+    .today { background: white; }
+
+    .offer-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 18px;
+    }
+
+    .offer-card {
+      min-height: 230px;
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 26px;
+      background: white;
+      box-shadow: 0 12px 36px rgba(7,26,51,0.05);
+      transition: 0.2s ease;
+    }
+
+    .offer-card:hover { transform: translateY(-4px); box-shadow: var(--shadow); }
+
+    .icon-box {
+      width: 44px;
+      height: 44px;
+      display: grid;
+      place-items: center;
+      border-radius: 15px;
+      margin-bottom: 18px;
+      background: var(--ice);
+      color: var(--blue);
+      font-weight: 950;
+    }
+
+    .resource-feature {
+      background: var(--soft);
+      overflow: hidden;
+    }
+
+    .resource-card {
+      display: grid;
+      grid-template-columns: 0.95fr 1.05fr;
+      gap: 34px;
+      align-items: stretch;
+      background: white;
+      border: 1px solid var(--border);
+      border-radius: 38px;
+      padding: 22px;
+      box-shadow: var(--shadow);
+    }
+
+    .resource-copy {
+      padding: 34px 28px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .resource-copy h2 { margin-bottom: 18px; }
+
+    .resource-actions { display: flex; gap: 12px; flex-wrap: wrap; margin-top: 28px; }
+
+    .resource-visual {
+      border-radius: 30px;
+      background:
+        radial-gradient(circle at 10% 15%, rgba(37,99,235,0.20), transparent 34%),
+        linear-gradient(135deg, var(--navy), var(--navy-2));
+      padding: 24px;
+      color: white;
+      min-height: 410px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .resource-visual::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      opacity: 0.08;
+      background-image: radial-gradient(circle, #fff 1px, transparent 1px);
+      background-size: 18px 18px;
+    }
+
+    .report-panel {
+      position: relative;
+      z-index: 2;
+      background: rgba(255,255,255,0.08);
+      border: 1px solid rgba(255,255,255,0.14);
+      border-radius: 26px;
+      padding: 22px;
+      backdrop-filter: blur(8px);
+    }
+
+    .report-panel h3 { color: white; font-size: 24px; }
+    .report-panel p { color: rgba(255,255,255,0.68); }
+
+    .metric-list { display: grid; gap: 12px; margin-top: 24px; }
+    .metric-line { display: flex; justify-content: space-between; gap: 18px; padding: 14px; border-radius: 16px; background: rgba(255,255,255,0.07); }
+    .metric-line span { color: rgba(255,255,255,0.62); }
+    .metric-line strong { color: white; }
+
+    .building {
+      background: var(--navy);
+      color: white;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .building::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      opacity: 0.08;
+      background-image: radial-gradient(circle, #fff 1px, transparent 1px);
+      background-size: 22px 22px;
+      pointer-events: none;
+    }
+
+    .building .container { position: relative; z-index: 2; }
+    .building h2, .building h3, .building .section-label { color: white; }
+    .building p { color: rgba(255,255,255,0.66); }
+
+    .build-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 18px;
+    }
+
+    .build-card {
+      border: 1px solid rgba(255,255,255,0.12);
+      background: rgba(255,255,255,0.06);
+      border-radius: 26px;
+      padding: 24px;
+      min-height: 230px;
+      transition: 0.2s ease;
+    }
+
+    .build-card:hover { transform: translateY(-4px); background: rgba(255,255,255,0.09); }
+
+    .status {
+      display: inline-flex;
+      margin-bottom: 16px;
+      padding: 6px 10px;
+      border-radius: 999px;
+      background: rgba(255,255,255,0.10);
+      color: rgba(255,255,255,0.72);
+      font-size: 11px;
+      font-weight: 950;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+    }
+
+    .tool-preview { background: #ffffff; }
+
+    .tool-shell {
+      display: grid;
+      grid-template-columns: 0.85fr 1.15fr;
+      gap: 24px;
+      align-items: stretch;
+      border: 1px solid var(--border);
+      border-radius: 36px;
+      padding: 22px;
+      background: var(--soft);
+      box-shadow: var(--shadow);
+    }
+
+    .tool-copy {
+      background: white;
+      border: 1px solid var(--border);
+      border-radius: 28px;
+      padding: 32px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .tool-ui {
+      background: var(--navy);
+      border-radius: 28px;
+      padding: 22px;
+      color: white;
+      min-height: 380px;
+    }
+
+    .upload-box {
+      border: 1px dashed rgba(255,255,255,0.28);
+      border-radius: 22px;
+      padding: 26px;
+      text-align: center;
+      background: rgba(255,255,255,0.06);
+      margin-bottom: 20px;
+    }
+
+    .pill-wrap { display: flex; flex-wrap: wrap; gap: 9px; margin-top: 18px; }
+    .pill { border-radius: 999px; background: rgba(255,255,255,0.09); color: rgba(255,255,255,0.78); padding: 8px 12px; font-size: 13px; }
+    .pill.active { background: rgba(37,99,235,0.32); color: white; }
+
+    .pricing-cta {
+      background: var(--soft);
+    }
+
+    .cta-card {
+      background: linear-gradient(135deg, var(--navy), var(--navy-2));
+      border-radius: 38px;
+      padding: 52px;
+      color: white;
+      box-shadow: var(--shadow);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 28px;
+    }
+
+    .cta-card h2 { color: white; }
+    .cta-card p { color: rgba(255,255,255,0.70); max-width: 640px; }
+
+    .footer-editorial {
+      position: relative;
+      padding: 64px 0 30px;
+      background: var(--navy);
+      overflow: hidden;
+    }
+
+    .footer-editorial::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      opacity: 0.08;
+      background-image: radial-gradient(circle, #ffffff 1px, transparent 1px);
+      background-size: 22px 22px;
+      pointer-events: none;
+    }
+
+    .footer-grid {
+      position: relative;
+      z-index: 2;
+      display: grid;
+      grid-template-columns: 1.4fr 1fr 0.7fr;
+      gap: 72px;
+      align-items: start;
+    }
+
+    .footer-brand h2 {
+      color: white;
+      font-size: 34px;
+      line-height: 1;
+      letter-spacing: -0.06em;
+      margin-bottom: 14px;
+    }
+
+    .footer-brand p {
+      color: rgba(255,255,255,0.68);
+      max-width: 320px;
+      line-height: 1.8;
+      font-size: 15px;
+    }
+
+    .footer-label {
+      display: inline-block;
+      margin-bottom: 18px;
+      color: rgba(255,255,255,0.45);
+      font-size: 12px;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+    }
+
+    .footer-contact,
+    .footer-connect {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .footer-contact a,
+    .footer-contact span {
+      color: rgba(255,255,255,0.78);
+      font-size: 15px;
+      transition: 0.2s ease;
+    }
+
+    .footer-contact a:hover { color: white; }
+
+    .social-icons { display: flex; align-items: center; gap: 14px; }
+
+    .social-icons a {
+      width: 42px;
+      height: 42px;
+      display: grid;
+      place-items: center;
+      border-radius: 999px;
+      background: rgba(255,255,255,0.06);
+      color: rgba(255,255,255,0.72);
+      transition: 0.2s ease;
+    }
+
+    .social-icons a:hover {
+      background: rgba(255,255,255,0.12);
+      color: white;
+      transform: translateY(-2px);
+    }
+
+    .footer-bottom {
+      position: relative;
+      z-index: 2;
+      margin-top: 52px;
+      padding-top: 24px;
+      border-top: 1px solid rgba(255,255,255,0.10);
+      color: rgba(255,255,255,0.48);
+      font-size: 13px;
+    }
+
+    .fade-in { opacity: 0; transform: translateY(18px); transition: 0.55s ease; }
+    .fade-in.visible { opacity: 1; transform: translateY(0); }
+
+    @media (max-width: 1020px) {
+      .hero-grid, .resource-card, .tool-shell { grid-template-columns: 1fr; }
+      .offer-grid, .build-grid { grid-template-columns: repeat(2, 1fr); }
+      .footer-grid { grid-template-columns: 1fr; gap: 44px; }
+    }
+
+    @media (max-width: 760px) {
+      .nav-links { display: none; }
+      section, .hero { padding: 72px 0; }
+      .offer-grid, .build-grid, .kpi-grid { grid-template-columns: 1fr; }
+      .hero-actions, .resource-actions { flex-direction: column; }
+      .btn { width: 100%; }
+      .cta-card { flex-direction: column; align-items: flex-start; padding: 34px; }
+      .resource-copy, .tool-copy { padding: 26px; }
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <div class="container">
+      <nav>
+        <a href="#top" class="logo">
+          <span class="logo-mark">N</span>
+          <span>Northern Data Studio</span>
+        </a>
+
+        <div class="nav-links">
+          <a href="#today">What We Do</a>
+          <a href="#resources">Resources</a>
+          <a href="#building">Building</a>
+          <a href="pricing.html">Pricing</a>
+          <a href="#contact">Contact</a>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <main id="top">
+    <section class="hero">
+      <div class="container hero-grid">
+        <div class="fade-in">
+          <div class="eyebrow">Analytics • Research • Dashboards • Data Systems</div>
+          <h1>Data, insights, and analytical systems for modern businesses.</h1>
+          <p>Northern Data Studio turns raw information into reports, dashboards, tools, and strategic intelligence that help businesses understand what is happening and what to do next.</p>
+          <div class="hero-actions">
+            <a href="#resources" class="btn">Explore Resources</a>
+            <a href="#today" class="btn secondary">What We Do</a>
+          </div>
+        </div>
+
+        <div class="platform-card fade-in">
+          <div class="platform-inner">
+            <div class="platform-top">
+              <strong>Analytical Intelligence System</strong>
+              <span class="mini-label">V2 Direction</span>
+            </div>
+
+            <div class="kpi-grid">
+              <div class="kpi"><span>Reports</span><strong>PDF</strong></div>
+              <div class="kpi"><span>Dashboards</span><strong>Power BI</strong></div>
+              <div class="kpi"><span>Tools</span><strong>Python</strong></div>
+            </div>
+
+            <div class="chart-shell">
+              <div class="chart-bars">
+                <div class="chart-row"><span>Research</span><div class="bar"><i style="width: 86%"></i></div></div>
+                <div class="chart-row"><span>BI</span><div class="bar"><i style="width: 74%"></i></div></div>
+                <div class="chart-row"><span>Tools</span><div class="bar"><i style="width: 58%"></i></div></div>
+                <div class="chart-row"><span>Strategy</span><div class="bar"><i style="width: 68%"></i></div></div>
+                <div class="chart-row"><span>Data</span><div class="bar"><i style="width: 80%"></i></div></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div class="trust-strip">
+      <div class="container trust-items">
+        <span>Power BI</span>
+        <span>Python</span>
+        <span>SPSS-style forecasting</span>
+        <span>Reports</span>
+        <span>Business Intelligence</span>
+      </div>
+    </div>
+
+    <section id="today" class="today">
+      <div class="container">
+        <div class="section-header center fade-in">
+          <div class="section-label">What We Do Today</div>
+          <h2>Practical analytics services built around business clarity.</h2>
+          <p>These are the core services available now: reports, dashboards, data preparation, and strategy support.</p>
+        </div>
+
+        <div class="offer-grid">
+          <article class="offer-card fade-in">
+            <div class="icon-box">01</div>
+            <h3>Reports & Research</h3>
+            <p>PDF reports with charts, written insights, and sector-level analysis for business and market understanding.</p>
+          </article>
+
+          <article class="offer-card fade-in">
+            <div class="icon-box">02</div>
+            <h3>Interactive Dashboards</h3>
+            <p>Power BI dashboards for KPI tracking, operational reporting, and business performance visibility.</p>
+          </article>
+
+          <article class="offer-card fade-in">
+            <div class="icon-box">03</div>
+            <h3>Data Storytelling</h3>
+            <p>Article-style insight pages that explain what the data means, why it matters, and what to watch next.</p>
+          </article>
+
+          <article class="offer-card fade-in">
+            <div class="icon-box">04</div>
+            <h3>BI Strategy</h3>
+            <p>Consultation support for KPI planning, reporting structure, dashboard scope, and analytics workflows.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="resources" class="resource-feature">
+      <div class="container">
+        <div class="resource-card fade-in">
+          <div class="resource-copy">
+            <div class="section-label">Featured Resource</div>
+            <h2>Canadian Real Estate Sector Analysis</h2>
+            <p>A free resource project combining market research, dashboard design, and data storytelling to explore Canadian housing trends through a business intelligence lens.</p>
+            <div class="resource-actions">
+              <a href="resources.html" class="btn">View Resource</a>
+              <a href="#contact" class="btn secondary">Request Similar Work</a>
+            </div>
+          </div>
+
+          <div class="resource-visual">
+            <div class="report-panel">
+              <span class="mini-label">May 2026</span>
+              <h3>Market Intelligence Preview</h3>
+              <p>Benchmark prices, property type trends, HPI movement, and regional indicators.</p>
+
+              <div class="metric-list">
+                <div class="metric-line"><span>Dashboard</span><strong>Interactive</strong></div>
+                <div class="metric-line"><span>Report</span><strong>PDF</strong></div>
+                <div class="metric-line"><span>Focus</span><strong>Housing Market</strong></div>
+                <div class="metric-line"><span>Tools</span><strong>Power BI</strong></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="building" class="building">
+      <div class="container">
+        <div class="section-header center fade-in">
+          <div class="section-label">What We're Building</div>
+          <h2>An evolving analytics ecosystem.</h2>
+          <p>Beyond dashboards, Northern Data Studio is building lightweight tools, prototypes, and analytical workflows that make data easier to use.</p>
+        </div>
+
+        <div class="build-grid">
+          <article class="build-card fade-in">
+            <span class="status">Prototype</span>
+            <h3>Data Cleaning Assistant</h3>
+            <p>Preview a workflow for selecting columns, cleaning CSVs, and preparing analysis-ready files.</p>
+          </article>
+
+          <article class="build-card fade-in">
+            <span class="status">In Development</span>
+            <h3>Automation Workflows</h3>
+            <p>Python scripts and workflow demos for recurring reports, exports, and operational processes.</p>
+          </article>
+
+          <article class="build-card fade-in">
+            <span class="status">Concept</span>
+            <h3>Forecasting</h3>
+            <p>Simple forecasting prototypes using statistical methods, Python, and SPSS-style workflows.</p>
+          </article>
+
+          <article class="build-card fade-in">
+            <span class="status">Future</span>
             <h3>Data Products</h3>
             <p>Premium reports, templates, and reusable analytical assets for businesses and decision-makers.</p>
           </article>
@@ -253,349 +874,6 @@ Northern Data Studio V2 Homepage
     }, { threshold: 0.12 });
 
     document.querySelectorAll(".fade-in").forEach((el) => observer.observe(el));
-Thought for 2m 28s
-Done — I created a V2 homepage draft in canvas.
-
-It keeps your current foundation but shifts the site toward:
-
-What We Do Today
-Featured Resource
-What We’re Building
-Prototype Tool
-Contact/Footer
-This is the right V2 direction without making it impossible to build.
-
-
-What can you do with data?
-
-Honestly?
-
-An insane amount 😭
-
-Most people think:
-
-data = dashboards
-But dashboards are honestly just:
-
-the presentation layer
-Data can power:
-
-decisions
-
-automation
-
-predictions
-
-operations
-
-personalization
-
-optimization
-
-intelligence systems
-
-even entire businesses.
-
-WHAT YOU CAN DO WITH DATA
-1. Dashboards & Reporting
-The obvious one.
-
-KPIs
-
-trends
-
-business visibility
-
-operational monitoring.
-
-2. Forecasting
-Use historical patterns to estimate:
-
-revenue
-
-demand
-
-staffing
-
-inventory
-
-prices
-
-housing trends.
-
-3. Data Cleaning & Structuring
-One of the MOST valuable things honestly 😭
-
-Businesses often have:
-
-messy exports
-
-duplicates
-
-inconsistent formatting
-
-broken spreadsheets.
-
-Cleaning data creates:
-
-usable infrastructure
-4. Automation
-Data can trigger:
-
-reports
-
-alerts
-
-emails
-
-workflows
-
-inventory updates
-
-recurring exports.
-
-5. Decision Intelligence
-Meaning:
-
-helping businesses decide what to do
-NOT just:
-
-showing numbers
-This is high-value territory.
-
-6. Research & Market Intelligence
-You already naturally lean toward this.
-
-Examples:
-
-housing reports
-
-industry analysis
-
-market monitoring
-
-trend summaries
-
-competitor tracking.
-
-7. Recommendation Systems
-Like:
-
-Netflix
-
-Spotify
-
-Amazon.
-
-Data predicts:
-
-what users want,
-
-what they might buy,
-
-what they should see next.
-
-8. Risk Detection
-Examples:
-
-fraud
-
-operational anomalies
-
-churn
-
-financial risks
-
-compliance issues.
-
-9. AI Systems
-AI without data is basically useless 😭
-
-Data powers:
-
-training
-
-context
-
-retrieval
-
-personalization
-
-memory
-
-business intelligence.
-
-10. Data Products
-VERY interesting area.
-
-Meaning:
-
-the data itself becomes the product
-Examples:
-
-industry reports
-
-benchmark databases
-
-APIs
-
-market intelligence subscriptions
-
-dashboards sold as products.
-
-11. Behavioral Insights
-Understand:
-
-customer behavior
-
-employee behavior
-
-operational patterns
-
-purchasing trends.
-
-12. Strategic Storytelling
-This is actually your strongest natural direction IMO.
-
-Turning:
-
-raw numbers
-into:
-
-narrative + meaning + action
-That’s MUCH rarer than people think.
-
-HONESTLY?
-Your evolution is interesting because you started with:
-
-“I make dashboards.”
-But your current thinking is becoming:
-
-“How do I build analytical systems and intelligence workflows?”
-That’s a WAY bigger space 😭
-
-
-I like my new homepage. The data cleaning thing I want to get the tool first before I create a section for it, and I think I should have more dashboards for the sample work section
-
-Honestly?
-
-I think that’s the RIGHT decision 😭
-
-Because now you’re thinking:
-
-substance first
-instead of:
-
-fake feature marketing
-That’s good product discipline.
-
-THE DATA CLEANING TOOL
-YES.
-Do NOT create a giant polished section yet if:
-
-the actual experience isn’t there
-Instead:
-
-keep it in “What We’re Building”
-
-maybe:
-
-Prototype in Development
-That preserves:
-
-ecosystem vision
-
-credibility
-
-and honesty.
-
-Then later:
-
-when the tool works,
-
-you promote it to:
-
-real homepage feature
-That’s MUCH healthier.
-
-MORE DASHBOARDS?
-YES.
-Honestly?
-THAT is probably your highest ROI move right now.
-
-Because every additional GOOD dashboard:
-
-increases credibility,
-
-increases trust,
-
-increases perceived capability,
-
-and creates more entry points for clients.
-
-HONESTLY?
-Your “Sample Work” section should probably evolve into:
-
-Resource Library / Dashboard Gallery
-instead of:
-
-3 screenshots
-😭
-
-WHAT YOU ACTUALLY NEED NOW
-Probably:
-
-5–10 strong dashboards
-
-across DIFFERENT industries/use cases.
-
-For example:
-
-Dashboard	Why It Helps
-Real estate	market intelligence
-Sales performance	classic BI
-Marketing analytics	modern digital analytics
-HR analytics	fits your background
-Financial overview	executive reporting
-Operations dashboard	practical business use
-Forecasting dashboard	future direction
-Supply chain / inventory	operational intelligence
-THIS IS IMPORTANT
-Your dashboards should NOT just show:
-
-pretty charts
-They should communicate:
-
-decision-making capability
-Meaning:
-
-KPIs
-
-insights
-
-anomalies
-
-business implications
-
-trend narratives.
-
-That’s what separates:
-
-portfolio dashboards
-from:
-
-serious analytical work
-HONESTLY?
-I think your current best path is:
-
-keep improving the existing site
-+
-expand dashboard depth
-+
-add stronger analytical artifacts over time
-NOT:
-
-rebuild the entire company architecture immediately 😭
-That feels MUCH more sustainable now.
-
-
+  </script>
+</body>
+</html>
