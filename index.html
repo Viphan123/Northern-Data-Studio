@@ -3,12 +3,14 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Northern Data Studio | Data Analytics Services</title>
+  <title>Northern Data Studio | Analytics, Dashboards & Research</title>
+
   <style>
     :root {
       --navy: #071a33;
       --navy-2: #0d2a4d;
       --blue: #2563eb;
+      --blue-soft: #dbeafe;
       --ice: #eef5ff;
       --white: #ffffff;
       --soft: #f7f9fc;
@@ -16,7 +18,7 @@
       --muted: #667085;
       --border: #e5eaf2;
       --shadow: 0 24px 70px rgba(7, 26, 51, 0.12);
-      --radius: 26px;
+      --radius: 28px;
     }
 
     * { box-sizing: border-box; margin: 0; padding: 0; }
@@ -28,17 +30,18 @@
       background: var(--white);
       line-height: 1.6;
     }
-
+``  
     a { color: inherit; text-decoration: none; }
-    .container { width: min(1140px, calc(100% - 40px)); margin: 0 auto; }
+    img { max-width: 100%; display: block; }
+    .container { width: min(1160px, calc(100% - 40px)); margin: 0 auto; }
 
     header {
       position: sticky;
       top: 0;
       z-index: 99;
-      background: rgba(255, 255, 255, 0.84);
+      background: rgba(255,255,255,0.84);
       backdrop-filter: blur(18px);
-      border-bottom: 1px solid rgba(229, 234, 242, 0.85);
+      border-bottom: 1px solid rgba(229,234,242,0.86);
     }
 
     nav {
@@ -46,6 +49,7 @@
       display: flex;
       align-items: center;
       justify-content: space-between;
+      gap: 24px;
     }
 
     .logo {
@@ -58,23 +62,31 @@
     }
 
     .logo-mark {
-      width: 40px;
-      height: 40px;
+      width: 42px;
+      height: 42px;
       border-radius: 14px;
       background: linear-gradient(135deg, var(--navy), var(--blue));
       color: white;
       display: grid;
       place-items: center;
+      font-weight: 950;
       box-shadow: 0 12px 28px rgba(37, 99, 235, 0.22);
+      overflow: hidden;
+    }
+
+    .logo-mark img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
     }
 
     .nav-links {
       display: flex;
-      gap: 28px;
+      gap: 26px;
       align-items: center;
       color: var(--muted);
       font-size: 14px;
-      font-weight: 700;
+      font-weight: 750;
     }
 
     .nav-links a:hover { color: var(--navy); }
@@ -83,34 +95,73 @@
       display: inline-flex;
       align-items: center;
       justify-content: center;
+      gap: 9px;
       padding: 14px 22px;
       border-radius: 999px;
       background: var(--navy);
       color: white;
-      font-weight: 800;
+      font-weight: 850;
       border: 1px solid var(--navy);
       transition: 0.2s ease;
-      box-shadow: 0 14px 30px rgba(7, 26, 51, 0.16);
+      box-shadow: 0 14px 30px rgba(7,26,51,0.16);
     }
 
     .btn:hover { transform: translateY(-2px); box-shadow: var(--shadow); }
     .btn.secondary { background: white; color: var(--navy); border-color: var(--border); box-shadow: none; }
+    .btn.light { background: white; color: var(--navy); border-color: white; box-shadow: none; }
+    .btn.ghost { background: transparent; color: white; border-color: rgba(255,255,255,0.22); box-shadow: none; }
 
     section { padding: 96px 0; }
+
+    .section-header { max-width: 760px; margin-bottom: 42px; }
+    .section-header.center { text-align: center; margin-left: auto; margin-right: auto; }
+
+    .section-label {
+      color: var(--blue);
+      font-size: 13px;
+      font-weight: 950;
+      text-transform: uppercase;
+      letter-spacing: 0.14em;
+      margin-bottom: 10px;
+    }
+
+    h1, h2, h3 { color: var(--navy); }
+
+    h1 {
+      font-size: clamp(48px, 7vw, 86px);
+      line-height: 0.94;
+      letter-spacing: -0.078em;
+      margin-bottom: 24px;
+    }
+
+    h2 {
+      font-size: clamp(34px, 4vw, 54px);
+      line-height: 1.05;
+      letter-spacing: -0.062em;
+      margin-bottom: 14px;
+    }
+
+    h3 {
+      font-size: 22px;
+      letter-spacing: -0.035em;
+      margin-bottom: 8px;
+    }
+
+    p { color: var(--muted); }
 
     .hero {
       position: relative;
       overflow: hidden;
-      padding: 124px 0 110px;
+      padding: 120px 0 105px;
       background:
-        radial-gradient(circle at 15% 20%, rgba(37, 99, 235, 0.14), transparent 30%),
-        radial-gradient(circle at 85% 5%, rgba(7, 26, 51, 0.10), transparent 28%),
+        radial-gradient(circle at 10% 14%, rgba(37,99,235,0.14), transparent 31%),
+        radial-gradient(circle at 84% 8%, rgba(7,26,51,0.10), transparent 28%),
         linear-gradient(180deg, #ffffff 0%, #f6f9ff 100%);
     }
 
     .hero-grid {
       display: grid;
-      grid-template-columns: 1.05fr 0.95fr;
+      grid-template-columns: 1.03fr 0.97fr;
       gap: 60px;
       align-items: center;
     }
@@ -128,155 +179,49 @@
       margin-bottom: 22px;
     }
 
-    h1 {
-      font-size: clamp(46px, 7vw, 82px);
-      line-height: 0.94;
-      letter-spacing: -0.075em;
-      color: var(--navy);
-      margin-bottom: 24px;
-    }
-
-    h2 {
-      font-size: clamp(34px, 4vw, 52px);
-      line-height: 1.05;
-      letter-spacing: -0.06em;
-      color: var(--navy);
-      margin-bottom: 14px;
-    }
-
-    h3 {
-      color: var(--navy);
-      font-size: 22px;
-      letter-spacing: -0.035em;
-      margin-bottom: 8px;
-    }
-
-    .hero p, .section-header p, .card p, .addon p, .work-item p, .step p {
-      color: var(--muted);
-    }
-
     .hero p {
       font-size: 20px;
-      max-width: 660px;
+      max-width: 680px;
       margin-bottom: 32px;
     }
 
     .hero-actions { display: flex; gap: 14px; flex-wrap: wrap; }
 
-    .dashboard-shell {
+    .platform-card {
+      position: relative;
       background: var(--navy);
-      border-radius: 34px;
+      border-radius: 36px;
       padding: 18px;
       box-shadow: var(--shadow);
-    }
-
-    .mock-dashboard {
-      background: white;
-      border-radius: 26px;
-      padding: 22px;
-      min-height: 390px;
-    }
-
-    .mock-top { display: flex; justify-content: space-between; align-items: center; margin-bottom: 22px; }
-    .dots { display: flex; gap: 6px; }
-    .dot { width: 9px; height: 9px; border-radius: 50%; background: var(--border); }
-
-    .metric-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin-bottom: 22px; }
-    .metric { background: var(--soft); border-radius: 18px; padding: 16px; }
-    .metric span { display: block; color: var(--muted); font-size: 12px; font-weight: 700; margin-bottom: 5px; }
-    .metric strong { color: var(--navy); font-size: 24px; }
-
-    .bars { display: grid; gap: 12px; }
-    .bar { height: 14px; background: var(--ice); border-radius: 999px; overflow: hidden; }
-    .bar span { display: block; height: 100%; border-radius: inherit; background: linear-gradient(90deg, var(--navy), var(--blue)); }
-
-    .section-header { max-width: 740px; margin-bottom: 42px; }
-    .section-header.center { text-align: center; margin-left: auto; margin-right: auto; }
-    .section-label { color: var(--blue); font-size: 13px; font-weight: 950; text-transform: uppercase; letter-spacing: 0.14em; margin-bottom: 10px; }
-
-    .cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; }
-
-    .card {
-      background: white;
-      border: 1px solid var(--border);
-      border-radius: var(--radius);
-      padding: 30px;
-      box-shadow: 0 12px 36px rgba(7, 26, 51, 0.05);
-      transition: 0.2s ease;
-    }
-
-    .card:hover { transform: translateY(-5px); box-shadow: var(--shadow); }
-
-    .price {
-      color: var(--navy);
-      font-size: 32px;
-      font-weight: 950;
-      letter-spacing: -0.05em;
-      margin: 18px 0 4px;
-    }
-
-    .timeline { color: var(--blue); font-weight: 850; margin-bottom: 18px; }
-
-    ul { list-style: none; display: grid; gap: 10px; margin-top: 18px; }
-    li { color: var(--muted); }
-    li::before { content: "✓"; color: var(--blue); font-weight: 950; margin-right: 8px; }
-
-    .sample-work { background: var(--soft); overflow: hidden; }
-
-    .work-slider {
-      position: relative;
-    }
-
-    .work-track {
-      display: flex;
-      gap: 24px;
-      overflow-x: auto;
-      scroll-snap-type: x mandatory;
-      scroll-behavior: smooth;
-      padding: 8px 4px 28px;
-      scrollbar-width: none;
-    }
-
-    .work-track::-webkit-scrollbar {
-      display: none;
-    }
-
-    .work-card {
-      min-width: 74%;
-      background: white;
-      border: 1px solid var(--border);
-      border-radius: 32px;
       overflow: hidden;
-      box-shadow: 0 14px 40px rgba(7, 26, 51, 0.07);
-      transition: 0.2s ease;
-      scroll-snap-align: center;
     }
 
-    .work-card:hover {
-      transform: translateY(-5px);
-      box-shadow: var(--shadow);
+    .platform-card::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      opacity: 0.14;
+      background-image: radial-gradient(circle, #fff 1px, transparent 1px);
+      background-size: 20px 20px;
+      pointer-events: none;
     }
 
-    .work-image {
-      background: var(--ice);
-      padding: 14px;
-      border-bottom: 1px solid var(--border);
+    .platform-inner {
+      position: relative;
+      background: white;
+      border-radius: 27px;
+      padding: 22px;
+      min-height: 440px;
     }
 
-    .work-image img {
-      width: 100%;
-      height: 420px;
-      object-fit: cover;
-      object-position: top left;
-      display: block;
-      border-radius: 22px;
+    .platform-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 22px;
     }
 
-    .work-content { padding: 26px; }
-
-    .work-tag {
-      display: inline-flex;
-      margin-bottom: 12px;
+    .mini-label {
       padding: 6px 10px;
       border-radius: 999px;
       background: var(--ice);
@@ -285,344 +230,386 @@
       font-weight: 900;
     }
 
-    .slider-btn {
-      position: absolute;
-      top: 42%;
-      transform: translateY(-50%);
-      z-index: 5;
-      width: 48px;
-      height: 48px;
-      border-radius: 50%;
+    .kpi-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 12px;
+      margin-bottom: 22px;
+    }
+
+    .kpi {
+      background: var(--soft);
       border: 1px solid var(--border);
+      border-radius: 18px;
+      padding: 16px;
+    }
+
+    .kpi span { display: block; color: var(--muted); font-size: 12px; font-weight: 800; margin-bottom: 6px; }
+    .kpi strong { color: var(--navy); font-size: 24px; letter-spacing: -0.045em; }
+
+    .chart-shell {
+      border: 1px solid var(--border);
+      border-radius: 22px;
+      padding: 16px;
+      background: #fff;
+    }
+
+    .chart-bars { display: grid; gap: 12px; }
+    .chart-row { display: grid; grid-template-columns: 70px 1fr; gap: 12px; align-items: center; }
+    .chart-row span { color: var(--muted); font-size: 12px; font-weight: 750; }
+    .bar { height: 13px; background: var(--ice); border-radius: 999px; overflow: hidden; }
+    .bar i { display: block; height: 100%; border-radius: inherit; background: linear-gradient(90deg, var(--navy), var(--blue)); }
+
+    .trust-strip {
+      padding: 22px 0;
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
       background: white;
-      color: var(--navy);
-      font-size: 34px;
-      line-height: 1;
-      cursor: pointer;
-      box-shadow: var(--shadow);
-      transition: 0.2s ease;
     }
 
-    .slider-btn:hover {
-      transform: translateY(-50%) scale(1.06);
-      background: var(--navy);
-      color: white;
-    }
-
-    .slider-btn.prev { left: -18px; }
-    .slider-btn.next { right: -18px; }
-
-    .slider-dots {
+    .trust-items {
       display: flex;
       justify-content: center;
-      gap: 8px;
-      margin-top: 8px;
+      gap: 28px;
+      flex-wrap: wrap;
+      color: var(--muted);
+      font-size: 13px;
+      font-weight: 850;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
     }
 
-    .slider-dot {
-      width: 9px;
-      height: 9px;
-      border-radius: 999px;
-      border: none;
-      background: #c8d3e3;
-      cursor: pointer;
+    .today { background: white; }
+
+    .offer-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 18px;
+    }
+
+    .offer-card {
+      min-height: 230px;
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 26px;
+      background: white;
+      box-shadow: 0 12px 36px rgba(7,26,51,0.05);
       transition: 0.2s ease;
     }
 
-    .slider-dot.active {
-      width: 28px;
-      background: var(--blue);
+    .offer-card:hover { transform: translateY(-4px); box-shadow: var(--shadow); }
+
+    .icon-box {
+      width: 44px;
+      height: 44px;
+      display: grid;
+      place-items: center;
+      border-radius: 15px;
+      margin-bottom: 18px;
+      background: var(--ice);
+      color: var(--blue);
+      font-weight: 950;
     }
 
-    .addons-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 18px; }
+    .resource-feature {
+      background: var(--soft);
+      overflow: hidden;
+    }
 
-    .addon {
+    .resource-card {
+      display: grid;
+      grid-template-columns: 0.95fr 1.05fr;
+      gap: 34px;
+      align-items: stretch;
       background: white;
       border: 1px solid var(--border);
-      border-radius: 24px;
-      padding: 26px;
-      box-shadow: 0 10px 28px rgba(7, 26, 51, 0.04);
+      border-radius: 38px;
+      padding: 22px;
+      box-shadow: var(--shadow);
     }
 
-    .addon-top { display: flex; justify-content: space-between; gap: 16px; align-items: start; margin-bottom: 10px; }
-    .addon-price { color: var(--blue); font-weight: 950; white-space: nowrap; }
-    .addon-note { margin-top: 14px; padding-top: 14px; border-top: 1px solid var(--border); color: var(--navy); font-weight: 750; }
+    .resource-copy {
+      padding: 34px 28px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
 
-    .process { background: var(--navy); color: white; }
-    .process h2, .process h3, .process .section-label { color: white; }
-    .process .section-header p, .process p { color: rgba(255,255,255,0.72); }
-    .steps { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
-    .step { background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.14); border-radius: 24px; padding: 26px; }
-    .step-number { width: 40px; height: 40px; border-radius: 50%; display: grid; place-items: center; background: white; color: var(--navy); font-weight: 950; margin-bottom: 18px; }
+    .resource-copy h2 { margin-bottom: 18px; }
 
-    .contact-card {
-      background: linear-gradient(135deg, var(--navy), var(--navy-2));
+    .resource-actions { display: flex; gap: 12px; flex-wrap: wrap; margin-top: 28px; }
+
+    .resource-visual {
+      border-radius: 30px;
+      background:
+        radial-gradient(circle at 10% 15%, rgba(37,99,235,0.20), transparent 34%),
+        linear-gradient(135deg, var(--navy), var(--navy-2));
+      padding: 24px;
       color: white;
-      border-radius: 34px;
-      padding: 44px;
+      min-height: 410px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .resource-visual::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      opacity: 0.08;
+      background-image: radial-gradient(circle, #fff 1px, transparent 1px);
+      background-size: 18px 18px;
+    }
+
+    .report-panel {
+      position: relative;
+      z-index: 2;
+      background: rgba(255,255,255,0.08);
+      border: 1px solid rgba(255,255,255,0.14);
+      border-radius: 26px;
+      padding: 22px;
+      backdrop-filter: blur(8px);
+    }
+
+    .report-panel h3 { color: white; font-size: 24px; }
+    .report-panel p { color: rgba(255,255,255,0.68); }
+
+    .metric-list { display: grid; gap: 12px; margin-top: 24px; }
+    .metric-line { display: flex; justify-content: space-between; gap: 18px; padding: 14px; border-radius: 16px; background: rgba(255,255,255,0.07); }
+    .metric-line span { color: rgba(255,255,255,0.62); }
+    .metric-line strong { color: white; }
+
+    .building {
+      background: var(--navy);
+      color: white;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .building::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      opacity: 0.08;
+      background-image: radial-gradient(circle, #fff 1px, transparent 1px);
+      background-size: 22px 22px;
+      pointer-events: none;
+    }
+
+    .building .container { position: relative; z-index: 2; }
+    .building h2, .building h3, .building .section-label { color: white; }
+    .building p { color: rgba(255,255,255,0.66); }
+
+    .build-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 18px;
+    }
+
+    .build-card {
+      border: 1px solid rgba(255,255,255,0.12);
+      background: rgba(255,255,255,0.06);
+      border-radius: 26px;
+      padding: 24px;
+      min-height: 230px;
+      transition: 0.2s ease;
+    }
+
+    .build-card:hover { transform: translateY(-4px); background: rgba(255,255,255,0.09); }
+
+    .status {
+      display: inline-flex;
+      margin-bottom: 16px;
+      padding: 6px 10px;
+      border-radius: 999px;
+      background: rgba(255,255,255,0.10);
+      color: rgba(255,255,255,0.72);
+      font-size: 11px;
+      font-weight: 950;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+    }
+
+    .tool-preview { background: #ffffff; }
+
+    .tool-shell {
+      display: grid;
+      grid-template-columns: 0.85fr 1.15fr;
+      gap: 24px;
+      align-items: stretch;
+      border: 1px solid var(--border);
+      border-radius: 36px;
+      padding: 22px;
+      background: var(--soft);
+      box-shadow: var(--shadow);
+    }
+
+    .tool-copy {
+      background: white;
+      border: 1px solid var(--border);
+      border-radius: 28px;
+      padding: 32px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .tool-ui {
+      background: var(--navy);
+      border-radius: 28px;
+      padding: 22px;
+      color: white;
+      min-height: 380px;
+    }
+
+    .upload-box {
+      border: 1px dashed rgba(255,255,255,0.28);
+      border-radius: 22px;
+      padding: 26px;
+      text-align: center;
+      background: rgba(255,255,255,0.06);
+      margin-bottom: 20px;
+    }
+
+    .pill-wrap { display: flex; flex-wrap: wrap; gap: 9px; margin-top: 18px; }
+    .pill { border-radius: 999px; background: rgba(255,255,255,0.09); color: rgba(255,255,255,0.78); padding: 8px 12px; font-size: 13px; }
+    .pill.active { background: rgba(37,99,235,0.32); color: white; }
+
+    .pricing-cta {
+      background: var(--soft);
+    }
+
+    .cta-card {
+      background: linear-gradient(135deg, var(--navy), var(--navy-2));
+      border-radius: 38px;
+      padding: 52px;
+      color: white;
+      box-shadow: var(--shadow);
       display: flex;
       align-items: center;
       justify-content: space-between;
       gap: 28px;
-      box-shadow: var(--shadow);
     }
 
-    .contact-card h2 { color: white; }
-    .contact-card p { color: rgba(255,255,255,0.74); max-width: 620px; }
-    .contact-card .btn { background: white; color: var(--navy); border-color: white; box-shadow: none; }
-    .contact-card .btn.secondary { background: transparent; color: white; border-color: rgba(255,255,255,0.32); }
-    .contact-copy { max-width: 520px; }
-    .contact-actions { margin-top: 22px; display: flex; gap: 12px; flex-wrap: wrap; }
-    .contact-form {
-      width: 100%;
-      max-width: 460px;
-      background: rgba(255,255,255,0.98);
-      border: 1px solid rgba(255,255,255,0.2);
-      border-radius: 28px;
-      padding: 26px;
-      box-shadow: 0 24px 60px rgba(0,0,0,0.18);
+    .cta-card h2 { color: white; }
+    .cta-card p { color: rgba(255,255,255,0.70); max-width: 640px; }
+
+    .footer-editorial {
+      position: relative;
+      padding: 64px 0 30px;
+      background: var(--navy);
+      overflow: hidden;
+    }
+
+    .footer-editorial::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      opacity: 0.08;
+      background-image: radial-gradient(circle, #ffffff 1px, transparent 1px);
+      background-size: 22px 22px;
+      pointer-events: none;
+    }
+
+    .footer-grid {
+      position: relative;
+      z-index: 2;
       display: grid;
+      grid-template-columns: 1.4fr 1fr 0.7fr;
+      gap: 72px;
+      align-items: start;
+    }
+
+    .footer-brand h2 {
+      color: white;
+      font-size: 34px;
+      line-height: 1;
+      letter-spacing: -0.06em;
+      margin-bottom: 14px;
+    }
+
+    .footer-brand p {
+      color: rgba(255,255,255,0.68);
+      max-width: 320px;
+      line-height: 1.8;
+      font-size: 15px;
+    }
+
+    .footer-label {
+      display: inline-block;
+      margin-bottom: 18px;
+      color: rgba(255,255,255,0.45);
+      font-size: 12px;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+    }
+
+    .footer-contact,
+    .footer-connect {
+      display: flex;
+      flex-direction: column;
       gap: 12px;
     }
-    .contact-form input,
-    .contact-form select,
-    .contact-form textarea {
-      width: 100%;
-      border: 1px solid var(--border);
-      border-radius: 16px;
-      padding: 14px 15px;
-      font: inherit;
-      color: var(--text);
-      background: var(--white);
-      outline: none;
-    }
-    .contact-form input:focus,
-    .contact-form select:focus,
-    .contact-form textarea:focus {
-      border-color: var(--blue);
-      box-shadow: 0 0 0 4px rgba(37,99,235,0.10);
-    }
-    .contact-form textarea { min-height: 130px; resize: vertical; }
-    .contact-form .btn { width: 100%; background: var(--navy); color: white; border-color: var(--navy); }
-    #formMessage { color: var(--navy); font-size: 14px; font-weight: 700; min-height: 20px; }
 
-    footer { padding: 28px 0; color: var(--muted); border-top: 1px solid var(--border); font-size: 14px; }
-    .footer-row { display: flex; justify-content: space-between; gap: 18px; flex-wrap: wrap; }
+    .footer-contact a,
+    .footer-contact span {
+      color: rgba(255,255,255,0.78);
+      font-size: 15px;
+      transition: 0.2s ease;
+    }
+
+    .footer-contact a:hover { color: white; }
+
+    .social-icons { display: flex; align-items: center; gap: 14px; }
+
+    .social-icons a {
+      width: 42px;
+      height: 42px;
+      display: grid;
+      place-items: center;
+      border-radius: 999px;
+      background: rgba(255,255,255,0.06);
+      color: rgba(255,255,255,0.72);
+      transition: 0.2s ease;
+    }
+
+    .social-icons a:hover {
+      background: rgba(255,255,255,0.12);
+      color: white;
+      transform: translateY(-2px);
+    }
+
+    .footer-bottom {
+      position: relative;
+      z-index: 2;
+      margin-top: 52px;
+      padding-top: 24px;
+      border-top: 1px solid rgba(255,255,255,0.10);
+      color: rgba(255,255,255,0.48);
+      font-size: 13px;
+    }
 
     .fade-in { opacity: 0; transform: translateY(18px); transition: 0.55s ease; }
     .fade-in.visible { opacity: 1; transform: translateY(0); }
 
-    @media (max-width: 920px) {
-      .hero-grid, .addons-grid { grid-template-columns: 1fr; }
-      .cards, .steps { grid-template-columns: 1fr; }
+    @media (max-width: 1020px) {
+      .hero-grid, .resource-card, .tool-shell { grid-template-columns: 1fr; }
+      .offer-grid, .build-grid { grid-template-columns: repeat(2, 1fr); }
+      .footer-grid { grid-template-columns: 1fr; gap: 44px; }
+    }
+
+    @media (max-width: 760px) {
       .nav-links { display: none; }
-      .contact-card { flex-direction: column; align-items: start; }
-      .work-card { min-width: 86%; }
-      .work-image img { height: 320px; }
-    }
-
-    @media (max-width: 620px) {
       section, .hero { padding: 72px 0; }
-      .metric-grid { grid-template-columns: 1fr; }
-      .hero-actions { flex-direction: column; }
+      .offer-grid, .build-grid, .kpi-grid { grid-template-columns: 1fr; }
+      .hero-actions, .resource-actions { flex-direction: column; }
       .btn { width: 100%; }
-      .contact-card { padding: 30px; }
-      .addon-top { flex-direction: column; }
-      .addon-price { white-space: normal; }
-      .work-card { min-width: 92%; }
-      .work-image img { height: 240px; }
-      .slider-btn { width: 42px; height: 42px; font-size: 30px; }
-      .slider-btn.prev { left: 4px; }
-      .slider-btn.next { right: 4px; }
+      .cta-card { flex-direction: column; align-items: flex-start; padding: 34px; }
+      .resource-copy, .tool-copy { padding: 26px; }
     }
-    .success-popup {
-  position: fixed;
-  inset: 0;
-  background: rgba(7, 26, 51, 0.55);
-  display: none;
-  align-items: center;
-  justify-content: center;
-  z-index: 999;
-  padding: 20px;
-}
-
-.success-popup.show {
-  display: flex;
-}
-
-.success-card {
-  background: white;
-  padding: 48px;
-  border-radius: 28px;
-  max-width: 520px;
-  width: 100%;
-  text-align: center;
-  box-shadow: 0 20px 60px rgba(7,26,51,0.12);
-}
-
-.success-card h1 {
-  font-size: 42px;
-  margin-bottom: 16px;
-  letter-spacing: -0.04em;
-  color: #071a33;
-}
-
-.success-card p {
-  color: #667085;
-  line-height: 1.7;
-  margin-bottom: 28px;
-}
-
-.success-card button {
-  display: inline-flex;
-  padding: 14px 22px;
-  border-radius: 999px;
-  background: #071a33;
-  color: white;
-  border: none;
-  text-decoration: none;
-  font-weight: 700;
-  cursor: pointer;
-}
-.footer-editorial {
-  position: relative;
-  padding: 90px 0 30px;
-  background: #071a33;
-  overflow: hidden;
-}
-
-/* subtle dotted pattern */
-.footer-editorial::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  opacity: 0.08;
-  background-image:
-    radial-gradient(circle, #ffffff 1px, transparent 1px);
-  background-size: 22px 22px;
-  pointer-events: none;
-}
-
-.footer-grid {
-  position: relative;
-  z-index: 2;
-
-  display: grid;
-  grid-template-columns: 1.4fr 1fr 0.7fr;
-  gap: 80px;
-
-  align-items: start;
-}
-
-.footer-brand h2 {
-  color: white;
-  font-size: 36px;
-  line-height: 1;
-  letter-spacing: -0.06em;
-  margin-bottom: 14px;
-}
-
-.footer-brand p {
-  color: rgba(255,255,255,0.68);
-  max-width: 320px;
-  line-height: 1.8;
-  font-size: 15px;
-}
-
-.footer-label {
-  display: inline-block;
-
-  margin-bottom: 18px;
-
-  color: rgba(255,255,255,0.45);
-
-  font-size: 12px;
-  font-weight: 700;
-
-  text-transform: uppercase;
-  letter-spacing: 0.16em;
-}
-
-.footer-contact,
-.footer-connect {
-  position: relative;
-  z-index: 2;
-
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
-}
-
-.footer-contact a,
-.footer-contact span {
-  color: rgba(255,255,255,0.78);
-  font-size: 15px;
-  transition: 0.2s ease;
-}
-
-.footer-contact a:hover {
-  color: white;
-}
-
-.social-icons {
-  display: flex;
-  align-items: center;
-  gap: 14px;
-}
-
-.social-icons a {
-  width: 42px;
-  height: 42px;
-
-  display: grid;
-  place-items: center;
-
-  border-radius: 999px;
-
-  background: rgba(255,255,255,0.06);
-
-  color: rgba(255,255,255,0.72);
-
-  transition: 0.2s ease;
-}
-
-.social-icons a:hover {
-  background: rgba(255,255,255,0.12);
-  color: white;
-  transform: translateY(-2px);
-}
-
-.footer-bottom {
-  position: relative;
-  z-index: 2;
-
-  margin-top: 70px;
-  padding-top: 24px;
-
-  border-top: 1px solid rgba(255,255,255,0.10);
-
-  color: rgba(255,255,255,0.48);
-
-  font-size: 13px;
-}
-
-@media (max-width: 900px) {
-
-  .footer-grid {
-    grid-template-columns: 1fr;
-    gap: 50px;
-  }
-
-  .footer-brand h2 {
-    font-size: 30px;
-  }
-
-  .footer-bottom {
-    margin-top: 50px;
-  }
-}
   </style>
 </head>
+
 <body>
   <header>
     <div class="container">
@@ -631,11 +618,12 @@
           <span class="logo-mark">N</span>
           <span>Northern Data Studio</span>
         </a>
+
         <div class="nav-links">
-          <a href="#services">Services</a>
-          <a href="#work">Sample Work</a>
-          <a href="resources.html">Free Resources</a>
-          <a href="#addons">Add-ons</a>
+          <a href="#today">What We Do</a>
+          <a href="#resources">Resources</a>
+          <a href="#building">Building</a>
+          <a href="pricing.html">Pricing</a>
           <a href="#contact">Contact</a>
         </div>
       </nav>
@@ -646,376 +634,235 @@
     <section class="hero">
       <div class="container hero-grid">
         <div class="fade-in">
-          <div class="eyebrow">Dashboards • Data Processing • Business Insights</div>
-          <h1>Turning your data into clear, actionable insights.</h1>
-          <p>Northern Data Studio helps small businesses transform spreadsheets, reports, and messy data into clean dashboards, practical insights, and presentation-ready recommendations.</p>
+          <div class="eyebrow">Analytics • Research • Dashboards • Data Systems</div>
+          <h1>Data, insights, and analytical systems for modern businesses.</h1>
+          <p>Northern Data Studio turns raw information into reports, dashboards, tools, and strategic intelligence that help businesses understand what is happening and what to do next.</p>
           <div class="hero-actions">
-            <a href="#contact" class="btn">Get a Dashboard</a>
-            <a href="#services" class="btn secondary">View Packages</a>
+            <a href="#resources" class="btn">Explore Resources</a>
+            <a href="#today" class="btn secondary">What We Do</a>
           </div>
         </div>
 
-        <div class="dashboard-shell fade-in">
-          <div class="mock-dashboard">
-            <div class="mock-top">
-              <strong>Business Performance</strong>
-              <div class="dots"><span class="dot"></span><span class="dot"></span><span class="dot"></span></div>
+        <div class="platform-card fade-in">
+          <div class="platform-inner">
+            <div class="platform-top">
+              <strong>Analytical Intelligence System</strong>
+              <span class="mini-label">V2 Direction</span>
             </div>
-            <div class="metric-grid">
-              <div class="metric"><span>Revenue</span><strong>$84K</strong></div>
-              <div class="metric"><span>Growth</span><strong>18%</strong></div>
-              <div class="metric"><span>Orders</span><strong>1.2K</strong></div>
+
+            <div class="kpi-grid">
+              <div class="kpi"><span>Reports</span><strong>PDF</strong></div>
+              <div class="kpi"><span>Dashboards</span><strong>Power BI</strong></div>
+              <div class="kpi"><span>Tools</span><strong>Python</strong></div>
             </div>
-            <div class="bars">
-              <div class="bar"><span style="width: 86%"></span></div>
-              <div class="bar"><span style="width: 64%"></span></div>
-              <div class="bar"><span style="width: 72%"></span></div>
-              <div class="bar"><span style="width: 48%"></span></div>
-              <div class="bar"><span style="width: 78%"></span></div>
+
+            <div class="chart-shell">
+              <div class="chart-bars">
+                <div class="chart-row"><span>Research</span><div class="bar"><i style="width: 86%"></i></div></div>
+                <div class="chart-row"><span>BI</span><div class="bar"><i style="width: 74%"></i></div></div>
+                <div class="chart-row"><span>Tools</span><div class="bar"><i style="width: 58%"></i></div></div>
+                <div class="chart-row"><span>Strategy</span><div class="bar"><i style="width: 68%"></i></div></div>
+                <div class="chart-row"><span>Data</span><div class="bar"><i style="width: 80%"></i></div></div>
+              </div>
             </div>
           </div>
         </div>
       </div>
     </section>
 
-    <section id="services">
+    <div class="trust-strip">
+      <div class="container trust-items">
+        <span>Power BI</span>
+        <span>Python</span>
+        <span>SPSS-style forecasting</span>
+        <span>Reports</span>
+        <span>Business Intelligence</span>
+      </div>
+    </div>
+
+    <section id="today" class="today">
       <div class="container">
         <div class="section-header center fade-in">
-          <div class="section-label">Core Packages</div>
-          <h2>Packages built around business outcomes.</h2>
-          <p>Start with a clear package, then add extra support only when the project needs it.</p>
+          <div class="section-label">What We Do Today</div>
+          <h2>Practical analytics services built around business clarity.</h2>
+          <p>These are the core services available now: reports, dashboards, data preparation, and strategy support.</p>
         </div>
 
-        <div class="cards">
-          <article class="card fade-in">
-            <h3>Quick Insight Dashboard</h3>
-            <p>For individuals, freelancers, or simple data projects.</p>
-            <div class="price">$200 – $300</div>
-            <ul>
-              <li>1 dataset: Excel, CSV, or Google Sheets</li>
-              <li>1 clean dashboard</li>
-              <li>3–5 key insights</li>
-              <li>Basic data processing</li>
-            </ul>
+        <div class="offer-grid">
+          <article class="offer-card fade-in">
+            <div class="icon-box">01</div>
+            <h3>Reports & Research</h3>
+            <p>PDF reports with charts, written insights, and sector-level analysis for business and market understanding.</p>
           </article>
 
-          <article class="card fade-in">
-            <h3>Business Dashboard Setup</h3>
-            <p>For small businesses that need KPI tracking and decision support.</p>
-            <div class="price">$800 – $1,200</div>
-            <ul>
-              <li>Data processing and structuring</li>
-              <li>1–2 dashboards</li>
-              <li>KPI definition</li>
-              <li>Insights and recommendations</li>
-              <li>Optional walkthrough</li>
-            </ul>
+          <article class="offer-card fade-in">
+            <div class="icon-box">02</div>
+            <h3>Interactive Dashboards</h3>
+            <p>Power BI dashboards for KPI tracking, operational reporting, and business performance visibility.</p>
           </article>
 
-          <article class="card fade-in">
-            <h3>Ongoing Analytics Support</h3>
-            <p>For clients who want continuous tracking and monthly improvements.</p>
-            <div class="price">$250 – $500/mo</div>
-            <ul>
-              <li>Monthly data refresh</li>
-              <li>Dashboard updates</li>
-              <li>New insights each month</li>
-              <li>Small improvements</li>
-            </ul>
+          <article class="offer-card fade-in">
+            <div class="icon-box">03</div>
+            <h3>Data Storytelling</h3>
+            <p>Article-style insight pages that explain what the data means, why it matters, and what to watch next.</p>
+          </article>
+
+          <article class="offer-card fade-in">
+            <div class="icon-box">04</div>
+            <h3>BI Strategy</h3>
+            <p>Consultation support for KPI planning, reporting structure, dashboard scope, and analytics workflows.</p>
           </article>
         </div>
       </div>
     </section>
 
-    <section id="work" class="sample-work">
+    <section id="resources" class="resource-feature">
       <div class="container">
-        <div class="section-header fade-in">
-          <div class="section-label">Sample Work</div>
-          <h2>Clean dashboards with a business story.</h2>
-          <p>Swipe through example dashboard concepts showing how Northern Data Studio turns raw data into clear visuals, insights, and business recommendations.</p>
-        </div>
-
-        <div class="work-slider fade-in" aria-label="Sample work dashboard slider">
-          <button class="slider-btn prev" type="button" aria-label="Previous dashboard">‹</button>
-
-          <div class="work-track">
-            <article class="work-card">
-              <div class="work-image">
-                <img src="sales-dashboard.png" alt="Sales Performance Dashboard sample" />
-              </div>
-              <div class="work-content">
-                <span class="work-tag">Sales Analytics</span>
-                <h3>Sales Performance Dashboard</h3>
-                <p>Tracks revenue, orders, customers, top products, regional performance, and sales trends.</p>
-              </div>
-            </article>
-
-            <article class="work-card">
-              <div class="work-image">
-                <img src="expense-dashboard.png" alt="Expense Tracking Dashboard sample" />
-              </div>
-              <div class="work-content">
-                <span class="work-tag">Expense Tracking</span>
-                <h3>Expense Tracking Dashboard</h3>
-                <p>Monitors spending categories, monthly trends, budget usage, and cost-control opportunities.</p>
-              </div>
-            </article>
-
-            <article class="work-card">
-              <div class="work-image">
-                <img src="marketing-dashboard.png" alt="Marketing Performance Dashboard sample" />
-              </div>
-              <div class="work-content">
-                <span class="work-tag">Marketing Insights</span>
-                <h3>Marketing Performance Dashboard</h3>
-                <p>Tracks campaigns, clicks, conversions, cost efficiency, and channel performance.</p>
-              </div>
-            </article>
-          </div>
-
-          <button class="slider-btn next" type="button" aria-label="Next dashboard">›</button>
-
-          <div class="slider-dots" aria-label="Slider navigation">
-            <button class="slider-dot active" type="button" aria-label="Go to sales dashboard"></button>
-            <button class="slider-dot" type="button" aria-label="Go to expense dashboard"></button>
-            <button class="slider-dot" type="button" aria-label="Go to marketing dashboard"></button>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section id="addons">
-      <div class="container">
-        <div class="section-header center fade-in">
-          <div class="section-label">Add-ons</div>
-          <h2>Extra support when your project needs more.</h2>
-          <p>Add-ons keep the base package simple while protecting time for revisions, complex cleanup, deployment, and presentation work.</p>
-        </div>
-
-        <div class="addons-grid">
-          <div class="addon fade-in">
-            <div class="addon-top"><h3>Extra Revision Round</h3><div class="addon-price">+$50 – $100 / round</div></div>
-            <p>Additional dashboard tweaks after included revisions, including small visual or metric changes.</p>
-            <div class="addon-note">Best for clients who keep requesting “just one more change.”</div>
-          </div>
-
-          <div class="addon fade-in">
-            <div class="addon-top"><h3>Advanced Data Processing</h3><div class="addon-price">+$100 – $300</div></div>
-            <p>Fix messy spreadsheets, merge multiple files, handle inconsistent formats, and restructure data for analysis.</p>
-            <div class="addon-note">This is where most hidden work happens, so it is priced separately.</div>
-          </div>
-
-          <div class="addon fade-in">
-            <div class="addon-top"><h3>Additional Dashboard Page</h3><div class="addon-price">+$100 – $250 / page</div></div>
-            <p>A new dashboard view, new metrics or KPIs, or a separate analysis section.</p>
-            <div class="addon-note">Prevents “can you just add one more chart?” scope creep.</div>
-          </div>
-
-          <div class="addon fade-in">
-            <div class="addon-top"><h3>Cloud Deployment / Hosting Setup</h3><div class="addon-price">+$100 – $200</div></div>
-            <p>Push dashboard or data solution to cloud, set up basic access, and share live dashboard links.</p>
-            <div class="addon-note">This is where Azure knowledge becomes valuable.</div>
-          </div>
-
-          <div class="addon fade-in">
-            <div class="addon-top"><h3>Insights Report</h3><div class="addon-price">+$75 – $200</div></div>
-            <p>Written summary of findings, bullet-point insights, business recommendations, exported as Word or PDF.</p>
-            <div class="addon-note">Very sellable to non-technical clients.</div>
-          </div>
-
-          <div class="addon fade-in">
-            <div class="addon-top"><h3>Presentation Deck</h3><div class="addon-price">+$100 – $250</div></div>
-            <p>PowerPoint summary of dashboard findings, key insight slides, and meeting-ready talking points.</p>
-            <div class="addon-note">Great for business clients who need to present data.</div>
-          </div>
-
-          <div class="addon fade-in">
-            <div class="addon-top"><h3>Fast Delivery</h3><div class="addon-price">+$50 – $150</div></div>
-            <p>Delivery in 24–72 hours depending on project scope, with priority queue placement.</p>
-            <div class="addon-note">An easy upsell when someone has an urgent deadline.</div>
-          </div>
-
-          <div class="addon fade-in">
-            <div class="addon-top"><h3>Monthly Data Refresh Setup</h3><div class="addon-price">+$100 – $250</div></div>
-            <p>Automate or simplify data updates and prepare the dashboard for recurring use.</p>
-            <div class="addon-note">Bridges naturally into the monthly retainer.</div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section class="process" id="process">
-      <div class="container">
-        <div class="section-header center fade-in">
-          <div class="section-label">How It Works</div>
-          <h2>From raw files to business-ready dashboard.</h2>
-          <p>A simple process designed to keep the project clear, scoped, and useful.</p>
-        </div>
-
-        <div class="steps">
-          <div class="step fade-in">
-            <div class="step-number">1</div>
-            <h3>Send your data</h3>
-            <p>Share Excel, CSV, Sheets, reports, or sample files.</p>
-          </div>
-          <div class="step fade-in">
-            <div class="step-number">2</div>
-            <h3>Review and scope</h3>
-            <p>I review the data, confirm the package, and identify any add-ons.</p>
-          </div>
-          <div class="step fade-in">
-            <div class="step-number">3</div>
-            <h3>Build and deliver</h3>
-            <p>You receive the dashboard, insights, and final files.</p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section id="contact">
-      <div class="container">
-        <div class="contact-card fade-in">
-          <div class="contact-copy">
-            <div class="section-label">Contact</div>
-            <h2>Ready to make your data useful?</h2>
-            <p>Send a quick message with your project idea, file type, and deadline. I’ll review the scope and help you choose the right dashboard package.</p>
-            <div class="contact-actions">
-              <a href="https://calendly.com/northerndatastudio/30min" target="_blank" class="btn">Book Free Consultation</a>
-              <a href="mailto:info@northerndatastudio.com" class="btn secondary">Email Directly</a>
+        <div class="resource-card fade-in">
+          <div class="resource-copy">
+            <div class="section-label">Featured Resource</div>
+            <h2>Canadian Real Estate Sector Analysis</h2>
+            <p>A free resource project combining market research, dashboard design, and data storytelling to explore Canadian housing trends through a business intelligence lens.</p>
+            <div class="resource-actions">
+              <a href="resources.html" class="btn">View Resource</a>
+              <a href="#contact" class="btn secondary">Request Similar Work</a>
             </div>
           </div>
 
-          <form id="contactForm" class="contact-form" action="https://formspree.io/f/mzdonkev" method="POST">
-  <input type="text" name="name" placeholder="Your name" required />
-  <input type="email" name="email" placeholder="Email address" required />
+          <div class="resource-visual">
+            <div class="report-panel">
+              <span class="mini-label">May 2026</span>
+              <h3>Market Intelligence Preview</h3>
+              <p>Benchmark prices, property type trends, HPI movement, and regional indicators.</p>
 
-  <select name="service" required>
-    <option value="">Choose a service</option>
-    <option>Quick Insight Dashboard</option>
-    <option>Business Dashboard Setup</option>
-    <option>Ongoing Analytics Support</option>
-    <option>Add-ons Only</option>
-    <option>Not sure yet</option>
-  </select>
+              <div class="metric-list">
+                <div class="metric-line"><span>Dashboard</span><strong>Interactive</strong></div>
+                <div class="metric-line"><span>Report</span><strong>PDF</strong></div>
+                <div class="metric-line"><span>Focus</span><strong>Housing Market</strong></div>
+                <div class="metric-line"><span>Tools</span><strong>Power BI</strong></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
 
-  <textarea name="message" placeholder="Tell me about your data project" required></textarea>
+    <section id="building" class="building">
+      <div class="container">
+        <div class="section-header center fade-in">
+          <div class="section-label">What We're Building</div>
+          <h2>An evolving analytics ecosystem.</h2>
+          <p>Beyond dashboards, Northern Data Studio is building lightweight tools, prototypes, and analytical workflows that make data easier to use.</p>
+        </div>
 
-  <button class="btn" type="submit">Send Inquiry</button>
-  <p id="formMessage" aria-live="polite"></p>
-</form>
+        <div class="build-grid">
+          <article class="build-card fade-in">
+            <span class="status">Prototype</span>
+            <h3>Data Cleaning Assistant</h3>
+            <p>Preview a workflow for selecting columns, cleaning CSVs, and preparing analysis-ready files.</p>
+          </article>
 
-<div id="successPopup" class="success-popup">
-  <div class="success-card">
-    <h1>Thank You!</h1>
+          <article class="build-card fade-in">
+            <span class="status">In Development</span>
+            <h3>Automation Workflows</h3>
+            <p>Python scripts and workflow demos for recurring reports, exports, and operational processes.</p>
+          </article>
 
-    <p>
-      Your inquiry has been submitted successfully.
-      Northern Data Studio will review your project details and respond shortly.
-    </p>
+          <article class="build-card fade-in">
+            <span class="status">Concept</span>
+            <h3>Forecasting</h3>
+            <p>Simple forecasting prototypes using statistical methods, Python, and SPSS-style workflows.</p>
+          </article>
 
-    <button id="closePopup" type="button">Close</button>
-  </div>
-</div> </div>
+          <article class="build-card fade-in">
+            <span class="status">Future</span>
+            <h3>Data Products</h3>
+            <p>Premium reports, templates, and reusable analytical assets for businesses and decision-makers.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="tool-preview">
+      <div class="container">
+        <div class="tool-shell fade-in">
+          <div class="tool-copy">
+            <div class="section-label">Prototype Tool</div>
+            <h2>Data Cleaning Assistant</h2>
+            <p>A lightweight prototype that demonstrates how messy CSV files can be structured, cleaned, and prepared for analysis. For privacy-conscious users, the public version can use sample datasets or local browser processing.</p>
+            <div class="resource-actions">
+              <a href="#contact" class="btn">Request Cleaning Support</a>
+              <a href="#building" class="btn secondary">View Roadmap</a>
+            </div>
+          </div>
+
+          <div class="tool-ui">
+            <div class="upload-box">
+              <strong>Preview workflow</strong>
+              <p style="color: rgba(255,255,255,0.62); margin-top: 8px;">No sensitive data required for demo mode.</p>
+            </div>
+            <h3 style="color:white;">Columns detected</h3>
+            <div class="pill-wrap">
+              <span class="pill active">Date</span>
+              <span class="pill active">Region</span>
+              <span class="pill active">Price</span>
+              <span class="pill">Customer ID</span>
+              <span class="pill active">Category</span>
+              <span class="pill">Notes</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="pricing-cta" id="contact">
+      <div class="container">
+        <div class="cta-card fade-in">
+          <div>
+            <div class="section-label" style="color: rgba(255,255,255,0.72);">Start a Project</div>
+            <h2>Need a dashboard, report, or analytical workflow?</h2>
+            <p>Start with a consultation, resource request, or scoped analytics project. Pricing can be structured around reports, dashboards, data cleaning, or ongoing support.</p>
+          </div>
+          <div class="hero-actions">
+            <a href="https://calendly.com/northerndatastudio/30min" target="_blank" class="btn light">Book Consultation</a>
+            <a href="mailto:info@northerndatastudio.com" class="btn ghost">Email Directly</a>
+          </div>
+        </div>
+      </div>
     </section>
   </main>
 
   <footer class="footer-editorial">
+    <div class="container footer-grid">
+      <div class="footer-brand">
+        <h2>Northern Data Studio</h2>
+        <p>Clear Data. Clear Decisions. Better Business.</p>
+      </div>
 
-  <div class="container footer-grid">
+      <div class="footer-contact">
+        <span class="footer-label">Contact</span>
+        <a href="mailto:info@northerndatastudio.com">info@northerndatastudio.com</a>
+        <a href="tel:16139223062">(613) 922-3062</a>
+        <span>Ottawa, Ontario, Canada</span>
+      </div>
 
-    <div class="footer-brand">
-      <h2>Northern Data Studio</h2>
-      <p>Clear Data. Clear Decisions. Better Business.</p>
-    </div>
-
-    <div class="footer-contact">
-      <span class="footer-label">Contact</span>
-
-      <a href="mailto:info@northerndatastudio.com">
-        info@northerndatastudio.com
-      </a>
-
-      <a href="tel:16139223062">
-        (613) 922-3062
-      </a>
-
-      <span>Ottawa, Ontario, Canada</span>
-    </div>
-
-    <div class="footer-connect">
-      <span class="footer-label">Connect</span>
-
-      <div class="social-icons">
-
-        <a href="https://www.linkedin.com/company/northern-data-studio/"
-           target="_blank"
-           aria-label="LinkedIn">
-
-          <!-- LinkedIn Icon -->
-          <svg xmlns="http://www.w3.org/2000/svg"
-               width="20"
-               height="20"
-               viewBox="0 0 24 24"
-               fill="none"
-               stroke="currentColor"
-               stroke-width="1.8"
-               stroke-linecap="round"
-               stroke-linejoin="round">
-
-            <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2
-                     2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/>
-
-            <rect x="2" y="9" width="4" height="12"/>
-
-            <circle cx="4" cy="4" r="2"/>
-
-          </svg>
-        </a>
-
-        <a href="https://www.instagram.com/northerndatastudio/"
-           target="_blank"
-           aria-label="Instagram">
-
-          <!-- Instagram Icon -->
-          <svg xmlns="http://www.w3.org/2000/svg"
-               width="20"
-               height="20"
-               viewBox="0 0 24 24"
-               fill="none"
-               stroke="currentColor"
-               stroke-width="1.8"
-               stroke-linecap="round"
-               stroke-linejoin="round">
-
-            <rect x="2" y="2"
-                  width="20"
-                  height="20"
-                  rx="5"
-                  ry="5"/>
-
-            <path d="M16 11.37a4 4 0 1 1-2.63-2.63
-                     4 4 0 0 1 2.63 2.63z"/>
-
-            <line x1="17.5"
-                  y1="6.5"
-                  x2="17.51"
-                  y2="6.5"/>
-
-          </svg>
-        </a>
-
+      <div class="footer-connect">
+        <span class="footer-label">Connect</span>
+        <div class="social-icons">
+          <a href="YOUR_LINKEDIN_LINK" target="_blank" aria-label="LinkedIn">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+          </a>
+          <a href="YOUR_INSTAGRAM_LINK" target="_blank" aria-label="Instagram">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37a4 4 0 1 1-2.63-2.63 4 4 0 0 1 2.63 2.63z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+          </a>
+        </div>
       </div>
     </div>
 
-  </div>
-
-  <div class="container footer-bottom">
-    <span>
+    <div class="container footer-bottom">
       © <span id="year"></span> Northern Data Studio
-    </span>
-  </div>
-
-</footer>
+    </div>
+  </footer>
 
   <script>
     document.getElementById("year").textContent = new Date().getFullYear();
@@ -1027,95 +874,6 @@
     }, { threshold: 0.12 });
 
     document.querySelectorAll(".fade-in").forEach((el) => observer.observe(el));
-
-    const track = document.querySelector(".work-track");
-    const prevBtn = document.querySelector(".slider-btn.prev");
-    const nextBtn = document.querySelector(".slider-btn.next");
-    const dots = document.querySelectorAll(".slider-dot");
-    const cards = document.querySelectorAll(".work-card");
-
-    function goToSlide(index) {
-      if (!track || !cards[index]) return;
-      track.scrollTo({
-        left: cards[index].offsetLeft - track.offsetLeft,
-        behavior: "smooth"
-      });
-    }
-
-    function updateActiveDot() {
-      if (!track || !cards.length) return;
-
-      let activeIndex = 0;
-      let closestDistance = Infinity;
-
-      cards.forEach((card, index) => {
-        const distance = Math.abs(card.offsetLeft - track.offsetLeft - track.scrollLeft);
-        if (distance < closestDistance) {
-          closestDistance = distance;
-          activeIndex = index;
-        }
-      });
-
-      dots.forEach((dot, index) => {
-        dot.classList.toggle("active", index === activeIndex);
-      });
-    }
-
-    if (track && prevBtn && nextBtn) {
-      nextBtn.addEventListener("click", () => {
-        track.scrollBy({ left: track.clientWidth * 0.85, behavior: "smooth" });
-      });
-
-      prevBtn.addEventListener("click", () => {
-        track.scrollBy({ left: -track.clientWidth * 0.85, behavior: "smooth" });
-      });
-
-      track.addEventListener("scroll", () => {
-        window.requestAnimationFrame(updateActiveDot);
-      });
-    }
-
-    
-    dots.forEach((dot, index) => {
-      dot.addEventListener("click", () => goToSlide(index));
-    });
-    const form = document.getElementById("contactForm");
-const popup = document.getElementById("successPopup");
-const closePopup = document.getElementById("closePopup");
-const formMessage = document.getElementById("formMessage");
-
-form.addEventListener("submit", async function(event) {
-  event.preventDefault();
-
-  const formData = new FormData(form);
-
-  try {
-    const response = await fetch(form.action, {
-      method: "POST",
-      body: formData,
-      headers: {
-        Accept: "application/json"
-      }
-    });
-
-    if (response.ok) {
-      form.reset();
-      popup.classList.add("show");
-    } else {
-      formMessage.textContent =
-        "Something went wrong. Please try again.";
-    }
-  } catch (error) {
-    formMessage.textContent =
-      "Network error. Please try again.";
-  }
-});
-
-closePopup.addEventListener("click", function() {
-  popup.classList.remove("show");
-});
-
-   
   </script>
 </body>
 </html>
