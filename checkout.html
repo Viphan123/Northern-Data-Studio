@@ -1,0 +1,400 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Northern Data Studio | Checkout</title>
+  <style>
+    :root {
+      --navy: #071a33;
+      --navy-2: #0d2a4d;
+      --blue: #2563eb;
+      --ice: #eef5ff;
+      --white: #ffffff;
+      --soft: #f7f9fc;
+      --text: #172033;
+      --muted: #667085;
+      --border: #e5eaf2;
+      --shadow: 0 24px 70px rgba(7, 26, 51, 0.12);
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      color: var(--text);
+      background: var(--soft);
+      line-height: 1.6;
+    }
+
+    a { color: inherit; text-decoration: none; }
+    .container { width: min(1120px, calc(100% - 40px)); margin: 0 auto; }
+
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 99;
+      background: rgba(255,255,255,0.84);
+      backdrop-filter: blur(18px);
+      border-bottom: 1px solid rgba(229,234,242,0.86);
+    }
+
+    nav {
+      height: 78px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-weight: 900;
+      color: var(--navy);
+      letter-spacing: -0.04em;
+    }
+
+    .logo-mark {
+      width: 42px;
+      height: 42px;
+      border-radius: 14px;
+      background: linear-gradient(135deg, var(--navy), var(--blue));
+      color: white;
+      display: grid;
+      place-items: center;
+      box-shadow: 0 12px 28px rgba(37, 99, 235, 0.22);
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 6px;
+      align-items: center;
+      color: var(--muted);
+      font-size: 14px;
+      font-weight: 750;
+    }
+
+    .nav-links a {
+      display: inline-flex;
+      align-items: center;
+      min-height: 40px;
+      padding: 0 13px;
+      border-radius: 999px;
+      transition: 0.2s ease;
+    }
+
+    .nav-links a:hover {
+      color: var(--navy);
+      background: var(--ice);
+    }
+
+    .nav-links .nav-cta {
+      margin-left: 6px;
+      background: var(--navy);
+      color: white;
+      border: 1px solid var(--navy);
+      box-shadow: 0 12px 26px rgba(7,26,51,0.14);
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 9px;
+      padding: 14px 22px;
+      border-radius: 999px;
+      background: var(--navy);
+      color: white;
+      font-weight: 850;
+      border: 1px solid var(--navy);
+      transition: 0.2s ease;
+      box-shadow: 0 14px 30px rgba(7,26,51,0.16);
+      cursor: pointer;
+    }
+
+    .btn:hover { transform: translateY(-2px); box-shadow: var(--shadow); }
+    .btn.secondary { background: white; color: var(--navy); border-color: var(--border); box-shadow: none; }
+    .btn.paypal { background: #ffc439; color: #071a33; border-color: #ffc439; }
+
+    main { padding: 82px 0; }
+
+    .checkout-grid {
+      display: grid;
+      grid-template-columns: 1fr 0.76fr;
+      gap: 28px;
+      align-items: start;
+    }
+
+    .panel {
+      background: white;
+      border: 1px solid var(--border);
+      border-radius: 28px;
+      padding: 32px;
+      box-shadow: var(--shadow);
+    }
+
+    .section-label {
+      color: var(--blue);
+      font-size: 13px;
+      font-weight: 950;
+      text-transform: uppercase;
+      letter-spacing: 0.14em;
+      margin-bottom: 10px;
+    }
+
+    h1, h2, h3 { color: var(--navy); }
+    h1 {
+      font-size: clamp(40px, 6vw, 68px);
+      line-height: 0.96;
+      letter-spacing: -0.07em;
+      margin-bottom: 18px;
+    }
+
+    h2 {
+      font-size: 26px;
+      line-height: 1.08;
+      letter-spacing: -0.04em;
+      margin-bottom: 14px;
+    }
+
+    p { color: var(--muted); }
+
+    .checkout-form {
+      display: grid;
+      gap: 14px;
+      margin-top: 26px;
+    }
+
+    .checkout-form input,
+    .checkout-form textarea {
+      width: 100%;
+      border: 1px solid var(--border);
+      border-radius: 15px;
+      padding: 15px 16px;
+      color: var(--text);
+      background: white;
+      font: inherit;
+      outline: none;
+    }
+
+    .checkout-form textarea {
+      min-height: 118px;
+      resize: vertical;
+    }
+
+    .checkout-form input:focus,
+    .checkout-form textarea:focus {
+      border-color: var(--blue);
+      box-shadow: 0 0 0 4px rgba(37, 99, 235, 0.10);
+    }
+
+    .cart-line {
+      display: flex;
+      justify-content: space-between;
+      gap: 18px;
+      padding: 16px 0;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .cart-line strong { color: var(--navy); }
+    .cart-total {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      gap: 18px;
+      padding: 22px 0 4px;
+    }
+
+    .cart-total strong {
+      color: var(--navy);
+      font-size: 34px;
+      letter-spacing: -0.05em;
+    }
+
+    .checkout-actions {
+      display: grid;
+      gap: 12px;
+      margin-top: 24px;
+    }
+
+    .note {
+      margin-top: 18px;
+      padding: 14px;
+      border-radius: 16px;
+      background: var(--ice);
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    .status {
+      min-height: 20px;
+      color: var(--muted);
+      font-size: 13px;
+      margin-top: 12px;
+    }
+
+    footer {
+      padding: 28px 0;
+      color: var(--muted);
+      border-top: 1px solid var(--border);
+      background: white;
+      font-size: 14px;
+    }
+
+    @media (max-width: 900px) {
+      .checkout-grid { grid-template-columns: 1fr; }
+      .nav-links { display: none; }
+    }
+
+    @media (max-width: 620px) {
+      main { padding: 54px 0; }
+      .panel { padding: 24px; }
+      .btn { width: 100%; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="container">
+      <nav>
+        <a href="newhomepage.html" class="logo">
+          <span class="logo-mark">N</span>
+          <span>Northern Data Studio</span>
+        </a>
+
+        <div class="nav-links">
+          <a href="newhomepage.html#today">What We Do</a>
+          <a href="newhomepage.html#resources">Resources</a>
+          <a href="newhomepage.html#building">Building</a>
+          <a href="pricing.html">Pricing</a>
+          <a href="pricing.html#contact" class="nav-cta">Book Consultation</a>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <div class="container checkout-grid">
+      <section class="panel">
+        <div class="section-label">Checkout</div>
+        <h1>Reserve your project with a $50 deposit.</h1>
+        <p>Complete the short checkout form, then continue to Stripe or PayPal. The deposit confirms your request and will be applied toward the final project total.</p>
+
+        <form class="checkout-form" id="checkoutForm">
+          <input type="text" name="name" placeholder="Your name" autocomplete="name" required>
+          <input type="email" name="email" placeholder="Email address" autocomplete="email" required>
+          <input type="text" name="company" placeholder="Company, optional" autocomplete="organization">
+          <textarea name="message" id="checkoutMessage" placeholder="Any notes about your data project?"></textarea>
+        </form>
+      </section>
+
+      <aside class="panel">
+        <div class="section-label">Cart</div>
+        <h2>Project Deposit</h2>
+
+        <div id="cartItems"></div>
+
+        <div class="cart-total">
+          <span>Total due today</span>
+          <strong>$50</strong>
+        </div>
+
+        <div class="checkout-actions">
+          <button class="btn" type="button" data-provider="stripe">Checkout with Stripe</button>
+          <button class="btn paypal" type="button" data-provider="paypal">Checkout with PayPal</button>
+          <a class="btn secondary" href="pricing.html">Back to Pricing</a>
+        </div>
+
+        <p class="note">Replace the placeholder checkout links in this file once your Stripe and PayPal $50 deposit links are ready.</p>
+        <p class="status" id="checkoutStatus"></p>
+      </aside>
+    </div>
+  </main>
+
+  <footer>
+    <div class="container">
+      &copy; <span id="year"></span> Northern Data Studio
+    </div>
+  </footer>
+
+  <script>
+    document.getElementById("year").textContent = new Date().getFullYear();
+
+    const params = new URLSearchParams(window.location.search);
+    const cartKey = "northernDataStudioCart";
+    const selectedService = params.get("service");
+    const cartItems = document.getElementById("cartItems");
+    const checkoutMessage = document.getElementById("checkoutMessage");
+    const checkoutStatus = document.getElementById("checkoutStatus");
+    const checkoutForm = document.getElementById("checkoutForm");
+
+    const paymentLinks = {
+      stripe: "",
+      paypal: ""
+    };
+
+    const escapeHtml = (text) => String(text ?? "")
+      .replace(/&/g, "&amp;")
+      .replace(/</g, "&lt;")
+      .replace(/>/g, "&gt;")
+      .replace(/"/g, "&quot;")
+      .replace(/'/g, "&#039;");
+
+    const getSelectedItems = () => {
+      if (params.get("cart") === "1") {
+        const storedCart = JSON.parse(localStorage.getItem(cartKey) || "[]");
+        return storedCart.length ? storedCart : ["Analytics Service"];
+      }
+
+      return [selectedService || "Analytics Service"];
+    };
+
+    const selectedItems = getSelectedItems();
+
+    cartItems.innerHTML = selectedItems.map((item) => `
+      <div class="cart-line">
+        <div>
+          <strong>${escapeHtml(item)}</strong>
+          <p>Selected service</p>
+        </div>
+        <strong>Deposit</strong>
+      </div>
+    `).join("");
+
+    checkoutMessage.value = `I want to request: ${selectedItems.join(", ")}. I am placing the $50 deposit.`;
+
+    document.querySelectorAll("[data-provider]").forEach((button) => {
+      button.addEventListener("click", () => {
+        const provider = button.dataset.provider;
+        const paymentUrl = paymentLinks[provider];
+
+        if (!checkoutForm.reportValidity()) return;
+
+        const formData = new FormData(checkoutForm);
+        const checkoutLead = {
+          name: formData.get("name"),
+          email: formData.get("email"),
+          company: formData.get("company"),
+          message: formData.get("message"),
+          services: selectedItems,
+          deposit: 50,
+          provider,
+          capturedAt: new Date().toISOString()
+        };
+
+        localStorage.setItem("northernDataStudioCheckoutLead", JSON.stringify(checkoutLead));
+
+        if (!paymentUrl) {
+          checkoutStatus.textContent = `Add your ${provider === "stripe" ? "Stripe" : "PayPal"} $50 deposit link in checkout.html to activate this checkout button.`;
+          return;
+        }
+
+        window.location.href = paymentUrl;
+      });
+    });
+  </script>
+</body>
+</html>
