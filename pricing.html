@@ -71,14 +71,40 @@
 
     .nav-links {
       display: flex;
-      gap: 26px;
+      gap: 6px;
       align-items: center;
       color: var(--muted);
       font-size: 14px;
       font-weight: 750;
     }
 
-    .nav-links a:hover { color: var(--navy); }
+    .nav-links a {
+      display: inline-flex;
+      align-items: center;
+      min-height: 40px;
+      padding: 0 13px;
+      border-radius: 999px;
+      transition: 0.2s ease;
+    }
+
+    .nav-links a:hover {
+      color: var(--navy);
+      background: var(--ice);
+    }
+
+    .nav-links .nav-cta {
+      margin-left: 6px;
+      background: var(--navy);
+      color: white;
+      border: 1px solid var(--navy);
+      box-shadow: 0 12px 26px rgba(7,26,51,0.14);
+    }
+
+    .nav-links .nav-cta:hover {
+      color: white;
+      background: var(--navy-2);
+      transform: translateY(-1px);
+    }
 
     .btn {
       display: inline-flex;
@@ -207,6 +233,27 @@
     }
 
     .card:hover { transform: translateY(-5px); box-shadow: var(--shadow); }
+
+    .card .btn {
+      width: 100%;
+      margin-top: 24px;
+      box-shadow: none;
+    }
+
+    .card .add-to-cart {
+      margin-top: 10px;
+      background: white;
+      color: var(--navy);
+      border-color: var(--border);
+      box-shadow: none;
+      font: inherit;
+    }
+
+    .deposit-note {
+      margin-top: 12px;
+      color: var(--muted);
+      font-size: 13px;
+    }
 
     .price {
       color: var(--navy);
@@ -348,6 +395,70 @@
     .addon-top { display: flex; justify-content: space-between; gap: 16px; align-items: start; margin-bottom: 10px; }
     .addon-price { color: var(--blue); font-weight: 950; white-space: nowrap; }
     .addon-note { margin-top: 14px; padding-top: 14px; border-top: 1px solid var(--border); color: var(--navy); font-weight: 750; }
+
+    .addon .service-checkout {
+      width: 100%;
+      justify-content: center;
+      margin-top: 20px;
+      padding: 12px 14px 12px 16px;
+      border-radius: 16px;
+      background: var(--ice);
+      color: var(--navy);
+      border-color: #d6e4ff;
+      box-shadow: none;
+      font-size: 14px;
+    }
+
+    .addon .service-checkout:hover {
+      background: white;
+      border-color: var(--blue);
+      box-shadow: 0 12px 26px rgba(37, 99, 235, 0.10);
+    }
+
+    .addon .add-to-cart {
+      width: 100%;
+      justify-content: center;
+      margin-top: 10px;
+      padding: 12px 14px;
+      border-radius: 16px;
+      background: white;
+      color: var(--navy);
+      border-color: var(--border);
+      box-shadow: none;
+      font: inherit;
+      font-size: 14px;
+    }
+
+    .addon .add-to-cart:hover,
+    .card .add-to-cart:hover {
+      border-color: var(--blue);
+      box-shadow: 0 12px 26px rgba(37, 99, 235, 0.10);
+    }
+
+    .cart-bar {
+      position: fixed;
+      right: 24px;
+      bottom: 24px;
+      z-index: 80;
+      display: none;
+      align-items: center;
+      gap: 14px;
+      padding: 12px 14px 12px 18px;
+      border: 1px solid var(--border);
+      border-radius: 999px;
+      background: white;
+      box-shadow: var(--shadow);
+      color: var(--navy);
+      font-weight: 850;
+    }
+
+    .cart-bar.active { display: flex; }
+
+    .cart-bar .btn {
+      padding: 10px 15px;
+      box-shadow: none;
+      font-size: 13px;
+    }
 
     .process { background: var(--navy); color: white; }
     .process h2, .process h3, .process .section-label { color: white; }
@@ -637,7 +748,7 @@
           <a href="newhomepage.html#resources">Resources</a>
           <a href="newhomepage.html#building">Building</a>
           <a href="#top">Pricing</a>
-          <a href="#contact">Contact</a>
+          <a href="#contact" class="nav-cta">Book Consultation</a>
         </div>
       </nav>
     </div>
@@ -698,6 +809,8 @@
               <li>3–5 key insights</li>
               <li>Basic data processing</li>
             </ul>
+            <a href="#" class="btn service-checkout" data-item="Quick Insight Dashboard">Request This Service</a>
+            <button class="btn add-to-cart" type="button" data-item="Quick Insight Dashboard">Add to Cart</button>
           </article>
 
           <article class="card fade-in">
@@ -711,6 +824,8 @@
               <li>Insights and recommendations</li>
               <li>Optional walkthrough</li>
             </ul>
+            <a href="#" class="btn service-checkout" data-item="Business Dashboard Setup">Request This Service</a>
+            <button class="btn add-to-cart" type="button" data-item="Business Dashboard Setup">Add to Cart</button>
           </article>
 
           <article class="card fade-in">
@@ -723,64 +838,9 @@
               <li>New insights each month</li>
               <li>Small improvements</li>
             </ul>
+            <a href="#" class="btn service-checkout" data-item="Ongoing Analytics Support">Request This Service</a>
+            <button class="btn add-to-cart" type="button" data-item="Ongoing Analytics Support">Add to Cart</button>
           </article>
-        </div>
-      </div>
-    </section>
-
-    <section id="work" class="sample-work">
-      <div class="container">
-        <div class="section-header fade-in">
-          <div class="section-label">Sample Work</div>
-          <h2>Clean dashboards with a business story.</h2>
-          <p>Swipe through example dashboard concepts showing how Northern Data Studio turns raw data into clear visuals, insights, and business recommendations.</p>
-        </div>
-
-        <div class="work-slider fade-in" aria-label="Sample work dashboard slider">
-          <button class="slider-btn prev" type="button" aria-label="Previous dashboard">‹</button>
-
-          <div class="work-track">
-            <article class="work-card">
-              <div class="work-image">
-                <img src="sales-dashboard.png" alt="Sales Performance Dashboard sample" />
-              </div>
-              <div class="work-content">
-                <span class="work-tag">Sales Analytics</span>
-                <h3>Sales Performance Dashboard</h3>
-                <p>Tracks revenue, orders, customers, top products, regional performance, and sales trends.</p>
-              </div>
-            </article>
-
-            <article class="work-card">
-              <div class="work-image">
-                <img src="expense-dashboard.png" alt="Expense Tracking Dashboard sample" />
-              </div>
-              <div class="work-content">
-                <span class="work-tag">Expense Tracking</span>
-                <h3>Expense Tracking Dashboard</h3>
-                <p>Monitors spending categories, monthly trends, budget usage, and cost-control opportunities.</p>
-              </div>
-            </article>
-
-            <article class="work-card">
-              <div class="work-image">
-                <img src="marketing-dashboard.png" alt="Marketing Performance Dashboard sample" />
-              </div>
-              <div class="work-content">
-                <span class="work-tag">Marketing Insights</span>
-                <h3>Marketing Performance Dashboard</h3>
-                <p>Tracks campaigns, clicks, conversions, cost efficiency, and channel performance.</p>
-              </div>
-            </article>
-          </div>
-
-          <button class="slider-btn next" type="button" aria-label="Next dashboard">›</button>
-
-          <div class="slider-dots" aria-label="Slider navigation">
-            <button class="slider-dot active" type="button" aria-label="Go to sales dashboard"></button>
-            <button class="slider-dot" type="button" aria-label="Go to expense dashboard"></button>
-            <button class="slider-dot" type="button" aria-label="Go to marketing dashboard"></button>
-          </div>
         </div>
       </div>
     </section>
@@ -798,48 +858,64 @@
             <div class="addon-top"><h3>Extra Revision Round</h3><div class="addon-price">+$50 – $100 / round</div></div>
             <p>Additional dashboard tweaks after included revisions, including small visual or metric changes.</p>
             <div class="addon-note">Best for clients who keep requesting “just one more change.”</div>
+            <a href="#" class="btn service-checkout" data-item="Extra Revision Round">Request This Service</a>
+            <button class="btn add-to-cart" type="button" data-item="Extra Revision Round">Add to Cart</button>
           </div>
 
           <div class="addon fade-in">
             <div class="addon-top"><h3>Advanced Data Processing</h3><div class="addon-price">+$100 – $300</div></div>
             <p>Fix messy spreadsheets, merge multiple files, handle inconsistent formats, and restructure data for analysis.</p>
             <div class="addon-note">This is where most hidden work happens, so it is priced separately.</div>
+            <a href="#" class="btn service-checkout" data-item="Advanced Data Processing">Request This Service</a>
+            <button class="btn add-to-cart" type="button" data-item="Advanced Data Processing">Add to Cart</button>
           </div>
 
           <div class="addon fade-in">
             <div class="addon-top"><h3>Additional Dashboard Page</h3><div class="addon-price">+$100 – $250 / page</div></div>
             <p>A new dashboard view, new metrics or KPIs, or a separate analysis section.</p>
             <div class="addon-note">Prevents “can you just add one more chart?” scope creep.</div>
+            <a href="#" class="btn service-checkout" data-item="Additional Dashboard Page">Request This Service</a>
+            <button class="btn add-to-cart" type="button" data-item="Additional Dashboard Page">Add to Cart</button>
           </div>
 
           <div class="addon fade-in">
             <div class="addon-top"><h3>Cloud Deployment / Hosting Setup</h3><div class="addon-price">+$100 – $200</div></div>
             <p>Push dashboard or data solution to cloud, set up basic access, and share live dashboard links.</p>
             <div class="addon-note">This is where Azure knowledge becomes valuable.</div>
+            <a href="#" class="btn service-checkout" data-item="Cloud Deployment / Hosting Setup">Request This Service</a>
+            <button class="btn add-to-cart" type="button" data-item="Cloud Deployment / Hosting Setup">Add to Cart</button>
           </div>
 
           <div class="addon fade-in">
             <div class="addon-top"><h3>Insights Report</h3><div class="addon-price">+$75 – $200</div></div>
             <p>Written summary of findings, bullet-point insights, business recommendations, exported as Word or PDF.</p>
             <div class="addon-note">Very sellable to non-technical clients.</div>
+            <a href="#" class="btn service-checkout" data-item="Insights Report">Request This Service</a>
+            <button class="btn add-to-cart" type="button" data-item="Insights Report">Add to Cart</button>
           </div>
 
           <div class="addon fade-in">
             <div class="addon-top"><h3>Presentation Deck</h3><div class="addon-price">+$100 – $250</div></div>
             <p>PowerPoint summary of dashboard findings, key insight slides, and meeting-ready talking points.</p>
             <div class="addon-note">Great for business clients who need to present data.</div>
+            <a href="#" class="btn service-checkout" data-item="Presentation Deck">Request This Service</a>
+            <button class="btn add-to-cart" type="button" data-item="Presentation Deck">Add to Cart</button>
           </div>
 
           <div class="addon fade-in">
             <div class="addon-top"><h3>Fast Delivery</h3><div class="addon-price">+$50 – $150</div></div>
             <p>Delivery in 24–72 hours depending on project scope, with priority queue placement.</p>
             <div class="addon-note">An easy upsell when someone has an urgent deadline.</div>
+            <a href="#" class="btn service-checkout" data-item="Fast Delivery">Request This Service</a>
+            <button class="btn add-to-cart" type="button" data-item="Fast Delivery">Add to Cart</button>
           </div>
 
           <div class="addon fade-in">
             <div class="addon-top"><h3>Monthly Data Refresh Setup</h3><div class="addon-price">+$100 – $250</div></div>
             <p>Automate or simplify data updates and prepare the dashboard for recurring use.</p>
             <div class="addon-note">Bridges naturally into the monthly retainer.</div>
+            <a href="#" class="btn service-checkout" data-item="Monthly Data Refresh Setup">Request This Service</a>
+            <button class="btn add-to-cart" type="button" data-item="Monthly Data Refresh Setup">Add to Cart</button>
           </div>
         </div>
       </div>
@@ -919,6 +995,11 @@
 </div> </div>
     </section>
   </main>
+
+  <div class="cart-bar" id="cartBar" aria-live="polite">
+    <span id="cartSummary">0 services in cart</span>
+    <a href="checkout.html?cart=1" class="btn">View Cart</a>
+  </div>
 
   <footer class="footer-editorial">
 
@@ -1084,6 +1165,48 @@
 const popup = document.getElementById("successPopup");
 const closePopup = document.getElementById("closePopup");
 const formMessage = document.getElementById("formMessage");
+const serviceSelect = form.querySelector('select[name="service"]');
+const messageField = form.querySelector('textarea[name="message"]');
+const cartKey = "northernDataStudioCart";
+const cartBar = document.getElementById("cartBar");
+const cartSummary = document.getElementById("cartSummary");
+
+const getCart = () => JSON.parse(localStorage.getItem(cartKey) || "[]");
+
+const setCart = (cart) => {
+  localStorage.setItem(cartKey, JSON.stringify(cart));
+};
+
+const updateCartBar = () => {
+  const cart = getCart();
+  cartSummary.textContent = `${cart.length} ${cart.length === 1 ? "service" : "services"} in cart`;
+  cartBar.classList.toggle("active", cart.length > 0);
+};
+
+document.querySelectorAll(".add-to-cart").forEach((button) => {
+  button.addEventListener("click", () => {
+    const item = button.dataset.item;
+    const cart = getCart();
+
+    if (!cart.includes(item)) {
+      cart.push(item);
+      setCart(cart);
+    }
+
+    button.textContent = "Added to Cart";
+    updateCartBar();
+  });
+});
+
+updateCartBar();
+
+document.querySelectorAll(".service-checkout").forEach((button) => {
+  button.addEventListener("click", (event) => {
+    event.preventDefault();
+    const item = button.dataset.item;
+    window.location.href = `checkout.html?service=${encodeURIComponent(item)}`;
+  });
+});
 
 form.addEventListener("submit", async function(event) {
   event.preventDefault();
