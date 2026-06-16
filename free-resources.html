@@ -1,0 +1,990 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Northern Data Studio | Free Resources</title>
+
+  <style>
+    :root {
+      --navy: #071a33;
+      --navy-2: #0d2a4d;
+      --blue: #2563eb;
+      --ice: #eef5ff;
+      --white: #ffffff;
+      --soft: #f7f9fc;
+      --text: #172033;
+      --muted: #667085;
+      --border: #e5eaf2;
+      --shadow: 0 24px 70px rgba(7, 26, 51, 0.12);
+      --radius: 28px;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      color: var(--text);
+      background: var(--white);
+      line-height: 1.6;
+    }
+
+    a { color: inherit; text-decoration: none; }
+    img { max-width: 100%; display: block; }
+    .container { width: min(1160px, calc(100% - 40px)); margin: 0 auto; }
+
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 99;
+      background: rgba(255,255,255,0.84);
+      backdrop-filter: blur(18px);
+      border-bottom: 1px solid rgba(229,234,242,0.86);
+    }
+
+    nav {
+      height: 78px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-weight: 900;
+      color: var(--navy);
+      letter-spacing: -0.04em;
+    }
+
+    .logo-mark {
+      width: 42px;
+      height: 42px;
+      border-radius: 14px;
+      background: var(--navy);
+      display: grid;
+      place-items: center;
+      overflow: hidden;
+      box-shadow: 0 12px 28px rgba(7,26,51,0.16);
+    }
+
+    .logo-mark img { width: 100%; height: 100%; object-fit: cover; }
+
+    .nav-links {
+      display: flex;
+      gap: 6px;
+      align-items: center;
+      color: var(--muted);
+      font-size: 14px;
+      font-weight: 750;
+    }
+
+    .nav-links a {
+      display: inline-flex;
+      align-items: center;
+      min-height: 40px;
+      padding: 0 13px;
+      border-radius: 999px;
+      transition: 0.2s ease;
+    }
+
+    .nav-links a:hover,
+    .nav-links a.active {
+      color: var(--navy);
+      background: var(--ice);
+    }
+
+    .nav-links .nav-cta {
+      margin-left: 6px;
+      background: var(--navy);
+      color: white;
+      border: 1px solid var(--navy);
+      box-shadow: 0 12px 26px rgba(7,26,51,0.14);
+    }
+
+    .nav-links .nav-cta:hover { color: white; background: var(--navy-2); }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 9px;
+      padding: 14px 22px;
+      border-radius: 999px;
+      background: var(--navy);
+      color: white;
+      font-weight: 850;
+      border: 1px solid var(--navy);
+      transition: 0.2s ease;
+      box-shadow: 0 14px 30px rgba(7,26,51,0.16);
+      cursor: pointer;
+      font: inherit;
+    }
+
+    .btn:hover { transform: translateY(-2px); box-shadow: var(--shadow); }
+    .btn.secondary { background: white; color: var(--navy); border-color: var(--border); box-shadow: none; }
+    .btn.light { background: white; color: var(--navy); border-color: white; box-shadow: none; }
+    .btn.ghost { background: transparent; color: white; border-color: rgba(255,255,255,0.22); box-shadow: none; }
+    .btn:disabled { opacity: 0.65; cursor: not-allowed; transform: none; }
+
+    section { padding: 92px 0; }
+
+    .section-header { max-width: 760px; margin-bottom: 42px; }
+    .section-header.center { text-align: center; margin-left: auto; margin-right: auto; }
+
+    .section-label {
+      color: var(--blue);
+      font-size: 13px;
+      font-weight: 950;
+      text-transform: uppercase;
+      letter-spacing: 0.14em;
+      margin-bottom: 10px;
+    }
+
+    h1, h2, h3 { color: var(--navy); }
+
+    h1 {
+      font-size: clamp(48px, 7vw, 86px);
+      line-height: 0.94;
+      letter-spacing: -0.078em;
+      margin-bottom: 24px;
+    }
+
+    h2 {
+      font-size: clamp(34px, 4vw, 54px);
+      line-height: 1.05;
+      letter-spacing: -0.062em;
+      margin-bottom: 14px;
+    }
+
+    h3 {
+      font-size: 22px;
+      letter-spacing: -0.035em;
+      margin-bottom: 8px;
+    }
+
+    p { color: var(--muted); }
+
+    .hero {
+      position: relative;
+      overflow: hidden;
+      padding: 112px 0 88px;
+      background:
+        radial-gradient(circle at 14% 18%, rgba(37,99,235,0.15), transparent 32%),
+        linear-gradient(180deg, #ffffff 0%, #f6f9ff 100%);
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.02fr 0.98fr;
+      gap: 54px;
+      align-items: center;
+    }
+
+    .hero p {
+      font-size: 20px;
+      max-width: 680px;
+      margin-bottom: 30px;
+    }
+
+    .hero-actions { display: flex; gap: 14px; flex-wrap: wrap; }
+
+    .hero-panel {
+      background: var(--navy);
+      border-radius: 36px;
+      padding: 18px;
+      box-shadow: var(--shadow);
+    }
+
+    .hero-panel-inner {
+      min-height: 380px;
+      border: 1px solid rgba(255,255,255,0.14);
+      border-radius: 26px;
+      padding: 28px;
+      background:
+        linear-gradient(rgba(255,255,255,0.05) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,0.05) 1px, transparent 1px),
+        rgba(255,255,255,0.04);
+      background-size: 22px 22px;
+      display: grid;
+      align-content: space-between;
+      color: white;
+    }
+
+    .hero-panel h3 { color: white; font-size: 30px; }
+    .hero-panel p { color: rgba(255,255,255,0.68); margin: 0; font-size: 15px; }
+
+    .resource-stack {
+      display: grid;
+      gap: 14px;
+      margin-top: 26px;
+    }
+
+    .stack-item {
+      display: flex;
+      justify-content: space-between;
+      gap: 18px;
+      padding: 16px;
+      border-radius: 18px;
+      background: rgba(255,255,255,0.10);
+      color: rgba(255,255,255,0.72);
+      font-size: 14px;
+    }
+
+    .stack-item strong { color: white; }
+
+    .resources { background: white; }
+    .resource-grid { display: grid; gap: 24px; }
+
+    .resource-card {
+      display: grid;
+      grid-template-columns: 0.92fr 1.08fr;
+      gap: 34px;
+      align-items: center;
+      background: white;
+      border: 1px solid var(--border);
+      border-radius: 34px;
+      padding: 28px;
+      box-shadow: 0 18px 48px rgba(7,26,51,0.07);
+    }
+
+    .resource-copy { padding: 18px; }
+    .resource-copy p { margin-bottom: 24px; }
+    .resource-actions { display: flex; gap: 12px; flex-wrap: wrap; }
+
+    .resource-visual {
+      background: var(--ice);
+      border-radius: 26px;
+      padding: 14px;
+      overflow: hidden;
+    }
+
+    .resource-visual img {
+      width: 100%;
+      aspect-ratio: 16 / 9;
+      object-fit: cover;
+      object-position: top left;
+      border-radius: 18px;
+      border: 1px solid rgba(7,26,51,0.08);
+    }
+
+    .tool-section { background: var(--soft); }
+
+    .tool-shell {
+      display: grid;
+      grid-template-columns: 0.88fr 1.12fr;
+      gap: 28px;
+      align-items: stretch;
+      background: var(--navy);
+      border-radius: 36px;
+      padding: 18px;
+      box-shadow: var(--shadow);
+    }
+
+    .tool-copy {
+      padding: 36px;
+      align-self: center;
+    }
+
+    .tool-copy h2 { color: white; }
+    .tool-copy p { color: rgba(255,255,255,0.72); margin-bottom: 24px; }
+
+    .tool-ui {
+      background: rgba(255,255,255,0.06);
+      border: 1px solid rgba(255,255,255,0.14);
+      border-radius: 28px;
+      padding: 26px;
+      color: white;
+    }
+
+    .upload-box {
+      border: 1px dashed rgba(255,255,255,0.28);
+      border-radius: 22px;
+      padding: 22px;
+      margin-bottom: 18px;
+      background: rgba(255,255,255,0.05);
+    }
+
+    .upload-box label {
+      display: inline-flex;
+      margin-top: 16px;
+      padding: 12px 16px;
+      border-radius: 999px;
+      background: white;
+      color: var(--navy);
+      cursor: pointer;
+      font-weight: 900;
+    }
+
+    .upload-box input { display: none; }
+
+    .tool-controls {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 12px;
+      margin: 16px 0 20px;
+    }
+
+    .tool-controls label {
+      display: flex;
+      align-items: center;
+      gap: 9px;
+      padding: 12px;
+      border-radius: 14px;
+      background: rgba(255,255,255,0.08);
+      color: rgba(255,255,255,0.82);
+      font-size: 14px;
+    }
+
+    .tool-controls input { accent-color: var(--blue); }
+    .tool-actions { display: flex; gap: 12px; flex-wrap: wrap; }
+
+    .tool-status {
+      min-height: 22px;
+      margin-top: 16px;
+      color: rgba(255,255,255,0.66);
+      font-size: 13px;
+    }
+
+    .table-preview {
+      margin-top: 18px;
+      max-height: 260px;
+      overflow: auto;
+      border-radius: 16px;
+      background: white;
+    }
+
+    .table-preview table {
+      width: 100%;
+      border-collapse: collapse;
+      color: var(--text);
+      font-size: 13px;
+      min-width: 560px;
+    }
+
+    .table-preview th,
+    .table-preview td {
+      padding: 10px 12px;
+      border-bottom: 1px solid var(--border);
+      text-align: left;
+    }
+
+    .table-preview th {
+      position: sticky;
+      top: 0;
+      background: var(--ice);
+      color: var(--navy);
+      font-weight: 900;
+    }
+
+    .cta {
+      padding: 84px 0;
+      background: white;
+    }
+
+    .cta-card {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 28px;
+      padding: 34px;
+      border-radius: 30px;
+      background: var(--navy);
+      box-shadow: var(--shadow);
+    }
+
+    .cta-card h2 { color: white; margin-bottom: 6px; }
+    .cta-card p { color: rgba(255,255,255,0.70); }
+
+    .footer-editorial {
+      padding: 64px 0 30px;
+      background: var(--navy);
+      color: white;
+    }
+
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 1.1fr 0.9fr 0.8fr;
+      gap: 70px;
+      align-items: start;
+    }
+
+    .footer-brand h2 { color: white; font-size: 32px; }
+    .footer-brand p { color: rgba(255,255,255,0.62); }
+
+    .footer-label {
+      display: block;
+      color: rgba(255,255,255,0.42);
+      font-size: 12px;
+      font-weight: 900;
+      text-transform: uppercase;
+      letter-spacing: 0.14em;
+      margin-bottom: 14px;
+    }
+
+    .footer-contact,
+    .footer-connect { display: grid; gap: 10px; color: rgba(255,255,255,0.68); }
+
+    .footer-contact a,
+    .footer-contact span { color: rgba(255,255,255,0.68); }
+
+    .social-icons { display: flex; gap: 10px; }
+
+    .social-icons a {
+      width: 42px;
+      height: 42px;
+      display: grid;
+      place-items: center;
+      border: 1px solid rgba(255,255,255,0.14);
+      border-radius: 50%;
+      color: rgba(255,255,255,0.74);
+    }
+
+    .footer-bottom {
+      margin-top: 46px;
+      padding-top: 24px;
+      border-top: 1px solid rgba(255,255,255,0.10);
+      color: rgba(255,255,255,0.48);
+      font-size: 13px;
+    }
+
+    .modal-backdrop {
+      position: fixed;
+      inset: 0;
+      z-index: 130;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 24px;
+      background: rgba(7, 26, 51, 0.62);
+      backdrop-filter: blur(8px);
+    }
+
+    .modal-backdrop.active { display: flex; }
+
+    .lead-modal {
+      width: min(520px, 100%);
+      border-radius: 28px;
+      background: white;
+      padding: 28px;
+      box-shadow: var(--shadow);
+    }
+
+    .modal-top {
+      display: flex;
+      justify-content: space-between;
+      gap: 20px;
+      align-items: flex-start;
+      margin-bottom: 20px;
+    }
+
+    .modal-close {
+      width: 42px;
+      height: 42px;
+      border-radius: 999px;
+      border: 1px solid var(--border);
+      background: white;
+      color: var(--navy);
+      font-size: 24px;
+      cursor: pointer;
+    }
+
+    .lead-form { display: grid; gap: 14px; }
+    .lead-field { display: grid; gap: 7px; }
+    .lead-field label { color: var(--navy); font-weight: 850; font-size: 13px; }
+
+    .lead-field input {
+      width: 100%;
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 14px 15px;
+      font: inherit;
+      outline: none;
+    }
+
+    .lead-note {
+      color: var(--muted);
+      font-size: 12px;
+      line-height: 1.5;
+    }
+
+    .fade-in { opacity: 1; transform: translateY(0); transition: 0.55s ease; }
+    .fade-in.visible { opacity: 1; transform: translateY(0); }
+
+    @media (max-width: 1020px) {
+      .hero-grid, .resource-card, .tool-shell { grid-template-columns: 1fr; }
+      .footer-grid { grid-template-columns: 1fr; gap: 44px; }
+    }
+
+    @media (max-width: 760px) {
+      .nav-links { display: none; }
+      section, .hero { padding: 72px 0; }
+      .hero-actions, .resource-actions, .tool-actions { flex-direction: column; }
+      .btn { width: 100%; }
+      .hero-panel-inner { min-height: 300px; }
+      .resource-card, .tool-shell, .cta-card { padding: 20px; border-radius: 24px; }
+      .tool-copy { padding: 24px; }
+      .tool-controls { grid-template-columns: 1fr; }
+      .cta-card { display: grid; }
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <div class="container">
+      <nav>
+        <a href="index.html" class="logo">
+          <span class="logo-mark"><img src="logoweb.png" alt=""></span>
+          <span>Northern Data Studio</span>
+        </a>
+
+        <div class="nav-links">
+          <a href="index.html#today">What We Do</a>
+          <a href="free-resources.html" class="active">Resources</a>
+          <a href="index.html#building">Building</a>
+          <a href="pricing.html">Pricing</a>
+          <a href="index.html#contact" class="nav-cta">Book Consultation</a>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <main id="top">
+    <section class="hero">
+      <div class="container hero-grid">
+        <div class="fade-in">
+          <div class="section-label">Free Resources</div>
+          <h1>Dashboard examples and data tools you can use.</h1>
+          <p>Explore sample analytics work, download Power BI and PDF resources, and try a simple browser-based CSV cleaning tool before starting a project.</p>
+          <div class="hero-actions">
+            <a href="#downloads" class="btn">Explore Downloads</a>
+            <a href="#data-tool" class="btn secondary">Try the Free Tool</a>
+          </div>
+        </div>
+
+        <div class="hero-panel fade-in">
+          <div class="hero-panel-inner">
+            <div>
+              <div class="section-label">Resource Hub</div>
+              <h3>Preview how Northern Data Studio turns raw data into usable business assets.</h3>
+              <p>Every download is designed to show the mix of data preparation, dashboard design, and analytical storytelling behind the work.</p>
+            </div>
+            <div class="resource-stack">
+              <div class="stack-item"><span>Dashboard files</span><strong>PBIX</strong></div>
+              <div class="stack-item"><span>Written reports</span><strong>PDF</strong></div>
+              <div class="stack-item"><span>Data tool</span><strong>CSV</strong></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="resources" id="downloads">
+      <div class="container">
+        <div class="section-header center fade-in">
+          <div class="section-label">Downloads</div>
+          <h2>Free dashboard and research resources.</h2>
+          <p>Use these examples to review the style, structure, and level of analysis behind Northern Data Studio projects.</p>
+        </div>
+
+        <div class="resource-grid">
+          <article class="resource-card fade-in">
+            <div class="resource-copy">
+              <div class="section-label">Market Intelligence</div>
+              <h2>Canadian Real Estate Sector Analysis</h2>
+              <p>A resource project combining housing market research, Power BI dashboard design, and data storytelling for Canadian real estate trends.</p>
+              <div class="resource-actions">
+                <a href="Real Estate Sector Dashboard.pdf" class="btn gated-download" data-resource="Canadian Real Estate Sector Analysis" data-format="PDF">Download PDF</a>
+                <a href="Real Estate Sector Dashboard.pbix" class="btn secondary gated-download" data-resource="Canadian Real Estate Sector Analysis" data-format="PBIX">Download PBIX</a>
+                <a href="index.html#contact" class="btn secondary">Request Similar Work</a>
+              </div>
+            </div>
+
+            <div class="resource-visual">
+              <img src="Homepage NDS Real Estate.png" alt="Canadian real estate sector dashboard preview">
+            </div>
+          </article>
+
+          <article class="resource-card fade-in">
+            <div class="resource-copy">
+              <div class="section-label">Financial Dashboard</div>
+              <h2>Bird Construction Financial Dashboard</h2>
+              <p>A Power BI dashboard and PDF report exploring Bird Construction Inc., a Canadian construction services company operating across industrial, building, and infrastructure markets.</p>
+              <div class="resource-actions">
+                <a href="Bird Construction.pdf" class="btn gated-download" data-resource="Bird Construction Financial Dashboard" data-format="PDF">Download PDF</a>
+                <a href="Bird Construction.pbix" class="btn secondary gated-download" data-resource="Bird Construction Financial Dashboard" data-format="PBIX">Download PBIX</a>
+                <a href="index.html#contact" class="btn secondary">Request Similar Work</a>
+              </div>
+            </div>
+
+            <div class="resource-visual">
+              <img src="Homepage Bird Construction.png" alt="Bird Construction financial dashboard preview">
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="tool-section" id="data-tool">
+      <div class="container">
+        <div class="tool-shell fade-in">
+          <div class="tool-copy">
+            <div class="section-label">Free Data Tool</div>
+            <h2>Data Cleaning Assistant</h2>
+            <p>Upload a CSV, preview the table, clean headers, trim whitespace, remove blank rows, and remove duplicate records. Files are processed locally in your browser.</p>
+            <div class="resource-actions">
+              <a href="index.html#contact" class="btn light">Request Cleaning Support</a>
+              <a href="#downloads" class="btn ghost">View Downloads</a>
+            </div>
+          </div>
+
+          <div class="tool-ui">
+            <div class="upload-box">
+              <strong>Upload CSV file</strong>
+              <p style="color: rgba(255,255,255,0.62); margin-top: 8px;">Your file is processed locally in the browser.</p>
+              <label for="csvUpload">Choose CSV</label>
+              <input id="csvUpload" type="file" accept=".csv,text/csv">
+            </div>
+
+            <h3 style="color:white;">Cleaning options</h3>
+            <div class="tool-controls">
+              <label><input type="checkbox" id="trimValues" checked> Trim spaces</label>
+              <label><input type="checkbox" id="removeBlankRows" checked> Remove blank rows</label>
+              <label><input type="checkbox" id="removeDuplicates" checked> Remove duplicates</label>
+              <label><input type="checkbox" id="normalizeHeaders" checked> Clean headers</label>
+            </div>
+
+            <div class="tool-actions">
+              <button class="btn light" type="button" id="cleanCsvBtn" disabled>Clean Data</button>
+              <button class="btn ghost" type="button" id="downloadCsvBtn" disabled>Download CSV</button>
+            </div>
+
+            <p class="tool-status" id="csvToolStatus">Upload a CSV to preview and clean it.</p>
+            <div class="table-preview" id="csvPreview"></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="cta">
+      <div class="container">
+        <div class="cta-card fade-in">
+          <div>
+            <h2>Want something built for your data?</h2>
+            <p>Send your project details and Northern Data Studio will help scope the right dashboard, report, automation, or analytics support.</p>
+          </div>
+          <a href="index.html#contact" class="btn light">Start a Project</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer-editorial">
+    <div class="container footer-grid">
+      <div class="footer-brand">
+        <h2>Northern Data Studio</h2>
+        <p>Clear Data. Clear Decisions. Better Business.</p>
+      </div>
+
+      <div class="footer-contact">
+        <span class="footer-label">Contact</span>
+        <a href="mailto:info@northerndatastudio.com">info@northerndatastudio.com</a>
+        <a href="tel:16139223062">(613) 922-3062</a>
+        <span>Ottawa, Ontario, Canada</span>
+      </div>
+
+      <div class="footer-connect">
+        <span class="footer-label">Connect</span>
+        <div class="social-icons">
+          <a href="https://www.linkedin.com/company/northern-data-studio/" target="_blank" aria-label="LinkedIn">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+          </a>
+          <a href="https://www.instagram.com/northerndatastudio/" target="_blank" aria-label="Instagram">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37a4 4 0 1 1-2.63-2.63 4 4 0 0 1 2.63 2.63z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <div class="container footer-bottom">
+      &copy; <span id="year"></span> Northern Data Studio
+    </div>
+  </footer>
+
+  <div class="modal-backdrop" id="downloadModal" aria-hidden="true">
+    <div class="lead-modal" role="dialog" aria-modal="true" aria-labelledby="downloadModalTitle">
+      <div class="modal-top">
+        <div>
+          <div class="section-label">Free Resource</div>
+          <h3 id="downloadModalTitle">Get the resource</h3>
+          <p id="downloadModalCopy">Enter your email to access this resource.</p>
+        </div>
+        <button class="modal-close" type="button" id="downloadModalClose" aria-label="Close download form">&times;</button>
+      </div>
+
+      <form class="lead-form" id="leadForm">
+        <div class="lead-field">
+          <label for="leadName">Name</label>
+          <input id="leadName" name="name" type="text" autocomplete="name" placeholder="Your name">
+        </div>
+
+        <div class="lead-field">
+          <label for="leadEmail">Email address</label>
+          <input id="leadEmail" name="email" type="email" autocomplete="email" placeholder="you@company.com" required>
+        </div>
+
+        <button class="btn" type="submit">Continue to Download</button>
+        <p class="lead-note">Your email is requested before downloading so Northern Data Studio can follow up about dashboard and analytics work.</p>
+      </form>
+    </div>
+  </div>
+
+  <script>
+    document.getElementById("year").textContent = new Date().getFullYear();
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) entry.target.classList.add("visible");
+      });
+    }, { threshold: 0.12 });
+
+    document.querySelectorAll(".fade-in").forEach((el) => observer.observe(el));
+
+    const downloadModal = document.getElementById("downloadModal");
+    const downloadModalClose = document.getElementById("downloadModalClose");
+    const downloadModalCopy = document.getElementById("downloadModalCopy");
+    const leadForm = document.getElementById("leadForm");
+    const csvUpload = document.getElementById("csvUpload");
+    const cleanCsvBtn = document.getElementById("cleanCsvBtn");
+    const downloadCsvBtn = document.getElementById("downloadCsvBtn");
+    const csvToolStatus = document.getElementById("csvToolStatus");
+    const csvPreview = document.getElementById("csvPreview");
+    let originalCsvRows = [];
+    let cleanedCsvRows = [];
+    let pendingDownload = null;
+
+    const parseCsv = (text) => {
+      const rows = [];
+      let row = [];
+      let value = "";
+      let inQuotes = false;
+
+      for (let i = 0; i < text.length; i += 1) {
+        const char = text[i];
+        const nextChar = text[i + 1];
+
+        if (char === '"' && inQuotes && nextChar === '"') {
+          value += '"';
+          i += 1;
+        } else if (char === '"') {
+          inQuotes = !inQuotes;
+        } else if (char === "," && !inQuotes) {
+          row.push(value);
+          value = "";
+        } else if ((char === "\n" || char === "\r") && !inQuotes) {
+          if (char === "\r" && nextChar === "\n") i += 1;
+          row.push(value);
+          rows.push(row);
+          row = [];
+          value = "";
+        } else {
+          value += char;
+        }
+      }
+
+      row.push(value);
+      rows.push(row);
+      return rows.filter((csvRow) => csvRow.some((cell) => cell !== ""));
+    };
+
+    const toCsv = (rows) => rows.map((row) => row.map((cell) => {
+      const text = String(cell ?? "");
+      const escaped = text.replace(/"/g, '""');
+      return /[",\n\r]/.test(escaped) ? `"${escaped}"` : escaped;
+    }).join(",")).join("\n");
+
+    const cleanHeader = (header, index) => {
+      const fallback = `Column ${index + 1}`;
+      return (header || fallback)
+        .trim()
+        .replace(/[_-]+/g, " ")
+        .replace(/\s+/g, " ")
+        .replace(/\b\w/g, (letter) => letter.toUpperCase());
+    };
+
+    const escapeHtml = (text) => String(text ?? "")
+      .replace(/&/g, "&amp;")
+      .replace(/</g, "&lt;")
+      .replace(/>/g, "&gt;")
+      .replace(/"/g, "&quot;")
+      .replace(/'/g, "&#039;");
+
+    const normalizeRowLengths = (rows) => {
+      const maxLength = Math.max(...rows.map((row) => row.length));
+      return rows.map((row) => Array.from({ length: maxLength }, (_, index) => row[index] ?? ""));
+    };
+
+    const processCsvRows = (rows) => {
+      if (!rows.length) return [];
+
+      let nextRows = normalizeRowLengths(rows);
+      const shouldTrim = document.getElementById("trimValues").checked;
+      const shouldRemoveBlankRows = document.getElementById("removeBlankRows").checked;
+      const shouldRemoveDuplicates = document.getElementById("removeDuplicates").checked;
+      const shouldNormalizeHeaders = document.getElementById("normalizeHeaders").checked;
+
+      if (shouldTrim) nextRows = nextRows.map((row) => row.map((cell) => cell.trim()));
+      if (shouldNormalizeHeaders) nextRows[0] = nextRows[0].map(cleanHeader);
+
+      const header = nextRows[0];
+      let body = nextRows.slice(1);
+
+      if (shouldRemoveBlankRows) {
+        body = body.filter((row) => row.some((cell) => cell.trim() !== ""));
+      }
+
+      if (shouldRemoveDuplicates) {
+        const seen = new Set();
+        body = body.filter((row) => {
+          const key = JSON.stringify(row);
+          if (seen.has(key)) return false;
+          seen.add(key);
+          return true;
+        });
+      }
+
+      return [header, ...body];
+    };
+
+    const renderCsvPreview = (rows) => {
+      if (!rows.length) {
+        csvPreview.innerHTML = "";
+        return;
+      }
+
+      const previewRows = rows.slice(0, 7);
+      const headers = previewRows[0];
+      const bodyRows = previewRows.slice(1);
+      const headerHtml = headers.map((header) => `<th>${escapeHtml(header)}</th>`).join("");
+      const bodyHtml = bodyRows.map((row) => `<tr>${row.map((cell) => `<td>${escapeHtml(cell)}</td>`).join("")}</tr>`).join("");
+      csvPreview.innerHTML = `<table><thead><tr>${headerHtml}</tr></thead><tbody>${bodyHtml}</tbody></table>`;
+    };
+
+    const startDownload = (href, filename = "") => {
+      const downloadLink = document.createElement("a");
+      downloadLink.href = href;
+      downloadLink.download = filename;
+      document.body.appendChild(downloadLink);
+      downloadLink.click();
+      downloadLink.remove();
+    };
+
+    const openDownloadModal = (download) => {
+      pendingDownload = download;
+      downloadModalCopy.textContent = download.isCsvTool
+        ? "Enter your email to download your cleaned CSV file."
+        : `Enter your email to download the ${download.format} for ${download.resource}.`;
+      downloadModal.classList.add("active");
+      downloadModal.setAttribute("aria-hidden", "false");
+      document.getElementById("leadEmail").focus();
+    };
+
+    const closeDownloadModal = () => {
+      downloadModal.classList.remove("active");
+      downloadModal.setAttribute("aria-hidden", "true");
+      pendingDownload = null;
+    };
+
+    const startCsvDownload = () => {
+      const csvBlob = new Blob([toCsv(cleanedCsvRows)], { type: "text/csv;charset=utf-8" });
+      const url = URL.createObjectURL(csvBlob);
+      startDownload(url, "cleaned-data.csv");
+      URL.revokeObjectURL(url);
+    };
+
+    csvUpload.addEventListener("change", async (event) => {
+      const file = event.target.files[0];
+      if (!file) return;
+
+      const text = await file.text();
+      originalCsvRows = parseCsv(text);
+      cleanedCsvRows = [];
+      cleanCsvBtn.disabled = originalCsvRows.length === 0;
+      downloadCsvBtn.disabled = true;
+      renderCsvPreview(originalCsvRows);
+      csvToolStatus.textContent = originalCsvRows.length
+        ? `${file.name} loaded with ${Math.max(originalCsvRows.length - 1, 0)} data rows.`
+        : "This file does not appear to contain CSV rows.";
+    });
+
+    cleanCsvBtn.addEventListener("click", () => {
+      cleanedCsvRows = processCsvRows(originalCsvRows);
+      renderCsvPreview(cleanedCsvRows);
+      downloadCsvBtn.disabled = cleanedCsvRows.length === 0;
+      csvToolStatus.textContent = cleanedCsvRows.length
+        ? `Cleaned ${Math.max(cleanedCsvRows.length - 1, 0)} data rows. Preview shows the first rows.`
+        : "No rows available after cleaning.";
+    });
+
+    downloadCsvBtn.addEventListener("click", () => {
+      if (!cleanedCsvRows.length) return;
+      openDownloadModal({
+        href: null,
+        resource: "Data Cleaning Assistant",
+        format: "Cleaned CSV",
+        isCsvTool: true
+      });
+    });
+
+    document.querySelectorAll(".gated-download").forEach((link) => {
+      link.addEventListener("click", (event) => {
+        event.preventDefault();
+        openDownloadModal({
+          href: link.getAttribute("href"),
+          resource: link.dataset.resource,
+          format: link.dataset.format
+        });
+      });
+    });
+
+    downloadModalClose.addEventListener("click", closeDownloadModal);
+
+    downloadModal.addEventListener("click", (event) => {
+      if (event.target === downloadModal) closeDownloadModal();
+    });
+
+    document.addEventListener("keydown", (event) => {
+      if (event.key === "Escape" && downloadModal.classList.contains("active")) closeDownloadModal();
+    });
+
+    leadForm.addEventListener("submit", (event) => {
+      event.preventDefault();
+      if (!pendingDownload || !leadForm.checkValidity()) return;
+
+      const formData = new FormData(leadForm);
+      const lead = {
+        name: formData.get("name"),
+        email: formData.get("email"),
+        resource: pendingDownload.resource,
+        format: pendingDownload.format,
+        capturedAt: new Date().toISOString()
+      };
+
+      localStorage.setItem("northernDataStudioLastLead", JSON.stringify(lead));
+
+      if (pendingDownload.isCsvTool) {
+        startCsvDownload();
+      } else {
+        startDownload(pendingDownload.href);
+      }
+
+      leadForm.reset();
+      closeDownloadModal();
+    });
+  </script>
+</body>
+</html>
