@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
@@ -519,57 +519,6 @@
     .metric-line span { color: rgba(255,255,255,0.62); }
     .metric-line strong { color: white; }
 
-    .building {
-      background: var(--navy);
-      color: white;
-      position: relative;
-      overflow: hidden;
-    }
-
-    .building::before {
-      content: "";
-      position: absolute;
-      inset: 0;
-      opacity: 0.08;
-      background-image: radial-gradient(circle, #fff 1px, transparent 1px);
-      background-size: 22px 22px;
-      pointer-events: none;
-    }
-
-    .building .container { position: relative; z-index: 2; }
-    .building h2, .building h3, .building .section-label { color: white; }
-    .building p { color: rgba(255,255,255,0.66); }
-
-    .build-grid {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 18px;
-    }
-
-    .build-card {
-      border: 1px solid rgba(255,255,255,0.12);
-      background: rgba(255,255,255,0.06);
-      border-radius: 26px;
-      padding: 24px;
-      min-height: 230px;
-      transition: 0.2s ease;
-    }
-
-    .build-card:hover { transform: translateY(-4px); background: rgba(255,255,255,0.09); }
-
-    .status {
-      display: inline-flex;
-      margin-bottom: 16px;
-      padding: 6px 10px;
-      border-radius: 999px;
-      background: rgba(255,255,255,0.10);
-      color: rgba(255,255,255,0.72);
-      font-size: 11px;
-      font-weight: 950;
-      text-transform: uppercase;
-      letter-spacing: 0.12em;
-    }
-
     .tool-preview { background: #ffffff; }
 
     .tool-shell {
@@ -955,14 +904,14 @@
 
     @media (max-width: 1020px) {
       .hero-grid, .resource-card, .resource-card.compact, .tool-shell { grid-template-columns: 1fr; }
-      .offer-grid, .build-grid { grid-template-columns: repeat(2, 1fr); }
+      .offer-grid { grid-template-columns: repeat(2, 1fr); }
       .footer-grid { grid-template-columns: 1fr; gap: 44px; }
     }
 
     @media (max-width: 760px) {
       .nav-links { display: none; }
       section, .hero { padding: 72px 0; }
-      .offer-grid, .build-grid, .kpi-grid { grid-template-columns: 1fr; }
+      .offer-grid, .kpi-grid { grid-template-columns: 1fr; }
       .hero-actions, .resource-actions { flex-direction: column; }
       .btn { width: 100%; }
       .cta-card { grid-template-columns: 1fr; align-items: flex-start; padding: 34px; }
@@ -985,7 +934,6 @@
         <div class="nav-links">
           <a href="#today">What We Do</a>
           <a href="free-resources.html">Resources</a>
-          <a href="#building">Building</a>
           <a href="pricing.html">Pricing</a>
           <a href="#contact" class="nav-cta">Book Consultation</a>
         </div>
@@ -997,7 +945,7 @@
     <section class="hero">
       <div class="container hero-grid">
         <div class="fade-in">
-          <div class="eyebrow">Analytics â€¢ Research â€¢ Dashboards â€¢ Data Systems</div>
+          <div class="eyebrow">Analytics &bull; Research &bull; Dashboards &bull; Data Systems</div>
           <h1>Data, insights, and analytical systems for modern businesses.</h1>
           <p>Northern Data Studio turns raw information into reports, dashboards, tools, and strategic intelligence that help businesses understand what is happening and what to do next.</p>
           <div class="hero-actions">
@@ -1075,47 +1023,6 @@
             <h3>BI Strategy</h3>
             <p>Consultation support for KPI planning, reporting structure, dashboard scope, and analytics workflows.</p>
           </article>
-        </div>
-      </div>
-    </section>
-
-    <section id="building" class="building">
-      <div class="container">
-        <div class="section-header center fade-in">
-          <div class="section-label">What We're Building</div>
-          <h2>An evolving analytics ecosystem.</h2>
-          <p>Beyond dashboards, Northern Data Studio is building lightweight tools, prototypes, and analytical workflows that make data easier to use.</p>
-        </div>
-
-        <div class="build-grid">
-          <article class="build-card fade-in">
-            <span class="status">Prototype</span>
-            <h3>Data Cleaning Assistant</h3>
-            <p>Preview a workflow for selecting columns, cleaning CSVs, and preparing analysis-ready files.</p>
-          </article>
-
-          <article class="build-card fade-in">
-            <span class="status">In Development</span>
-            <h3>Automation Workflows</h3>
-            <p>Python scripts and workflow demos for recurring reports, exports, and operational processes.</p>
-          </article>
-
-          <article class="build-card fade-in">
-            <span class="status">Concept</span>
-            <h3>Forecasting</h3>
-            <p>Simple forecasting prototypes using statistical methods, Python, and SPSS-style workflows.</p>
-          </article>
-
-          <article class="build-card fade-in">
-            <span class="status">Future</span>
-            <h3>Data Products</h3>
-            <p>Premium reports, templates, and reusable analytical assets for businesses and decision-makers.</p>
-          </article>
-        </div>
-
-        <div class="hero-actions fade-in" style="justify-content: center; margin-top: 34px;">
-          <a href="free-resources.html#data-tool" class="btn light">Try the Free Data Tool</a>
-          <a href="free-resources.html#downloads" class="btn ghost">View Free Downloads</a>
         </div>
       </div>
     </section>
@@ -1208,7 +1115,7 @@
     </div>
 
     <div class="container footer-bottom">
-      Â© <span id="year"></span> Northern Data Studio
+      &copy; <span id="year"></span> Northern Data Studio
     </div>
   </footer>
   <script>

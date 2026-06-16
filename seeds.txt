@@ -1,0 +1,63 @@
+# Starter public company websites for Northern Data Studio lead research.
+# One URL per line. The scraper will visit each company website and look for
+# public contact/about/location pages, emails, and phone numbers.
+
+# Logistics / supply chain
+https://www.canadacartage.com
+https://www.tst-cfexpress.com
+https://www.rosenau.ca
+https://www.manitoulintransport.com
+https://www.dayross.com
+https://www.mullen-group.com
+https://www.gardewine.com
+https://www.stallionexpress.ca
+https://www.shipfusion.com
+https://www.purolator.com
+
+# Construction / builders
+https://www.bird.ca
+https://www.pcl.com
+https://www.ellisdon.com
+https://www.broccolini.com
+https://www.taggartconstruction.com
+https://www.minto.com
+https://www.tamarackhomes.com
+https://www.urbandaleconstruction.com
+https://www.claridgehomes.com
+https://www.mattamyhomes.com
+
+# Marketing agencies
+https://www.seoplus.com
+https://www.mediaforce.ca
+https://www.webmarketers.ca
+https://www.craftandcrew.ca
+https://www.major-tom.com
+https://www.searchenginepeople.com
+https://www.bluehatmarketing.com
+https://www.massivemedia.com
+https://www.wishpond.com
+https://www.mavenmedia.com
+
+# Property management / real estate operations
+https://www.sleepwellmanagement.com
+https://www.osgoodeproperties.com
+https://www.paramountapts.com
+https://www.districtrealty.com
+https://www.flemingpropertymanagement.ca
+https://www.krpproperties.com
+https://www.colonnadebridgeport.ca
+https://www.dukamanagement.com
+https://www.delrentals.com
+https://www.capreit.ca
+
+# E-commerce / retail / digital commerce
+https://www.shopify.com
+https://www.canadiantire.ca
+https://www.indigo.ca
+https://www.well.ca
+https://www.ssense.com
+https://www.knix.ca
+https://www.tentree.ca
+https://www.mec.ca
+https://www.roots.com
+https://www.bestbuy.ca
