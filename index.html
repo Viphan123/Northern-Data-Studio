@@ -337,6 +337,47 @@
       font-weight: 950;
     }
 
+    .deliver {
+      background:
+        radial-gradient(circle at 8% 10%, rgba(37,99,235,0.08), transparent 28%),
+        var(--soft);
+    }
+
+    .deliver-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
+    }
+
+    .deliver-card {
+      min-height: 220px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      gap: 22px;
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 26px;
+      background: white;
+      box-shadow: 0 12px 36px rgba(7,26,51,0.05);
+      transition: 0.2s ease;
+    }
+
+    .deliver-card:hover {
+      transform: translateY(-4px);
+      box-shadow: var(--shadow);
+    }
+
+    .deliver-card p { margin-top: 8px; }
+
+    .deliver-number {
+      color: var(--blue);
+      font-size: 12px;
+      font-weight: 950;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+    }
+
     .resource-feature {
       background: var(--soft);
       overflow: hidden;
@@ -665,16 +706,20 @@
       padding: 52px;
       color: white;
       box-shadow: var(--shadow);
-      display: grid;
-      grid-template-columns: 1fr 0.92fr;
-      align-items: center;
-      gap: 54px;
     }
 
     .cta-card h2 { color: white; }
-    .cta-card p { color: rgba(255,255,255,0.70); max-width: 640px; }
+    .cta-card p { color: rgba(255,255,255,0.70); }
+
+    .contact-intro {
+      max-width: 780px;
+      margin: 0 auto 34px;
+      text-align: center;
+    }
 
     .contact-form-card {
+      width: min(820px, 100%);
+      margin: 0 auto;
       background: white;
       border-radius: 28px;
       padding: 28px;
@@ -904,17 +949,18 @@
 
     @media (max-width: 1020px) {
       .hero-grid, .resource-card, .resource-card.compact, .tool-shell { grid-template-columns: 1fr; }
-      .offer-grid { grid-template-columns: repeat(2, 1fr); }
+      .offer-grid, .deliver-grid { grid-template-columns: repeat(2, 1fr); }
       .footer-grid { grid-template-columns: 1fr; gap: 44px; }
     }
 
     @media (max-width: 760px) {
       .nav-links { display: none; }
       section, .hero { padding: 72px 0; }
-      .offer-grid, .kpi-grid { grid-template-columns: 1fr; }
+      .offer-grid, .deliver-grid, .kpi-grid { grid-template-columns: 1fr; }
       .hero-actions, .resource-actions { flex-direction: column; }
       .btn { width: 100%; }
-      .cta-card { grid-template-columns: 1fr; align-items: flex-start; padding: 34px; }
+      .cta-card { padding: 34px; }
+      .contact-intro { text-align: left; }
       .contact-form-card { width: 100%; padding: 22px; border-radius: 22px; }
       .checkbox-grid { grid-template-columns: 1fr; }
       .resource-copy, .tool-copy { padding: 26px; }
@@ -1027,16 +1073,73 @@
       </div>
     </section>
 
+    <section class="deliver">
+      <div class="container">
+        <div class="section-header center fade-in">
+          <div class="section-label">What We Deliver</div>
+          <h2>Analytics support that turns scattered data into useful decisions.</h2>
+          <p>These are the practical services Northern Data Studio can help with now, from dashboard builds to reporting systems and recurring analytics support.</p>
+        </div>
+
+        <div class="deliver-grid">
+          <article class="deliver-card fade-in">
+            <div>
+              <span class="deliver-number">01</span>
+              <h3>Dashboard Development</h3>
+              <p>Power BI dashboards that organize KPIs, trends, and business performance into a clear reporting view.</p>
+            </div>
+          </article>
+
+          <article class="deliver-card fade-in">
+            <div>
+              <span class="deliver-number">02</span>
+              <h3>Forecasting and Planning</h3>
+              <p>Planning models, trend analysis, and forecasting workflows that support budget, demand, or operational decisions.</p>
+            </div>
+          </article>
+
+          <article class="deliver-card fade-in">
+            <div>
+              <span class="deliver-number">03</span>
+              <h3>Data Cleaning</h3>
+              <p>Spreadsheet cleanup, file consolidation, column standardization, and preparation for dashboard or report use.</p>
+            </div>
+          </article>
+
+          <article class="deliver-card fade-in">
+            <div>
+              <span class="deliver-number">04</span>
+              <h3>Reporting Automation</h3>
+              <p>Reusable workflows that reduce manual reporting time and make recurring updates easier to manage.</p>
+            </div>
+          </article>
+
+          <article class="deliver-card fade-in">
+            <div>
+              <span class="deliver-number">05</span>
+              <h3>AI Automation and Agents</h3>
+              <p>Lightweight AI-assisted workflows for research, reporting, document generation, and operational task support.</p>
+            </div>
+          </article>
+
+          <article class="deliver-card fade-in">
+            <div>
+              <span class="deliver-number">06</span>
+              <h3>Monthly Analytics Support</h3>
+              <p>Ongoing reporting, dashboard updates, data refreshes, and insight summaries for teams that need regular support.</p>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
     <section class="pricing-cta" id="contact">
       <div class="container">
         <div class="cta-card fade-in">
-          <div>
+          <div class="contact-intro">
             <div class="section-label" style="color: #3b82f6;">Contact</div>
             <h2>Ready to make your data useful?</h2>
             <p>Send a quick message with your project idea, file type, and deadline. We'll review the scope and help you choose the right dashboard, report, or analytics package.</p>
-            <div class="hero-actions" style="margin-top: 28px;">
-              <a href="#contact" class="btn light">Book Free Consultation</a>
-            </div>
           </div>
 
           <div class="contact-form-card">
