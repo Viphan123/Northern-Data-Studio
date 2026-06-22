@@ -718,7 +718,7 @@
     }
 
     .contact-form-card {
-      width: min(820px, 100%);
+      width: min(560px, 100%);
       margin: 0 auto;
       background: white;
       border-radius: 28px;
@@ -729,58 +729,6 @@
     .contact-form {
       display: grid;
       gap: 13px;
-    }
-
-    .form-fieldset {
-      border: 0;
-      padding: 0;
-      display: grid;
-      gap: 10px;
-    }
-
-    .field-label {
-      color: var(--navy);
-      font-size: 13px;
-      font-weight: 900;
-      letter-spacing: -0.01em;
-    }
-
-    .checkbox-grid {
-      display: grid;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 10px;
-    }
-
-    .checkbox-option {
-      min-height: 48px;
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      border: 1px solid var(--border);
-      border-radius: 15px;
-      padding: 12px 13px;
-      color: var(--text);
-      font-size: 13px;
-      font-weight: 800;
-      cursor: pointer;
-      background: #f8fafc;
-      transition: 0.2s ease;
-    }
-
-    .checkbox-option:hover {
-      border-color: rgba(37, 99, 235, 0.36);
-      background: #eef5ff;
-    }
-
-    .checkbox-option input {
-      width: 16px;
-      height: 16px;
-      accent-color: var(--blue);
-      flex: 0 0 16px;
-    }
-
-    .checkbox-option span {
-      line-height: 1.25;
     }
 
     .contact-form input,
@@ -962,7 +910,6 @@
       .cta-card { padding: 34px; }
       .contact-intro { text-align: left; }
       .contact-form-card { width: 100%; padding: 22px; border-radius: 22px; }
-      .checkbox-grid { grid-template-columns: 1fr; }
       .resource-copy, .tool-copy { padding: 26px; }
     }
   </style>
@@ -1148,40 +1095,21 @@
               <input type="text" name="name" placeholder="Your name" autocomplete="name" required>
               <input type="email" name="email" placeholder="Email address" autocomplete="email" required>
 
-              <fieldset class="form-fieldset">
-                <legend class="field-label">What are you interested in?</legend>
-                <div class="checkbox-grid" id="serviceCheckboxGroup">
-                  <label class="checkbox-option"><input type="checkbox" name="services" value="Dashboard Development"><span>Dashboard Development</span></label>
-                  <label class="checkbox-option"><input type="checkbox" name="services" value="Forecasting and Planning"><span>Forecasting and Planning</span></label>
-                  <label class="checkbox-option"><input type="checkbox" name="services" value="Data Cleaning"><span>Data Cleaning</span></label>
-                  <label class="checkbox-option"><input type="checkbox" name="services" value="Reporting Automation"><span>Reporting Automation</span></label>
-                  <label class="checkbox-option"><input type="checkbox" name="services" value="AI Automation and Agents"><span>AI Automation and Agents</span></label>
-                  <label class="checkbox-option"><input type="checkbox" name="services" value="Monthly Analytics Support"><span>Monthly Analytics Support</span></label>
-                  <label class="checkbox-option"><input type="checkbox" name="services" value="Other"><span>Other</span></label>
-                  <label class="checkbox-option"><input type="checkbox" name="services" value="Not sure yet"><span>Not sure yet</span></label>
-                </div>
-              </fieldset>
-
-              <textarea name="message" placeholder="Tell us about your project or business problem" required></textarea>
-
-              <select name="estimated_budget">
-                <option value="">Estimated budget</option>
-                <option>Under $500</option>
-                <option>$500-$1,500</option>
-                <option>$1,500-$5,000</option>
-                <option>Over $5,000</option>
+              <select name="service" required>
+                <option value="">Choose a service</option>
+                <option>Dashboard Development</option>
+                <option>Forecasting and Planning</option>
+                <option>Data Cleaning</option>
+                <option>Reporting Automation</option>
+                <option>AI Automation and Agents</option>
+                <option>Monthly Analytics Support</option>
+                <option>Other</option>
                 <option>Not sure yet</option>
               </select>
 
-              <select name="preferred_timeline">
-                <option value="">Preferred timeline</option>
-                <option>As soon as possible</option>
-                <option>Within one month</option>
-                <option>Within three months</option>
-                <option>Flexible</option>
-                <option>Exploring options</option>
-              </select>
-              <button class="btn" type="submit">Send My Inquiry</button>
+              <textarea name="message" placeholder="Tell us about your project or business problem" required></textarea>
+
+              <button class="btn" type="submit">Send Inquiry</button>
               <p class="form-status" id="projectInquiryStatus"></p>
             </form>
           </div>
@@ -1241,12 +1169,6 @@
 
       projectInquiryStatus.classList.remove("success");
       projectInquiryStatus.textContent = "";
-
-      const selectedServices = projectInquiryForm.querySelectorAll('input[name="services"]:checked');
-      if (!selectedServices.length) {
-        projectInquiryStatus.textContent = "Please choose at least one service or select Not sure yet.";
-        return;
-      }
 
       const endpoint = projectInquiryForm.action;
       const submitButton = projectInquiryForm.querySelector('button[type="submit"]');
